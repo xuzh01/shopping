@@ -19,12 +19,10 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/green/easyui.css?t=34355">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/color.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/farm/farm.css">
     <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="<%=basePath%>ext/farm/helper.js?346t"></script>
 </head>
 <body>
 <div id="controlBox" style="background-color:green;">
@@ -124,10 +122,7 @@
 <script>
     var grid;
     var cId;
-    var codeLandRequire;
-    resizeFrame();
     $(document).ready(function () {
-        getCodeLandRequire();
         //配置表格
         grid = $('#grid').edatagrid({
             title: '种子清单',
@@ -281,87 +276,8 @@
         });
 
     });
-    function doSearch(){
-        grid.datagrid("load",{
-            caption: $("#genderSearch").val()
-        })
-    };
 
-    function editRecord(){
-        var row = grid.datagrid('getSelected');
-        if (row){
-            $('#formContainer').dialog('open').dialog('center').dialog('setTitle','编辑数据');
-            $('#formEditor').form('load',row);
-        } else {
-            $.messager.show({
-                title: "消息",
-                msg: "请先选择一行数据，然后再尝试点击操作按钮！"
-            });
-        }
-    }
 
-    function newRecord(){
-        $('#formEditor').form("reset");
-        $('#formEditor').find('input[name="id"]').val("0");
-        $('#formContainer').dialog('open').dialog('center').dialog('setTitle','添加数据');
-    }
-    function saveRecord() {
-        $('#formEditor').form('submit', {
-            url: '<%=basePath%>seed/save',
-            onSubmit: function (param) {
-                return $(this).form('validate');
-            },
-            success: function (result) {
-                var result = eval('(' + result + ')');
-                if (result.code == 0) {
-                    $('#formContainer').dialog('close');
-                    grid.datagrid('reload');
-                }
-                $.messager.show({
-                    title: "消息",
-                    msg: result.msg
-                });
-            }
-        })
-    };
-    function deleteRecord() {
-        var row = grid.datagrid('getSelected');
-        $.post('<%=basePath%>seed/delete',row,function(data){
-            $.messager.show({
-                title: "消息",
-                msg: data.msg
-            });
-        });
-        grid.datagrid('reload');
-    };
-    function showCropsGrowEdit(){
-        $("#cropGrow").window({
-            width:'800',
-            height:'420',
-            title:'编辑成长阶段',
-            href:'<%=basePath%>cropsGrow/grid',
-            closed:false,
-            modal:true,
-            cache:false
-        })
-    }
-    function getCodeLandRequire(){
-        $.post('<%=basePath%>codeLandRequire/data',
-            function(data){
-                codeLandRequire=data;
-            })
-    }
-    function getCodeLandRequireFromCode(code){
-        for(var index in codeLandRequire){
-            if(codeLandRequire[index].code==code){
-                return codeLandRequire[index].caption;
-            }
-        }
-    }
-    function resizeFrame(){
-        window.parent.document.getElementById("tools").src="tools.jsp";
-        window.parent.document.getElementById("framesets").rows='60,*,50';
-    }
 </script>
 </body>
 </html>
