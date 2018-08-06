@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.CollectioninfoDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.Collectioninfo">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.CollectioninfoDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Collectioninfo">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="memberid" jdbcType="INTEGER" property="memberid" />
     <result column="goodsid" jdbcType="INTEGER" property="goodsid" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     cid, memberid, goodsid, c_time
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.CollectioninfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.CollectioninfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -100,19 +100,19 @@
     delete from collectioninfo
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.CollectioninfoExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.CollectioninfoExample">
     delete from collectioninfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.Collectioninfo">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.Collectioninfo">
     insert into collectioninfo (cid, memberid, goodsid, 
       c_time)
     values (#{cid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
       #{cTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.Collectioninfo">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.Collectioninfo">
     insert into collectioninfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cid != null">
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.CollectioninfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.CollectioninfoExample" resultType="java.lang.Long">
     select count(*) from collectioninfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -179,7 +179,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.entity.Collectioninfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.shopping.entity.Collectioninfo">
     update collectioninfo
     <set>
       <if test="memberid != null">
@@ -194,7 +194,7 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.entity.Collectioninfo">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.shopping.entity.Collectioninfo">
     update collectioninfo
     set memberid = #{memberid,jdbcType=INTEGER},
       goodsid = #{goodsid,jdbcType=INTEGER},

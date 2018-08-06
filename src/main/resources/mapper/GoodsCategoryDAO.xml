@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.GoodsCategoryDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.GoodsCategory">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.GoodsCategoryDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.GoodsCategory">
     <id column="cat_id" jdbcType="INTEGER" property="catId" />
     <result column="cat_name" jdbcType="VARCHAR" property="catName" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     cat_id, cat_name, sort, description, is_offline, created_time, updated_time
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.GoodsCategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -103,13 +103,13 @@
     delete from goods_category
     where cat_id = #{catId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.GoodsCategoryExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategoryExample">
     delete from goods_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.GoodsCategory">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategory">
     insert into goods_category (cat_id, cat_name, sort, 
       description, is_offline, created_time, 
       updated_time)
@@ -117,7 +117,7 @@
       #{description,jdbcType=VARCHAR}, #{isOffline,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, 
       #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.GoodsCategory">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategory">
     insert into goods_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="catId != null">
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.GoodsCategoryExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategoryExample" resultType="java.lang.Long">
     select count(*) from goods_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -214,7 +214,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.entity.GoodsCategory">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategory">
     update goods_category
     <set>
       <if test="catName != null">
@@ -238,7 +238,7 @@
     </set>
     where cat_id = #{catId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.entity.GoodsCategory">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.shopping.entity.GoodsCategory">
     update goods_category
     set cat_name = #{catName,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},

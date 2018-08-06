@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.OrderinfoGoodsDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.OrderinfoGoods">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.OrderinfoGoodsDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.OrderinfoGoods">
     <result column="rec_id" jdbcType="INTEGER" property="recId" />
     <result column="order_id" jdbcType="VARCHAR" property="orderId" />
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
@@ -74,7 +74,7 @@
     rec_id, order_id, goods_id, goods_name, goods_price, goods_num, goods_pay_price, 
     created_time, updated_time
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.OrderinfoGoodsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoodsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -96,13 +96,13 @@
       </if>
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.OrderinfoGoodsExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoodsExample">
     delete from orderinfo_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.OrderinfoGoods">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoods">
     insert into orderinfo_goods (rec_id, order_id, goods_id, 
       goods_name, goods_price, goods_num, 
       goods_pay_price, created_time, updated_time
@@ -112,7 +112,7 @@
       #{goodsPayPrice,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.OrderinfoGoods">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoods">
     insert into orderinfo_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="recId != null">
@@ -173,7 +173,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.OrderinfoGoodsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoodsExample" resultType="java.lang.Long">
     select count(*) from orderinfo_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

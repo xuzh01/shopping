@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.OrderinfoDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.Orderinfo">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.OrderinfoDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Orderinfo">
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
     <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
     <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
@@ -78,7 +78,7 @@
     order_id, order_sn, buyer_id, buyer_name, buyer_tel, add_time, payment_code, payment_time, 
     finnshed_time, order_amount, order_state, created_time, updated_time
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.OrderinfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -100,13 +100,13 @@
       </if>
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.OrderinfoExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoExample">
     delete from orderinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.Orderinfo">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.Orderinfo">
     insert into orderinfo (order_id, order_sn, buyer_id, 
       buyer_name, buyer_tel, add_time, 
       payment_code, payment_time, finnshed_time, 
@@ -118,7 +118,7 @@
       #{orderAmount,jdbcType=BIGINT}, #{orderState,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, 
       #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.Orderinfo">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.Orderinfo">
     insert into orderinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderId != null">
@@ -203,7 +203,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.OrderinfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoExample" resultType="java.lang.Long">
     select count(*) from orderinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

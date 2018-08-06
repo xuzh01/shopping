@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.AdminDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.Admin">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.AdminDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Admin">
     <result column="admin_id" jdbcType="INTEGER" property="adminId" />
     <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
     <result column="admin_password" jdbcType="VARCHAR" property="adminPassword" />
@@ -74,7 +74,7 @@
     admin_id, admin_name, admin_password, admin_login_num, admin_is_super, is_disable, 
     admin_login_time, created_time, updated_time
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.AdminExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.AdminExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -96,13 +96,13 @@
       </if>
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.AdminExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.AdminExample">
     delete from admin
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.Admin">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.Admin">
     insert into admin (admin_id, admin_name, admin_password, 
       admin_login_num, admin_is_super, is_disable, 
       admin_login_time, created_time, updated_time
@@ -112,7 +112,7 @@
       #{adminLoginTime,jdbcType=TIMESTAMP}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.Admin">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.Admin">
     insert into admin
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="adminId != null">
@@ -173,7 +173,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.AdminExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.AdminExample" resultType="java.lang.Long">
     select count(*) from admin
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

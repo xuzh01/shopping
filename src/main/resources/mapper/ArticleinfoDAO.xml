@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.ArticleinfoDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.Articleinfo">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.ArticleinfoDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Articleinfo">
     <id column="article_id" jdbcType="INTEGER" property="articleId" />
     <result column="article_pic_url" jdbcType="VARCHAR" property="articlePicUrl" />
     <result column="article_show" jdbcType="BIT" property="articleShow" />
@@ -10,7 +10,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="amount_of_reading" jdbcType="BIGINT" property="amountOfReading" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.jxufe.entity.Articleinfo">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.jxufe.shopping.entity.Articleinfo">
     <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -78,7 +78,7 @@
   <sql id="Blob_Column_List">
     article_content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="cn.edu.jxufe.entity.ArticleinfoExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="cn.edu.jxufe.shopping.entity.ArticleinfoExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -102,7 +102,7 @@
       </if>
     </if>
   </select>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.ArticleinfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.ArticleinfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -136,13 +136,13 @@
     delete from articleinfo
     where article_id = #{articleId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.ArticleinfoExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.ArticleinfoExample">
     delete from articleinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.Articleinfo">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo">
     insert into articleinfo (article_id, article_pic_url, article_show, 
       article_title, create_time, update_time, 
       amount_of_reading, article_content)
@@ -150,7 +150,7 @@
       #{articleTitle,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{amountOfReading,jdbcType=BIGINT}, #{articleContent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.Articleinfo">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo">
     insert into articleinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.ArticleinfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.ArticleinfoExample" resultType="java.lang.Long">
     select count(*) from articleinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -270,7 +270,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.entity.Articleinfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo">
     update articleinfo
     <set>
       <if test="articlePicUrl != null">
@@ -297,7 +297,7 @@
     </set>
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.jxufe.entity.Articleinfo">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo">
     update articleinfo
     set article_pic_url = #{articlePicUrl,jdbcType=VARCHAR},
       article_show = #{articleShow,jdbcType=BIT},
@@ -308,7 +308,7 @@
       article_content = #{articleContent,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.entity.Articleinfo">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo">
     update articleinfo
     set article_pic_url = #{articlePicUrl,jdbcType=VARCHAR},
       article_show = #{articleShow,jdbcType=BIT},

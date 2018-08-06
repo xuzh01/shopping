@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jxufe.mapper.MemberinfoDAO">
-  <resultMap id="BaseResultMap" type="cn.edu.jxufe.entity.Memberinfo">
+<mapper namespace="cn.edu.jxufe.shopping.mapper.MemberinfoDAO">
+  <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Memberinfo">
     <id column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="member_mobile" jdbcType="VARCHAR" property="memberMobile" />
     <result column="member_name" jdbcType="VARCHAR" property="memberName" />
@@ -82,7 +82,7 @@
     member_ww, member_login_num, create_time, member_login_time, member_old_login_time, 
     member_login_ip, member_old_login_ip, is_sell, member_state, member_pic
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.jxufe.entity.MemberinfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.jxufe.shopping.entity.MemberinfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -114,13 +114,13 @@
     delete from memberinfo
     where member_id = #{memberId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.jxufe.entity.MemberinfoExample">
+  <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.MemberinfoExample">
     delete from memberinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.jxufe.entity.Memberinfo">
+  <insert id="insert" parameterType="cn.edu.jxufe.shopping.entity.Memberinfo">
     insert into memberinfo (member_id, member_mobile, member_name, 
       member_birthday, member_passwd, member_email, 
       member_ww, member_login_num, create_time, 
@@ -134,7 +134,7 @@
       #{memberLoginIp,jdbcType=VARCHAR}, #{memberOldLoginIp,jdbcType=VARCHAR}, #{isSell,jdbcType=BIT}, 
       #{memberState,jdbcType=BIT}, #{memberPic,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.jxufe.entity.Memberinfo">
+  <insert id="insertSelective" parameterType="cn.edu.jxufe.shopping.entity.Memberinfo">
     insert into memberinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="memberId != null">
@@ -237,7 +237,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.jxufe.entity.MemberinfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.jxufe.shopping.entity.MemberinfoExample" resultType="java.lang.Long">
     select count(*) from memberinfo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -321,7 +321,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.entity.Memberinfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.shopping.entity.Memberinfo">
     update memberinfo
     <set>
       <if test="memberMobile != null">
@@ -372,7 +372,7 @@
     </set>
     where member_id = #{memberId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.entity.Memberinfo">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.shopping.entity.Memberinfo">
     update memberinfo
     set member_mobile = #{memberMobile,jdbcType=VARCHAR},
       member_name = #{memberName,jdbcType=VARCHAR},
