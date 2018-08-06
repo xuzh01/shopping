@@ -12,7 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "GoodsCategory")
 public class GoodsCategoryController {
     @RequestMapping(value = "grid")
-    public String grid(){
+    public String grid() {
+        return "GoodsCategory/grid";
+    }
+
+    @RequestMapping(value = "save")
+    public String save() {
+        return "GoodsCategory/grid";
+    }
+
+    @RequestMapping(value = "insert")
+    public String insert() {
+        return "GoodsCategory/grid";
+    }
+
+    @RequestMapping(value = "delete")
+    public String delete() {
         return "GoodsCategory/grid";
     }
 }
