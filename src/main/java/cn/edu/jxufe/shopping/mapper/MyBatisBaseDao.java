@@ -24,4 +24,6 @@ public interface MyBatisBaseDao<Model, PK extends Serializable, E> {
     int updateByExampleSelective(@Param("record") Model record, @Param("example") E example);
 
     int updateByExample(@Param("record") Model record, @Param("example") E example);
+
+    int deleteByPrimaryKey(Integer id);
 }

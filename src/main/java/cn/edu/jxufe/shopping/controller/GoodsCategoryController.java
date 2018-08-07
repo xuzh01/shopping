@@ -39,6 +39,7 @@ public class GoodsCategoryController {
 
     @RequestMapping(value = "save")
     public String save() {
+
         return "GoodsCategory/grid";
     }
 
