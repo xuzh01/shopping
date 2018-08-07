@@ -32,7 +32,6 @@ public class GoodsCategoryController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public List<GoodsCategory> findAll() {
-        System.out.println("查询了数据");
         return goodsCategoryDAO.selectByExample(new GoodsCategoryExample());
     }
 
