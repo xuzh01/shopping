@@ -5,7 +5,8 @@ import java.util.Date;
 
 /**
  * goodsinfo
- * @author 
+ *
+ * @author
  */
 public class Goodsinfo implements Serializable {
     /**
@@ -114,6 +115,16 @@ public class Goodsinfo implements Serializable {
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Goodsinfo() {
+        this.goodsClick = 0;
+        this.commentNum = 0;
+        this.thumbsUpNum = 0l;
+        this.salenumNum = 0;
+        this.goodsCollectNum = 0;
+        this.createTime = new Date();
+        this.updateTime = this.createTime;
+    }
 
     public Integer getGoodsId() {
         return goodsId;
@@ -296,26 +307,26 @@ public class Goodsinfo implements Serializable {
         }
         Goodsinfo other = (Goodsinfo) that;
         return (this.getGoodsId() == null ? other.getGoodsId() == null : this.getGoodsId().equals(other.getGoodsId()))
-            && (this.getGoodsName() == null ? other.getGoodsName() == null : this.getGoodsName().equals(other.getGoodsName()))
-            && (this.getGoodsSubtitle() == null ? other.getGoodsSubtitle() == null : this.getGoodsSubtitle().equals(other.getGoodsSubtitle()))
-            && (this.getGcId() == null ? other.getGcId() == null : this.getGcId().equals(other.getGcId()))
-            && (this.getGcName() == null ? other.getGcName() == null : this.getGcName().equals(other.getGcName()))
-            && (this.getGoodsPrice() == null ? other.getGoodsPrice() == null : this.getGoodsPrice().equals(other.getGoodsPrice()))
-            && (this.getGoodsSellPrice() == null ? other.getGoodsSellPrice() == null : this.getGoodsSellPrice().equals(other.getGoodsSellPrice()))
-            && (this.getGoodsImage() == null ? other.getGoodsImage() == null : this.getGoodsImage().equals(other.getGoodsImage()))
-            && (this.getGoodsClick() == null ? other.getGoodsClick() == null : this.getGoodsClick().equals(other.getGoodsClick()))
-            && (this.getGoodsState() == null ? other.getGoodsState() == null : this.getGoodsState().equals(other.getGoodsState()))
-            && (this.getGoodsCommend() == null ? other.getGoodsCommend() == null : this.getGoodsCommend().equals(other.getGoodsCommend()))
-            && (this.getGoodsCloseReason() == null ? other.getGoodsCloseReason() == null : this.getGoodsCloseReason().equals(other.getGoodsCloseReason()))
-            && (this.getCommentNum() == null ? other.getCommentNum() == null : this.getCommentNum().equals(other.getCommentNum()))
-            && (this.getThumbsUpNum() == null ? other.getThumbsUpNum() == null : this.getThumbsUpNum().equals(other.getThumbsUpNum()))
-            && (this.getSalenumNum() == null ? other.getSalenumNum() == null : this.getSalenumNum().equals(other.getSalenumNum()))
-            && (this.getGoodsCollectNum() == null ? other.getGoodsCollectNum() == null : this.getGoodsCollectNum().equals(other.getGoodsCollectNum()))
-            && (this.getIsDel() == null ? other.getIsDel() == null : this.getIsDel().equals(other.getIsDel()))
-            && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
-            && (this.getStock() == null ? other.getStock() == null : this.getStock().equals(other.getStock()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
+                && (this.getGoodsName() == null ? other.getGoodsName() == null : this.getGoodsName().equals(other.getGoodsName()))
+                && (this.getGoodsSubtitle() == null ? other.getGoodsSubtitle() == null : this.getGoodsSubtitle().equals(other.getGoodsSubtitle()))
+                && (this.getGcId() == null ? other.getGcId() == null : this.getGcId().equals(other.getGcId()))
+                && (this.getGcName() == null ? other.getGcName() == null : this.getGcName().equals(other.getGcName()))
+                && (this.getGoodsPrice() == null ? other.getGoodsPrice() == null : this.getGoodsPrice().equals(other.getGoodsPrice()))
+                && (this.getGoodsSellPrice() == null ? other.getGoodsSellPrice() == null : this.getGoodsSellPrice().equals(other.getGoodsSellPrice()))
+                && (this.getGoodsImage() == null ? other.getGoodsImage() == null : this.getGoodsImage().equals(other.getGoodsImage()))
+                && (this.getGoodsClick() == null ? other.getGoodsClick() == null : this.getGoodsClick().equals(other.getGoodsClick()))
+                && (this.getGoodsState() == null ? other.getGoodsState() == null : this.getGoodsState().equals(other.getGoodsState()))
+                && (this.getGoodsCommend() == null ? other.getGoodsCommend() == null : this.getGoodsCommend().equals(other.getGoodsCommend()))
+                && (this.getGoodsCloseReason() == null ? other.getGoodsCloseReason() == null : this.getGoodsCloseReason().equals(other.getGoodsCloseReason()))
+                && (this.getCommentNum() == null ? other.getCommentNum() == null : this.getCommentNum().equals(other.getCommentNum()))
+                && (this.getThumbsUpNum() == null ? other.getThumbsUpNum() == null : this.getThumbsUpNum().equals(other.getThumbsUpNum()))
+                && (this.getSalenumNum() == null ? other.getSalenumNum() == null : this.getSalenumNum().equals(other.getSalenumNum()))
+                && (this.getGoodsCollectNum() == null ? other.getGoodsCollectNum() == null : this.getGoodsCollectNum().equals(other.getGoodsCollectNum()))
+                && (this.getIsDel() == null ? other.getIsDel() == null : this.getIsDel().equals(other.getIsDel()))
+                && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
+                && (this.getStock() == null ? other.getStock() == null : this.getStock().equals(other.getStock()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
     }
 
     @Override

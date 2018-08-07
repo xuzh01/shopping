@@ -84,37 +84,87 @@
                     field: 'goodsId', title: '商品索引id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center'
+                    field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsSubtitle', title: '商品副标题', width: 20, sortable: true, align: 'center'
+                    field: 'goodsSubtitle', title: '商品副标题', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'gcId', title: '商品分类id', width: 20, sortable: true, align: 'center'
+                    field: 'gcId', title: '商品分类id', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'gcName', title: '商品分类名称', width: 20, sortable: true, align: 'center'
+                    field: 'gcName', title: '商品分类名称', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center'
+                    field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsSellPrice', title: '商品现价', width: 20, sortable: true, align: 'center'
+                    field: 'goodsSellPrice', title: '商品现价', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsImage', title: '商品默认封面图片', width: 20, sortable: true, align: 'center'
+                    field: 'goodsImage', title: '商品默认封面图片', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
                     field: 'goodsClick', title: '商品浏览数', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'goodsState', title: '商品状态', width: 20, sortable: true, align: 'center'
+                    field: 'goodsState', title: '商品状态', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsCommend', title: '商品推荐', width: 20, sortable: true, align: 'center'
+                    field: 'goodsCommend', title: '商品推荐', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'goodsCloseReason', title: '商品违规下架原因', width: 20, sortable: true, align: 'center'
+                    field: 'goodsCloseReason', title: '商品违规下架原因', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
                     field: 'commentNum', title: '评论次数', width: 20, sortable: true, align: 'center'
@@ -129,13 +179,28 @@
                     field: 'goodsCollectNum', title: '商品收藏数量', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'isDel', title: '是否删除', width: 20, sortable: true, align: 'center'
+                    field: 'isDel', title: '是否删除', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'memberId', title: '上传者', width: 20, sortable: true, align: 'center'
+                    field: 'memberId', title: '上传者', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'stock', title: '商品库存', width: 20, sortable: true, align: 'center'
+                    field: 'stock', title: '商品库存', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
                     field: 'updateTime', title: '商品修改时间', width: 20, sortable: true, align: 'center'
