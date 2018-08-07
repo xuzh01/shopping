@@ -42,4 +42,9 @@ public class GoodsCategoryImp implements GoodsCategoryService {
         goodsCategoryExample.createCriteria().andCatIdEqualTo(goodsCategory.getCatId());
         return goodsCategoryDAO.updateByExample(goodsCategory, goodsCategoryExample);
     }
+
+    @Override
+    public List findByCondition(GoodsCategory goodsCategory) {
+        return goodsCategoryDAO.findByCondition(goodsCategory);
+    }
 }

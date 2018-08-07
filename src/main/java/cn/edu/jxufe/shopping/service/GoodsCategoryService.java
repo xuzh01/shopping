@@ -17,4 +17,6 @@ public interface GoodsCategoryService {
     public int delete(Integer id);
 
     public int update(GoodsCategory goodsCategory);
+
+    public List<GoodsCategory> findByCondition(GoodsCategory goodsCategory);
 }

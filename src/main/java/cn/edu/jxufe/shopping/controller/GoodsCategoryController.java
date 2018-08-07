@@ -1,7 +1,9 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.GoodsCategory;
 import cn.edu.jxufe.shopping.service.GoodsCategoryService;
+import cn.edu.jxufe.shopping.utils.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,13 @@ public class GoodsCategoryController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public List<GoodsCategory> findAll() {
-        List<GoodsCategory> list = goodsCategoryService.findAll();
+    public List<GoodsCategory> findData(String text) {
+        GoodsCategory goodsCategory = new GoodsCategory();
+        goodsCategory.setCatName(text);
+        if (StringUtils.isNumber(text)) {
+            goodsCategory.setIsOffline(Integer.parseInt(text));
+        }
+        List<GoodsCategory> list = goodsCategoryService.findByCondition(goodsCategory);
         log.info(list);
         return list;
     }
@@ -40,6 +47,7 @@ public class GoodsCategoryController {
     @RequestMapping(value = "save")
     @ResponseBody
     public int save(GoodsCategory goodsCategory) {
+        Message message = new Message();
         log.info(goodsCategory);
         return goodsCategoryService.save(goodsCategory);
     }

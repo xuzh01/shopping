@@ -120,20 +120,10 @@
                     }
                 },
                 {
-                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'updatedTime', title: '更新时间', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'updatedTime', title: '更新时间', width: 20, sortable: true, align: 'center'
                 },
             ]],
             destroyMsg: {
@@ -157,7 +147,11 @@
         });
     });
 
-
+    function doSearch() {
+        grid.datagrid("load", {
+            text: $("#genderSearch").val()
+        })
+    };
 </script>
 </body>
 </html>
