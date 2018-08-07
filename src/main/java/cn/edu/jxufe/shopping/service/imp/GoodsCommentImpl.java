@@ -8,6 +8,7 @@ import cn.edu.jxufe.shopping.service.GoodsCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class GoodsCommentImpl implements GoodsCommentService {
 
     @Override
     public int update(GoodsComment comment) {
+        comment.setUpdateTime(new Date().getTime());
         GoodsCommentExample goodsCategoryExample = new GoodsCommentExample();
         goodsCategoryExample.createCriteria().andScommIdEqualTo(comment.getScommId());
         return goodsCommentDAO.updateByExample(comment, goodsCategoryExample);

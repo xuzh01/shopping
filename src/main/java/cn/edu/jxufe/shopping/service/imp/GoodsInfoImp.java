@@ -42,7 +42,6 @@ public class GoodsInfoImp implements GoodsInfoService {
         goodsCategoryExample.createCriteria().andGoodsIdEqualTo(goodsinfo.getGoodsId());
         return goodsinfoDAO.updateByExample(goodsinfo, goodsCategoryExample);
     }
-
     @Override
     public List findByCondition(Goodsinfo goodsinfo) {
         return goodsinfoDAO.findByCondition(goodsinfo);
