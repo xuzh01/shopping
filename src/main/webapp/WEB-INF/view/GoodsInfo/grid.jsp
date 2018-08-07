@@ -26,7 +26,7 @@
 </head>
 <body>
 <div id="controlBox" style="background-color:orange">
-    <span style="color:white;">商品类别:</span>
+    <span style="color:white;">商品信息:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
@@ -62,13 +62,13 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品类型清单',
+            title: '商品信息清单',
             height: 600,
             method: 'post',
-            url: '<%=basePath%>GoodsCategory/getData',
-            saveUrl: '<%=basePath%>GoodsCategory/insert',
-            updateUrl: '<%=basePath%>GoodsCategory/update',
-            destroyUrl: '<%=basePath%>GoodsCategory/delete',
+            url: '<%=basePath%>GoodsInfo/getData',
+            saveUrl: '<%=basePath%>GoodsInfo/insert',
+            updateUrl: '<%=basePath%>GoodsInfo/update',
+            destroyUrl: '<%=basePath%>GoodsInfo/delete',
             border: false,
             rownumbers: true,
             remoteSort: true,
@@ -81,53 +81,67 @@
             idField: "ID",
             columns: [[
                 {
-                    field: 'catId', title: 'ID', width: 20, sortable: true, align: 'center'
+                    field: 'goodsId', title: '商品索引id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'catName', title: '分类名称', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'sort', title: '排序', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'numberbox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'goodsSubtitle', title: '商品副标题', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'description', title: '描述', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'gcId', title: '商品分类id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'isOffline', title: '类名状态', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'combobox',
-                        options: {
-                            required: true,
-                            data: [{key: 1, value: '启用'}, {key: 0, value: '禁用'}],
-                            valueField: 'key',
-                            textField: 'value',
-                            panelHeight: 'auto'
-                        }
-                    },
-                    formatter: function (value, row) {
-                        if (value === 1) return "启用"
-                        else return "禁用";
-                    }
+                    field: 'gcName', title: '商品分类名称', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
+                    field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'updatedTime', title: '更新时间', width: 20, sortable: true, align: 'center'
+                    field: 'goodsSellPrice', title: '商品现价', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsImage', title: '商品默认封面图片', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsClick', title: '商品浏览数', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsState', title: '商品状态', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsCommend', title: '商品推荐', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsCloseReason', title: '商品违规下架原因', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'commentNum', title: '评论次数', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'thumbsUpNum', title: '商品点赞量', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'salenumNum', title: '售出数量', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'goodsCollectNum', title: '商品收藏数量', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'isDel', title: '是否删除', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'memberId', title: '上传者', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'stock', title: '商品库存', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'updateTime', title: '商品修改时间', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'createTime', title: '商品上传时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
             destroyMsg: {

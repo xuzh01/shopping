@@ -34,6 +34,16 @@ public class Goodsinfo implements Serializable {
     private String gcName;
 
     /**
+     * 商品原价
+     */
+    private Double goodsPrice;
+
+    /**
+     * 商品现价
+     */
+    private Double goodsSellPrice;
+
+    /**
      * 商品默认封面图片
      */
     private String goodsImage;
@@ -52,11 +62,6 @@ public class Goodsinfo implements Serializable {
      * 商品推荐
      */
     private Integer goodsCommend;
-
-    /**
-     * 商品描述
-     */
-    private String goodsDescription;
 
     /**
      * 商品违规下架原因
@@ -91,7 +96,7 @@ public class Goodsinfo implements Serializable {
     /**
      * 上传者
      */
-    private String memberId;
+    private Integer memberId;
 
     /**
      * 商品库存
@@ -101,7 +106,7 @@ public class Goodsinfo implements Serializable {
     /**
      * 商品修改时间
      */
-    private Long updateTime;
+    private Date updateTime;
 
     /**
      * 商品上传时间
@@ -150,6 +155,22 @@ public class Goodsinfo implements Serializable {
         this.gcName = gcName;
     }
 
+    public Double getGoodsPrice() {
+        return goodsPrice;
+    }
+
+    public void setGoodsPrice(Double goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
+
+    public Double getGoodsSellPrice() {
+        return goodsSellPrice;
+    }
+
+    public void setGoodsSellPrice(Double goodsSellPrice) {
+        this.goodsSellPrice = goodsSellPrice;
+    }
+
     public String getGoodsImage() {
         return goodsImage;
     }
@@ -180,14 +201,6 @@ public class Goodsinfo implements Serializable {
 
     public void setGoodsCommend(Integer goodsCommend) {
         this.goodsCommend = goodsCommend;
-    }
-
-    public String getGoodsDescription() {
-        return goodsDescription;
-    }
-
-    public void setGoodsDescription(String goodsDescription) {
-        this.goodsDescription = goodsDescription;
     }
 
     public String getGoodsCloseReason() {
@@ -238,11 +251,11 @@ public class Goodsinfo implements Serializable {
         this.isDel = isDel;
     }
 
-    public String getMemberId() {
+    public Integer getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(String memberId) {
+    public void setMemberId(Integer memberId) {
         this.memberId = memberId;
     }
 
@@ -254,11 +267,11 @@ public class Goodsinfo implements Serializable {
         this.stock = stock;
     }
 
-    public Long getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Long updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -287,11 +300,12 @@ public class Goodsinfo implements Serializable {
             && (this.getGoodsSubtitle() == null ? other.getGoodsSubtitle() == null : this.getGoodsSubtitle().equals(other.getGoodsSubtitle()))
             && (this.getGcId() == null ? other.getGcId() == null : this.getGcId().equals(other.getGcId()))
             && (this.getGcName() == null ? other.getGcName() == null : this.getGcName().equals(other.getGcName()))
+            && (this.getGoodsPrice() == null ? other.getGoodsPrice() == null : this.getGoodsPrice().equals(other.getGoodsPrice()))
+            && (this.getGoodsSellPrice() == null ? other.getGoodsSellPrice() == null : this.getGoodsSellPrice().equals(other.getGoodsSellPrice()))
             && (this.getGoodsImage() == null ? other.getGoodsImage() == null : this.getGoodsImage().equals(other.getGoodsImage()))
             && (this.getGoodsClick() == null ? other.getGoodsClick() == null : this.getGoodsClick().equals(other.getGoodsClick()))
             && (this.getGoodsState() == null ? other.getGoodsState() == null : this.getGoodsState().equals(other.getGoodsState()))
             && (this.getGoodsCommend() == null ? other.getGoodsCommend() == null : this.getGoodsCommend().equals(other.getGoodsCommend()))
-            && (this.getGoodsDescription() == null ? other.getGoodsDescription() == null : this.getGoodsDescription().equals(other.getGoodsDescription()))
             && (this.getGoodsCloseReason() == null ? other.getGoodsCloseReason() == null : this.getGoodsCloseReason().equals(other.getGoodsCloseReason()))
             && (this.getCommentNum() == null ? other.getCommentNum() == null : this.getCommentNum().equals(other.getCommentNum()))
             && (this.getThumbsUpNum() == null ? other.getThumbsUpNum() == null : this.getThumbsUpNum().equals(other.getThumbsUpNum()))
@@ -313,11 +327,12 @@ public class Goodsinfo implements Serializable {
         result = prime * result + ((getGoodsSubtitle() == null) ? 0 : getGoodsSubtitle().hashCode());
         result = prime * result + ((getGcId() == null) ? 0 : getGcId().hashCode());
         result = prime * result + ((getGcName() == null) ? 0 : getGcName().hashCode());
+        result = prime * result + ((getGoodsPrice() == null) ? 0 : getGoodsPrice().hashCode());
+        result = prime * result + ((getGoodsSellPrice() == null) ? 0 : getGoodsSellPrice().hashCode());
         result = prime * result + ((getGoodsImage() == null) ? 0 : getGoodsImage().hashCode());
         result = prime * result + ((getGoodsClick() == null) ? 0 : getGoodsClick().hashCode());
         result = prime * result + ((getGoodsState() == null) ? 0 : getGoodsState().hashCode());
         result = prime * result + ((getGoodsCommend() == null) ? 0 : getGoodsCommend().hashCode());
-        result = prime * result + ((getGoodsDescription() == null) ? 0 : getGoodsDescription().hashCode());
         result = prime * result + ((getGoodsCloseReason() == null) ? 0 : getGoodsCloseReason().hashCode());
         result = prime * result + ((getCommentNum() == null) ? 0 : getCommentNum().hashCode());
         result = prime * result + ((getThumbsUpNum() == null) ? 0 : getThumbsUpNum().hashCode());
@@ -342,11 +357,12 @@ public class Goodsinfo implements Serializable {
         sb.append(", goodsSubtitle=").append(goodsSubtitle);
         sb.append(", gcId=").append(gcId);
         sb.append(", gcName=").append(gcName);
+        sb.append(", goodsPrice=").append(goodsPrice);
+        sb.append(", goodsSellPrice=").append(goodsSellPrice);
         sb.append(", goodsImage=").append(goodsImage);
         sb.append(", goodsClick=").append(goodsClick);
         sb.append(", goodsState=").append(goodsState);
         sb.append(", goodsCommend=").append(goodsCommend);
-        sb.append(", goodsDescription=").append(goodsDescription);
         sb.append(", goodsCloseReason=").append(goodsCloseReason);
         sb.append(", commentNum=").append(commentNum);
         sb.append(", thumbsUpNum=").append(thumbsUpNum);
