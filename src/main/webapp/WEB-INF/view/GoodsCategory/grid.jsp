@@ -66,7 +66,7 @@
             height: 600,
             method: 'post',
             url: '<%=basePath%>GoodsCategory/getData',
-            saveUrl: '<%=basePath%>GoodsCategory/save',
+            saveUrl: '<%=basePath%>GoodsCategory/insert',
             updateUrl: '<%=basePath%>GoodsCategory/update',
             destroyUrl: '<%=basePath%>GoodsCategory/delete',
             border: false,
@@ -93,7 +93,7 @@
                 },
                 {
                     field: 'sort', title: '排序', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
+                        type: 'numberbox',
                         options: {
                             required: true
                         }
@@ -108,7 +108,7 @@
                     }
                 },
                 {
-                    field: 'isOffline', title: '类名是否禁用', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'isOffline', title: '类名状态', width: 20, sortable: true, align: 'center', editor: {
                         type: 'combobox',
                         options: {
                             required: true,
@@ -141,11 +141,10 @@
                 }
             },
             onSuccess: function (index, row) {
-                if (row != undefined) msg = "成功";
-                else msg = "失败"
+                console.log(row)
                 $.messager.show({
                     title: "消息",
-                    msg: msg
+                    msg: row.msg
                 });
             }
         });
@@ -164,7 +163,7 @@
                 $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
-                        msg: data
+                        msg: data.msg
                     });
                     grid.edatagrid('reload');
                 });

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,32 +45,53 @@ public class GoodsCategoryController {
         return list;
     }
 
-    @RequestMapping(value = "save")
-    @ResponseBody
-    public int save(GoodsCategory goodsCategory) {
-        Message message = new Message();
-        log.info(goodsCategory);
-        return goodsCategoryService.save(goodsCategory);
-    }
-
     @RequestMapping(value = "update")
     @ResponseBody
-    public int update(GoodsCategory goodsCategory) {
+    public Message update(GoodsCategory goodsCategory) {
+        Message message = new Message();
+        goodsCategory.setUpdatedTime(new Date());
         log.info(goodsCategory);
-        return goodsCategoryService.update(goodsCategory);
+        int num = goodsCategoryService.update(goodsCategory);
+        if (num > 0) {
+            message.setCode(0);
+            message.setMsg("更新商品类型信息成功");
+        } else {
+            message.setCode(-1);
+            message.setMsg("更新商品类型信息失败");
+        }
+        return message;
     }
 
     @RequestMapping(value = "insert")
     @ResponseBody
-    public int insert(GoodsCategory goodsCategory) {
+    public Message insert(GoodsCategory goodsCategory) {
+        if (goodsCategory.getIsOffline() == null) goodsCategory.setIsOffline(1);
         log.info(goodsCategory);
-        return goodsCategoryService.save(goodsCategory);
+        Message message = new Message();
+        int num = goodsCategoryService.save(goodsCategory);
+        if (num > 0) {
+            message.setCode(0);
+            message.setMsg("更新商品类型信息成功");
+        } else {
+            message.setCode(-1);
+            message.setMsg("更新商品类型信息失败");
+        }
+        return message;
     }
 
     @RequestMapping(value = "delete")
     @ResponseBody
-    public int delete(GoodsCategory goodsCategory) {
+    public Message delete(GoodsCategory goodsCategory) {
         log.info(goodsCategory.getCatId());
-        return goodsCategoryService.delete(goodsCategory.getCatId());
+        Message message = new Message();
+        int num = goodsCategoryService.delete(goodsCategory.getCatId());
+        if (num > 0) {
+            message.setCode(0);
+            message.setMsg("更新商品类型信息成功");
+        } else {
+            message.setCode(-1);
+            message.setMsg("更新商品类型信息失败");
+        }
+        return message;
     }
 }
