@@ -129,7 +129,7 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '种子清单',
+            title: '商品类型清单',
             height: 600,
             method: 'post',
             url: '<%=basePath%>GoodsCategory/getData',
@@ -147,13 +147,13 @@
             autoSave: true,
             idField: "ID",
             columns: [[
-                {field: 'cat_id', title: 'ID', width: 20, sortable: true, align: 'center'},
-                {field: 'cat_name', title: '分类名称', width: 20, sortable: true, align: 'center'},
+                {field: 'catId', title: 'ID', width: 20, sortable: true, align: 'center'},
+                {field: 'catName', title: '分类名称', width: 20, sortable: true, align: 'center'},
                 {field: 'sort', title: '排序', width: 20, sortable: true, align: 'center'},
                 {field: 'description', title: '描述', width: 20, sortable: true, align: 'center'},
-                {field: 'is_offline', title: '类名是否禁用', width: 20, sortable: true, align: 'center'},
-                {field: 'created_time', title: '创建时间', width: 20, sortable: true, align: 'center'},
-                {field: 'updated_time', title: '更新时间', width: 20, sortable: true, align: 'center'},
+                {field: 'isOffline', title: '类名是否禁用', width: 20, sortable: true, align: 'center'},
+                {field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'},
+                {field: 'updatedTime', title: '更新时间', width: 20, sortable: true, align: 'center'},
             ]],
             destroyMsg: {
                 norecord: {
