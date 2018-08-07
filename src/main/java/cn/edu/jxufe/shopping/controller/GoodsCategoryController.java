@@ -32,7 +32,9 @@ public class GoodsCategoryController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public List<GoodsCategory> findAll() {
-        return goodsCategoryDAO.selectByExample(new GoodsCategoryExample());
+        List<GoodsCategory> list=goodsCategoryDAO.selectByExample(new GoodsCategoryExample());
+        log.info(list);
+        return list;
     }
 
     @RequestMapping(value = "save")
