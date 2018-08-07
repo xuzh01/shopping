@@ -27,7 +27,7 @@
 <body>
 <div id="controlBox" style="background-color:orange">
     <span style="color:white;">商品类别:</span>
-    <input id="genderSearch" type="text"/>
+    <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
 
@@ -113,6 +113,10 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        if (value === 1) return "启用"
+                        else return "禁用";
                     }
                 },
                 {
@@ -143,9 +147,11 @@
                 }
             },
             onSuccess: function (index, row) {
+                if (row != undefined) msg = "成功";
+                else msg = "失败"
                 $.messager.show({
                     title: "消息",
-                    msg: row.msg
+                    msg: msg
                 });
             }
         });

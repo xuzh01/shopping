@@ -4,7 +4,8 @@ server:
     context-path: /
 spring:
   datasource:
-    url: jdbc:mysql://111.230.223.115/eshop?useSSL=false
+  #解决乱码必加characterEncoding=utf-8
+    url: jdbc:mysql://111.230.223.115/eshop?useSSL=false&characterEncoding=utf-8
     username: eshop
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,14 +13,18 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+# 解决时间date,string互转错误
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 mybatis:
 #  type-aliases-package: cn.edu.jxufe.shopping.entity
   mapper-locations: classpath:mapper/*.xml
+
+# 日志级别debug,info
 logging:
   level:
     cn.edu.jxufe.shopping.controller: debug
     cn.edu.jxufe.shopping.entity: debug
     cn.edu.jxufe.shopping.service: debug
     cn.edu.jxufe.shopping.mapper: debug
+
