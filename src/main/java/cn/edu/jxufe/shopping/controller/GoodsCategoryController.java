@@ -1,13 +1,13 @@
 package cn.edu.jxufe.shopping.controller;
 
 import cn.edu.jxufe.shopping.entity.GoodsCategory;
-import cn.edu.jxufe.shopping.entity.GoodsCategoryExample;
-import cn.edu.jxufe.shopping.mapper.GoodsCategoryDAO;
+import cn.edu.jxufe.shopping.service.GoodsCategoryService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.apache.log4j.Logger;
+
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ import java.util.List;
 public class GoodsCategoryController {
 
     @Autowired
-    private GoodsCategoryDAO goodsCategoryDAO;
+    private GoodsCategoryService goodsCategoryService;
 
     private static Logger log = Logger.getLogger(GoodsCategoryController.class);
 
@@ -32,22 +32,36 @@ public class GoodsCategoryController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public List<GoodsCategory> findAll() {
-        return goodsCategoryDAO.selectByExample(new GoodsCategoryExample());
+        List<GoodsCategory> list = goodsCategoryService.findAll();
+        log.info(list);
+        return list;
     }
 
     @RequestMapping(value = "save")
-    public String save() {
+    @ResponseBody
+    public int save(GoodsCategory goodsCategory) {
+        log.info(goodsCategory);
+        return goodsCategoryService.save(goodsCategory);
+    }
 
-        return "GoodsCategory/grid";
+    @RequestMapping(value = "update")
+    @ResponseBody
+    public int update(GoodsCategory goodsCategory) {
+        log.info(goodsCategory);
+        return goodsCategoryService.update(goodsCategory);
     }
 
     @RequestMapping(value = "insert")
-    public String insert() {
-        return "GoodsCategory/grid";
+    @ResponseBody
+    public int insert(GoodsCategory goodsCategory) {
+        log.info(goodsCategory);
+        return goodsCategoryService.save(goodsCategory);
     }
 
     @RequestMapping(value = "delete")
-    public String delete() {
-        return "GoodsCategory/grid";
+    @ResponseBody
+    public int delete(Integer id) {
+        log.info(id);
+        return goodsCategoryService.delete(id);
     }
 }

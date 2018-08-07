@@ -12,6 +12,14 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 mybatis:
 #  type-aliases-package: cn.edu.jxufe.shopping.entity
   mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    cn.edu.jxufe.shopping.controller: debug
+    cn.edu.jxufe.shopping.entity: debug
+    cn.edu.jxufe.shopping.service: debug
+    cn.edu.jxufe.shopping.mapper: debug

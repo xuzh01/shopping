@@ -38,6 +38,8 @@ public class GoodsCategoryImp implements GoodsCategoryService {
 
     @Override
     public int update(GoodsCategory goodsCategory) {
-        return goodsCategoryDAO.updateByExample(goodsCategory, null);
+        GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+        goodsCategoryExample.createCriteria().andCatIdEqualTo(goodsCategory.getCatId());
+        return goodsCategoryDAO.updateByExample(goodsCategory, goodsCategoryExample);
     }
 }
