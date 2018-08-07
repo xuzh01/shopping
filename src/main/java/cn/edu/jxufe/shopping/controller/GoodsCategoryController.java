@@ -68,8 +68,8 @@ public class GoodsCategoryController {
 
     @RequestMapping(value = "delete")
     @ResponseBody
-    public int delete(Integer id) {
-        log.info(id);
-        return goodsCategoryService.delete(id);
+    public int delete(GoodsCategory goodsCategory) {
+        log.info(goodsCategory.getCatId());
+        return goodsCategoryService.delete(goodsCategory.getCatId());
     }
 }

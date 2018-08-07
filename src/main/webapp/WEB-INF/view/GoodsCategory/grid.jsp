@@ -41,7 +41,7 @@
        onclick="javascript:grid.edatagrid('cancelRow')">取消</a>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c5" iconCls="icon-cancel"
-       onclick="javascript:grid.edatagrid('deleteRow');">删除</a>
+       onclick="javascript:deleteRecord();">删除</a>
 </div>
 <div id="formContainer" class="easyui-dialog" style="width:800px;height:420px;padding:10px 10px" closed="true"
      buttons="#formContainerButtons">
@@ -109,9 +109,13 @@
                 },
                 {
                     field: 'isOffline', title: '类名是否禁用', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
+                        type: 'combobox',
                         options: {
-                            required: true
+                            required: true,
+                            data: [{key: 1, value: '启用'}, {key: 0, value: '禁用'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'
                         }
                     },
                     formatter: function (value, row) {
@@ -151,6 +155,21 @@
         grid.datagrid("load", {
             text: $("#genderSearch").val()
         })
+    };
+
+    function deleteRecord() {
+        var row = grid.edatagrid('getSelected');
+        $.messager.confirm('删除', '确认删除该记录?', function (r) {
+            if (r) {
+                $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
+                    $.messager.show({
+                        title: "消息",
+                        msg: data
+                    });
+                    grid.edatagrid('reload');
+                });
+            }
+        });
     };
 </script>
 </body>
