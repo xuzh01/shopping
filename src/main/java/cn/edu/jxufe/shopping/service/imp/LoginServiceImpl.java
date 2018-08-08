@@ -18,13 +18,13 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private AdminDAO adminDAO;
     @Override
-    public boolean Login(String username, String password) {
+    public Admin Login(String username, String password) {
         AdminExample adminExample=new AdminExample();
         adminExample.createCriteria().andAdminNameEqualTo(username).andAdminPasswordEqualTo(password);
         List<Admin> a= adminDAO.selectByExample(adminExample);
         System.out.println(a);
-        if (a.size()!=0) return true;
-        else return false;
+        if (a.size()!=0) return a.get(0);
+        else return null;
     }
 }
 

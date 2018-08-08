@@ -1,10 +1,13 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.entity.Admin;
 import cn.edu.jxufe.shopping.service.imp.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Author :'徐真华'
@@ -17,10 +20,14 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
     @PostMapping("/Login")
-    public String Login(String username,String password,String url){
-        System.out.println(username+"\t"+password+"\t"+url);
-        boolean login = loginService.Login(username, password);
-        if (login) return "ArticleInfo/grid";
+    public String Login(String username,String password,HttpSession session){
+        System.out.println(username+"\t"+password+"\t");
+        Admin login = loginService.Login(username, password);
+        if (login!=null)
+        {
+            session.setAttribute("username",login);
+            return "ArticleInfo/grid";
+        }
         else return null;
     }
 }
