@@ -43,8 +43,8 @@
                 <span
                         style="color: #a4e9c1"><strong><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></strong></span>
             </li>&nbsp;&nbsp;&nbsp;
-            <li style="display: inline"><a href="#">修改密码</a></li>&nbsp;&nbsp;&nbsp;
-            <li style="display: inline"><a href="#">退出登录</a></li>
+            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:35px; ">修改密码</a></li>&nbsp;&nbsp;&nbsp;
+            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:35px; ">退出登录</a></li>
         </div>
     </div>
     <div region="west" split="true" title="操作菜单" style="width:200px; height: 100%">
