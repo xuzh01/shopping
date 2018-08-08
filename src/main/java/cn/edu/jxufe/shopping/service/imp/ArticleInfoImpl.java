@@ -3,8 +3,11 @@ package cn.edu.jxufe.shopping.service.imp;
 import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
 import cn.edu.jxufe.shopping.entity.ArticleinfoExample;
+import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.mapper.ArticleinfoDAO;
 import cn.edu.jxufe.shopping.service.ArticleInfoService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +48,17 @@ public class ArticleInfoImpl implements ArticleInfoService {
 
     @Override
     public List<Articleinfo> findByCondition(Articleinfo obj) {
-        return null;
+        return articleinfoDAO.findByCondition(obj);
     }
 
     @Override
     public EasyUIData<Articleinfo> findByPage(Articleinfo obj, int page, int row) {
-        return null;
+        EasyUIData<Articleinfo> easyUIData = new EasyUIData();
+        PageHelper.startPage(page, row);
+        PageInfo pageInfo = new PageInfo(findByCondition(obj));
+        easyUIData.setTotal(pageInfo.getTotal());
+        easyUIData.setRows(pageInfo.getList());
+        return easyUIData;
     }
 }
 

@@ -1,11 +1,14 @@
 package cn.edu.jxufe.shopping.service.imp;
 
 import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.entity.Orderinfo;
 import cn.edu.jxufe.shopping.entity.OrderinfoExample;
 import cn.edu.jxufe.shopping.mapper.OrderinfoDAO;
 import cn.edu.jxufe.shopping.service.OrderInfoService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,12 +50,17 @@ public class OrderInfoImpl implements OrderInfoService {
 
     @Override
     public List<Orderinfo> findByCondition(Orderinfo obj) {
-        return null;
+        return orderinfoDAO.findByCondition(obj);
     }
 
     @Override
     public EasyUIData<Orderinfo> findByPage(Orderinfo obj, int page, int row) {
-        return null;
+        EasyUIData<Orderinfo> easyUIData = new EasyUIData();
+        PageHelper.startPage(page, row);
+        PageInfo pageInfo = new PageInfo(findByCondition(obj));
+        easyUIData.setTotal(pageInfo.getTotal());
+        easyUIData.setRows(pageInfo.getList());
+        return easyUIData;
     }
 }
 
