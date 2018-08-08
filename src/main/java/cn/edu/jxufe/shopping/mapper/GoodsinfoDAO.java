@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.mapper;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.GoodsCategory;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.entity.GoodsinfoExample;

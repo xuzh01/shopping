@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.service;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface GoodsInfoService {
     public int update(Goodsinfo goodsinfo);
 
     public List<Goodsinfo> findByCondition(Goodsinfo goodsinfo);
+
+    public EasyUIData<Goodsinfo> findByPage(Goodsinfo goodsinfo, int page, int row);
 }

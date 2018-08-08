@@ -1,8 +1,11 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
+import com.github.pagehelper.PageHelper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,15 +35,13 @@ public class GoodsinfoController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public List<Goodsinfo> findData(String text) {
+    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
         Goodsinfo goodsinfo = new Goodsinfo();
-        goodsinfo.setGoodsName(text);
+        goodsinfo.setGoodsName(easyUIDataPageRequest.getText());
 //        if (StringUtils.isNumber(text)) {
 //            GoodsInfo.setIsOffline(Integer.parseInt(text));
 //        }
-        List<Goodsinfo> list = goodsInfoService.findByCondition(goodsinfo);
-        log.info(list);
-        return list;
+        return goodsInfoService.findByPage(goodsinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
     }
 
     @RequestMapping(value = "update")

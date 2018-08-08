@@ -1,9 +1,11 @@
 package cn.edu.jxufe.shopping.service.imp;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.entity.GoodsinfoExample;
 import cn.edu.jxufe.shopping.mapper.GoodsinfoDAO;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +44,18 @@ public class GoodsInfoImp implements GoodsInfoService {
         goodsCategoryExample.createCriteria().andGoodsIdEqualTo(goodsinfo.getGoodsId());
         return goodsinfoDAO.updateByExample(goodsinfo, goodsCategoryExample);
     }
+
     @Override
     public List findByCondition(Goodsinfo goodsinfo) {
         return goodsinfoDAO.findByCondition(goodsinfo);
+    }
+
+    @Override
+    public EasyUIData<Goodsinfo> findByPage(Goodsinfo goodsinfo, int page, int row) {
+        EasyUIData<Goodsinfo> easyUIData = new EasyUIData();
+        PageHelper.startPage(page, row);
+        easyUIData.setRows(findByCondition(goodsinfo));
+        easyUIData.setTotal(goodsinfoDAO.countByExample(new GoodsinfoExample()));
+        return easyUIData;
     }
 }
