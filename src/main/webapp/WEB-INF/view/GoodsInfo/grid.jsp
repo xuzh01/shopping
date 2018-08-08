@@ -53,14 +53,12 @@
         //配置表格
         grid = $('#grid').edatagrid({
             title: '商品信息清单',
-            // height: 600,
-            // fit: true,
             method: 'post',
             url: '<%=basePath%>GoodsInfo/getData',
             saveUrl: '<%=basePath%>GoodsInfo/insert',
             updateUrl: '<%=basePath%>GoodsInfo/update',
             destroyUrl: '<%=basePath%>GoodsInfo/delete',
-            border: false,
+            border: true,
             rownumbers: true,
             remoteSort: false,
             nowrap: true,
@@ -69,7 +67,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "goodsId",
             columns: [[
                 {
                     field: 'goodsId', title: '商品索引id', width: 20, sortable: true, align: 'center'

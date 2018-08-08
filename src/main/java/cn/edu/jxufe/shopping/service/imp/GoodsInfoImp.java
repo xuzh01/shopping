@@ -6,6 +6,7 @@ import cn.edu.jxufe.shopping.entity.GoodsinfoExample;
 import cn.edu.jxufe.shopping.mapper.GoodsinfoDAO;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,8 +55,9 @@ public class GoodsInfoImp implements GoodsInfoService {
     public EasyUIData<Goodsinfo> findByPage(Goodsinfo goodsinfo, int page, int row) {
         EasyUIData<Goodsinfo> easyUIData = new EasyUIData();
         PageHelper.startPage(page, row);
-        easyUIData.setRows(findByCondition(goodsinfo));
-        easyUIData.setTotal(goodsinfoDAO.countByExample(new GoodsinfoExample()));
+        PageInfo pageInfo = new PageInfo(findByCondition(goodsinfo));
+        easyUIData.setTotal(pageInfo.getTotal());
+        easyUIData.setRows(pageInfo.getList());
         return easyUIData;
     }
 }

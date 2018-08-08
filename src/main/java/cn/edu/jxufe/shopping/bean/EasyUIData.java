@@ -29,4 +29,12 @@ public class EasyUIData<T> {
     public void setRows(List<T> rows) {
         this.rows = rows;
     }
+
+    @Override
+    public String toString() {
+        return "EasyUIData{" +
+                "total=" + total +
+                ", rows=" + rows +
+                '}';
+    }
 }
