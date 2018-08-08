@@ -38,8 +38,10 @@
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
         <div style="line-height: 25px;float: left">商品销售管理系统</div>
         <div style="float: right; line-height: 25px">
-            <li style="display: inline">欢迎您&nbsp;&nbsp;<span
-                    style="color: #a4e9c1"><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></span>
+            <li style="display: inline">
+                <small>欢迎您&nbsp;&nbsp;</small>
+                <span
+                        style="color: #a4e9c1"><strong><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></strong></span>
             </li>&nbsp;&nbsp;&nbsp;
             <li style="display: inline"><a href="#">修改密码</a></li>&nbsp;&nbsp;&nbsp;
             <li style="display: inline"><a href="#">退出登录</a></li>

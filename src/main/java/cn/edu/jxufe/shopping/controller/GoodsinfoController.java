@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * @Author cgg 891842749@qq.com
  * @Date 2018-08-07 15:07:59
@@ -33,7 +35,6 @@ public class GoodsinfoController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
-
         try {
             log.info("分页请求" + easyUIDataPageRequest);
             Goodsinfo goodsinfo = new Goodsinfo();
@@ -76,6 +77,13 @@ public class GoodsinfoController {
         log.info(goodsInfo);
         Message message = new Message();
         try {
+            goodsInfo.setGoodsClick(0);
+            goodsInfo.setCommentNum(0);
+            goodsInfo.setThumbsUpNum(0L);
+            goodsInfo.setSalenumNum(0);
+            goodsInfo.setGoodsCollectNum(0);
+            goodsInfo.setCreateTime(new Date());
+            goodsInfo.setUpdateTime(goodsInfo.getCreateTime());
             int num = goodsInfoService.save(goodsInfo);
             if (num > 0) {
                 message.setCode(0);

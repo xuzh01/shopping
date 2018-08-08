@@ -117,13 +117,6 @@ public class Goodsinfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public Goodsinfo() {
-        this.goodsClick = 0;
-        this.commentNum = 0;
-        this.thumbsUpNum = 0l;
-        this.salenumNum = 0;
-        this.goodsCollectNum = 0;
-        this.createTime = new Date();
-        this.updateTime = this.createTime;
     }
 
     public Integer getGoodsId() {
