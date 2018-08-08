@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cgg
-  Date: 2018/8/6
-  Time: 19:57
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,19 +5,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/metro-orange/easyui.css?t=34355">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/color.css">
-    <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/jquery.edatagrid.js"></script>
-    <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
-</head>
-<body>
+<jsp:include page="../common/head.jsp"></jsp:include>
 <div id="controlBox" style="background-color:orange">
     <span style="color:white;">商品评论:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
@@ -100,7 +81,7 @@
                     }
                 },
                 {
-                    field: 'scommMemberid', title: '会员id', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'articleTitle', title: '标题', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -108,7 +89,7 @@
                     }
                 },
                 {
-                    field: 'scommMembername', title: '会员名称', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'amountOfReading', title: '阅读量', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true,
@@ -116,7 +97,7 @@
                     }
                 },
                 {
-                    field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center'
+                    field: 'articleContent', title: '内容', width: 20, sortable: true, align: 'center'
                 },
                 {
                     field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'
@@ -155,7 +136,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsComment/delete', row, function (data) {
+                $.post('<%=basePath%>ArticleInfo/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg
@@ -166,6 +147,5 @@
         });
     };
 </script>
-</body>
-</html>
+<jsp:include page="../common/bottom.jsp"></jsp:include>
 
