@@ -52,7 +52,8 @@
         //配置表格
         grid = $('#grid').edatagrid({
             title: '商品信息清单',
-            height: 600,
+            // height: 600,
+            // fit: true,
             method: 'post',
             url: '<%=basePath%>GoodsInfo/getData',
             saveUrl: '<%=basePath%>GoodsInfo/insert',
