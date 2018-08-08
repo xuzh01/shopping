@@ -42,7 +42,7 @@ public class AdvertisementController {
             return advertisementService.findByPage(advertisement, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
         } catch (Exception e) {
             log.trace(e.getMessage());
-            return null;
+            return new EasyUIData();
         }
     }
 

@@ -4,7 +4,9 @@ import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
+import cn.edu.jxufe.shopping.entity.Memberinfo;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
+import cn.edu.jxufe.shopping.service.MemberInfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "Memberinfo")
 public class MemberinfoController {
     @Autowired
-    private GoodsInfoService goodsInfoService;
+    private MemberInfoService memberInfoService;
 
     private static Logger log = Logger.getLogger(GoodsinfoController.class);
 
     @RequestMapping(value = "grid")
     public String grid() {
-        return "GoodsInfo/grid";
+        return "Memberinfo/grid";
     }
 
     @RequestMapping(value = "getData")
@@ -37,25 +39,25 @@ public class MemberinfoController {
 
         try {
             log.info("分页请求" + easyUIDataPageRequest);
-            Goodsinfo goodsinfo = new Goodsinfo();
-            goodsinfo.setGoodsName(easyUIDataPageRequest.getText());
+            Memberinfo memberinfo = new Memberinfo();
+            memberinfo.setMemberName(easyUIDataPageRequest.getText());
 //        if (StringUtils.isNumber(text)) {
 //            GoodsInfo.setIsOffline(Integer.parseInt(text));
 //        }
-            return goodsInfoService.findByPage(goodsinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+            return memberInfoService.findByPage(memberinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
         } catch (Exception e) {
             log.trace(e.getMessage());
-            return null;
+            return new EasyUIData();
         }
     }
 
     @RequestMapping(value = "update")
     @ResponseBody
-    public Message update(Goodsinfo goodsInfo) {
+    public Message update(Memberinfo memberinfo) {
         Message message = new Message();
         try {
-            log.info(goodsInfo);
-            int num = goodsInfoService.update(goodsInfo);
+            log.info(memberinfo);
+            int num = memberInfoService.update(memberinfo);
             if (num > 0) {
                 message.setCode(0);
                 message.setMsg("更新商品类型信息成功");
@@ -73,11 +75,11 @@ public class MemberinfoController {
 
     @RequestMapping(value = "insert")
     @ResponseBody
-    public Message insert(Goodsinfo goodsInfo) {
-        log.info(goodsInfo);
+    public Message insert(Memberinfo memberinfo) {
+        log.info(memberinfo);
         Message message = new Message();
         try {
-            int num = goodsInfoService.save(goodsInfo);
+            int num = memberInfoService.save(memberinfo);
             if (num > 0) {
                 message.setCode(0);
                 message.setMsg("更新商品类型信息成功");
@@ -95,11 +97,11 @@ public class MemberinfoController {
 
     @RequestMapping(value = "delete")
     @ResponseBody
-    public Message delete(Goodsinfo goodsInfo) {
-        log.info(goodsInfo.getGoodsId());
+    public Message delete(Memberinfo memberinfo) {
+        log.info(memberinfo.getMemberId());
         Message message = new Message();
         try {
-            int num = goodsInfoService.delete(goodsInfo.getGoodsId());
+            int num = memberInfoService.delete(memberinfo.getMemberId());
             if (num > 0) {
                 message.setCode(0);
                 message.setMsg("更新商品类型信息成功");

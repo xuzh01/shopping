@@ -38,7 +38,9 @@
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
         <div style="line-height: 25px;float: left">商品销售管理系统</div>
         <div style="float: right; line-height: 25px">
-            <li style="display: inline">欢迎您&nbsp;&nbsp;<span style="color: #a4e9c1"><%=((Admin)(request.getSession().getAttribute("username"))).getAdminName()%></span></li>&nbsp;&nbsp;&nbsp;
+            <li style="display: inline">欢迎您&nbsp;&nbsp;<span
+                    style="color: #a4e9c1"><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></span>
+            </li>&nbsp;&nbsp;&nbsp;
             <li style="display: inline"><a href="#">修改密码</a></li>&nbsp;&nbsp;&nbsp;
             <li style="display: inline"><a href="#">退出登录</a></li>
         </div>
@@ -48,7 +50,7 @@
             <li>
                 <span>商品销售管理系统</span>
                 <ul>
-                    <li><span><a href="#">会员管理模块</a></span></li>
+                    <li><span><a href="<%=basePath%>Memberinfo/grid">会员管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>ArticleInfo/grid">文章管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsComment/grid">评论管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>OrderInfo/grid">订单管理模块</a></span></li>

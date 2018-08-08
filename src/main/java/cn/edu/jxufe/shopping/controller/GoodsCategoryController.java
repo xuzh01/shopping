@@ -46,7 +46,7 @@ public class GoodsCategoryController {
             return goodsCategoryService.findByPage(goodsCategory, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
         } catch (Exception e) {
             log.trace(e.getMessage());
-            return null;
+            return new EasyUIData();
         }
     }
 
