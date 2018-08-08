@@ -16,10 +16,18 @@
     <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
-
-
-
+<script type="text/javascript">
+    fn.snow();
+</script>
 <body>
 <div class="easyui-layout" style="width:100%;height: 650px;">
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
@@ -47,4 +55,4 @@
             </li>
         </ul>
     </div>
-    <div id="content" region="center"  style="padding:5px; height: 100%;">
+    <div id="content" region="center" style="padding:5px; height: 100%;">
