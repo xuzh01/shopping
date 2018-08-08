@@ -19,6 +19,11 @@
     <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
     <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             overflow: hidden;
             background-repeat: no-repeat;
@@ -34,7 +39,7 @@
     fn.snow();
 </script>
 <body>
-<div class="easyui-layout" style="width:100%;height: 650px;">
+<div id="outer" class="easyui-layout" style="width:100%;height: 100%;">
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
         <div style="line-height: 25px;float: left">商品销售管理系统</div>
         <div style="float: right; line-height: 25px">
@@ -64,4 +69,4 @@
             </li>
         </ul>
     </div>
-    <div id="content" region="center" style="padding:5px; height: 100%;">
+    <div id="content" region="center" style="padding:5px; height: 100%;"
