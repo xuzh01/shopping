@@ -26,6 +26,14 @@ public class LoginServiceImpl implements LoginService {
         if (a.size()!=0) return a.get(0);
         else return null;
     }
+
+    @Override
+    public int update(Admin admin) {
+        AdminExample adminExample=new AdminExample();
+        adminExample.createCriteria().andAdminIdEqualTo(admin.getAdminId());
+        adminDAO.updateByExample(admin,adminExample);
+        return 0;
+    }
 }
 
 /*

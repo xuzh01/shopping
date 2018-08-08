@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Author :'徐真华'
@@ -29,6 +30,9 @@ public class LoginController {
         try {
             if (login!=null) {
                 session.setAttribute("username",login);
+                login.setAdminLoginNum(login.getAdminLoginNum()+1);
+                login.setAdminLoginTime(new Date());
+                loginService.update(login);
                 response.sendRedirect("/ArticleInfo/grid");
             }
             else response.sendRedirect("/index.html");
