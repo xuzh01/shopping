@@ -8,4 +8,5 @@ import cn.edu.jxufe.shopping.entity.Admin;
  */
 public interface LoginService {
     public Admin Login(String username, String password);
+    public int update(Admin admin);
 }
