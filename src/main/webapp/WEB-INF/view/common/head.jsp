@@ -42,7 +42,7 @@
             <li style="display: inline"><a href="#">退出登录</a></li>
         </div>
     </div>
-    <div region="west" split="true" title="操作菜单" style="width:150px; height: 100%">
+    <div region="west" split="true" title="操作菜单" style="width:200px; height: 100%">
         <ul class="easyui-tree">
             <li>
                 <span>商品销售管理系统</span>
