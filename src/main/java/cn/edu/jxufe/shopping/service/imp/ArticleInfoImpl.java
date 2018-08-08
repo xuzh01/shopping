@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.service.imp;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
 import cn.edu.jxufe.shopping.entity.ArticleinfoExample;
 import cn.edu.jxufe.shopping.mapper.ArticleinfoDAO;
@@ -40,6 +41,16 @@ public class ArticleInfoImpl implements ArticleInfoService {
         ArticleinfoExample articleinfoExample=new ArticleinfoExample();
         articleinfoExample.createCriteria().andArticleIdEqualTo(articleinfo.getArticleId());
         return articleinfoDAO.updateByExample(articleinfo,articleinfoExample);
+    }
+
+    @Override
+    public List<Articleinfo> findByCondition(Articleinfo obj) {
+        return null;
+    }
+
+    @Override
+    public EasyUIData<Articleinfo> findByPage(Articleinfo obj, int page, int row) {
+        return null;
     }
 }
 

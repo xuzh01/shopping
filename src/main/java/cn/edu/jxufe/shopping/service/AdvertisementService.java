@@ -12,16 +12,5 @@ import java.util.List;
  * @Date 2018-08-07 09:53:39
  * @Description gitee:www.gitee.com/cgggitee/
  */
-public interface AdvertisementService {
-    public List findAll();
-
-    public int save(Advertisement advertisement);
-
-    public int delete(Integer id);
-
-    public int update(Advertisement advertisement);
-
-    public List<Advertisement> findByCondition(Advertisement advertisement);
-
-    public EasyUIData<Advertisement> findByPage(Advertisement advertisement, int page, int row);
+public interface AdvertisementService extends PublicService<Advertisement> {
 }

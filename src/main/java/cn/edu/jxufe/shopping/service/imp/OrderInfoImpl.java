@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.service.imp;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.entity.Orderinfo;
 import cn.edu.jxufe.shopping.entity.OrderinfoExample;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OrderInfoImpl implements OrderInfoService {
     @Autowired
     private OrderinfoDAO orderinfoDAO;
+
     @Override
     public List findAll() {
         return orderinfoDAO.selectByExample(null);
@@ -38,9 +40,19 @@ public class OrderInfoImpl implements OrderInfoService {
     @Override
     public int update(Orderinfo orderinfo) {
         orderinfo.setUpdatedTime(new Date());
-        OrderinfoExample orderinfoExample=new OrderinfoExample();
+        OrderinfoExample orderinfoExample = new OrderinfoExample();
         orderinfoExample.createCriteria().andOrderIdEqualTo(orderinfo.getOrderId());
-        return orderinfoDAO.updateByExample(orderinfo,orderinfoExample);
+        return orderinfoDAO.updateByExample(orderinfo, orderinfoExample);
+    }
+
+    @Override
+    public List<Orderinfo> findByCondition(Orderinfo obj) {
+        return null;
+    }
+
+    @Override
+    public EasyUIData<Orderinfo> findByPage(Orderinfo obj, int page, int row) {
+        return null;
     }
 }
 
