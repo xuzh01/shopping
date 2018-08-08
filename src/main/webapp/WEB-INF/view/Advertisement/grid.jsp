@@ -51,7 +51,7 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品信息清单',
+            title: '广告信息清单',
             method: 'post',
             url: '<%=basePath%>Advertisement/getData',
             saveUrl: '<%=basePath%>Advertisement/insert',
