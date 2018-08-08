@@ -35,4 +35,13 @@ public class EasyUIDataPageRequest {
     public void setText(String text) {
         this.text = text;
     }
+
+    @Override
+    public String toString() {
+        return "EasyUIDataPageRequest{" +
+                "page=" + page +
+                ", rows=" + rows +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

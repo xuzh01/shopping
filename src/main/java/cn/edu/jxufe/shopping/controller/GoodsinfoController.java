@@ -5,14 +5,11 @@ import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
-import com.github.pagehelper.PageHelper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * @Author cgg 891842749@qq.com
@@ -36,29 +33,41 @@ public class GoodsinfoController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
-        log.info("分页请求" + easyUIDataPageRequest);
-        Goodsinfo goodsinfo = new Goodsinfo();
-        goodsinfo.setGoodsName(easyUIDataPageRequest.getText());
+
+        try {
+            log.info("分页请求" + easyUIDataPageRequest);
+            Goodsinfo goodsinfo = new Goodsinfo();
+            goodsinfo.setGoodsName(easyUIDataPageRequest.getText());
 //        if (StringUtils.isNumber(text)) {
 //            GoodsInfo.setIsOffline(Integer.parseInt(text));
 //        }
-        return goodsInfoService.findByPage(goodsinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+            return goodsInfoService.findByPage(goodsinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return null;
+        }
     }
 
     @RequestMapping(value = "update")
     @ResponseBody
     public Message update(Goodsinfo goodsInfo) {
         Message message = new Message();
-        log.info(goodsInfo);
-        int num = goodsInfoService.update(goodsInfo);
-        if (num > 0) {
-            message.setCode(0);
-            message.setMsg("更新商品类型信息成功");
-        } else {
+        try {
+            log.info(goodsInfo);
+            int num = goodsInfoService.update(goodsInfo);
+            if (num > 0) {
+                message.setCode(0);
+                message.setMsg("更新商品类型信息成功");
+            } else {
+                message.setCode(-1);
+                message.setMsg("更新商品类型信息失败");
+            }
+            return message;
+        } catch (Exception e) {
+            log.trace(e.getMessage());
             message.setCode(-1);
-            message.setMsg("更新商品类型信息失败");
+            return message;
         }
-        return message;
     }
 
     @RequestMapping(value = "insert")
@@ -66,15 +75,21 @@ public class GoodsinfoController {
     public Message insert(Goodsinfo goodsInfo) {
         log.info(goodsInfo);
         Message message = new Message();
-        int num = goodsInfoService.save(goodsInfo);
-        if (num > 0) {
-            message.setCode(0);
-            message.setMsg("更新商品类型信息成功");
-        } else {
+        try {
+            int num = goodsInfoService.save(goodsInfo);
+            if (num > 0) {
+                message.setCode(0);
+                message.setMsg("更新商品类型信息成功");
+            } else {
+                message.setCode(-1);
+                message.setMsg("更新商品类型信息失败");
+            }
+            return message;
+        } catch (Exception e) {
+            log.trace(e.getMessage());
             message.setCode(-1);
-            message.setMsg("更新商品类型信息失败");
+            return message;
         }
-        return message;
     }
 
     @RequestMapping(value = "delete")
@@ -82,14 +97,20 @@ public class GoodsinfoController {
     public Message delete(Goodsinfo goodsInfo) {
         log.info(goodsInfo.getGoodsId());
         Message message = new Message();
-        int num = goodsInfoService.delete(goodsInfo.getGoodsId());
-        if (num > 0) {
-            message.setCode(0);
-            message.setMsg("更新商品类型信息成功");
-        } else {
+        try {
+            int num = goodsInfoService.delete(goodsInfo.getGoodsId());
+            if (num > 0) {
+                message.setCode(0);
+                message.setMsg("更新商品类型信息成功");
+            } else {
+                message.setCode(-1);
+                message.setMsg("更新商品类型信息失败");
+            }
+            return message;
+        } catch (Exception e) {
+            log.trace(e.getMessage());
             message.setCode(-1);
-            message.setMsg("更新商品类型信息失败");
+            return message;
         }
-        return message;
     }
 }

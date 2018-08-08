@@ -51,22 +51,21 @@
         //配置表格
         grid = $('#grid').edatagrid({
             title: '商品类型清单',
-            height: 600,
             method: 'post',
             url: '<%=basePath%>GoodsCategory/getData',
             saveUrl: '<%=basePath%>GoodsCategory/insert',
             updateUrl: '<%=basePath%>GoodsCategory/update',
             destroyUrl: '<%=basePath%>GoodsCategory/delete',
-            border: false,
+            border: true,
             rownumbers: true,
-            remoteSort: true,
-            nowrap: false,
+            remoteSort: false,
+            nowrap: true,
             singleSelect: true,
             fitColumns: true,
             striped: true,
-            pagination: false,
+            pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "catId",
             columns: [[
                 {
                     field: 'catId', title: 'ID', width: 20, sortable: true, align: 'center'

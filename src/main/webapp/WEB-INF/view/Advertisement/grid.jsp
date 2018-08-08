@@ -12,7 +12,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<jsp:include page="../common/head.jsp"></jsp:include><body>
+<jsp:include page="../common/head.jsp"></jsp:include>
+<body>
 <div id="controlBox" style="background-color:orange">
     <span style="color:white;">商品信息:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
@@ -51,22 +52,21 @@
         //配置表格
         grid = $('#grid').edatagrid({
             title: '商品信息清单',
-            height: 600,
             method: 'post',
             url: '<%=basePath%>Advertisement/getData',
             saveUrl: '<%=basePath%>Advertisement/insert',
             updateUrl: '<%=basePath%>Advertisement/update',
             destroyUrl: '<%=basePath%>Advertisement/delete',
-            border: false,
+            border: true,
             rownumbers: true,
-            remoteSort: true,
-            nowrap: false,
+            remoteSort: false,
+            nowrap: true,
             singleSelect: true,
             fitColumns: true,
             striped: true,
-            pagination: false,
+            pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "advId",
             columns: [[
                 {
                     field: 'advId', title: '广告索引id', width: 20, sortable: true, align: 'center'

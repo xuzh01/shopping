@@ -1,13 +1,13 @@
 package cn.edu.jxufe.shopping.service.imp;
 
-import cn.edu.jxufe.shopping.entity.Advertisement;
-import cn.edu.jxufe.shopping.entity.AdvertisementExample;
-import cn.edu.jxufe.shopping.entity.GoodsCategory;
-import cn.edu.jxufe.shopping.entity.GoodsCategoryExample;
+import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.entity.*;
 import cn.edu.jxufe.shopping.mapper.AdvertisementDAO;
 import cn.edu.jxufe.shopping.mapper.GoodsCategoryDAO;
 import cn.edu.jxufe.shopping.service.AdvertisementService;
 import cn.edu.jxufe.shopping.service.GoodsCategoryService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +50,15 @@ public class AdvertisementImp implements AdvertisementService {
     @Override
     public List findByCondition(Advertisement advertisement) {
         return advertisementDAO.findByCondition(advertisement);
+    }
+
+    @Override
+    public EasyUIData<Advertisement> findByPage(Advertisement advertisement, int page, int row) {
+        EasyUIData<Advertisement> easyUIData = new EasyUIData();
+        PageHelper.startPage(page, row);
+        PageInfo pageInfo = new PageInfo(findByCondition(advertisement));
+        easyUIData.setTotal(pageInfo.getTotal());
+        easyUIData.setRows(pageInfo.getList());
+        return easyUIData;
     }
 }

@@ -1,6 +1,8 @@
 package cn.edu.jxufe.shopping.service;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Advertisement;
+import cn.edu.jxufe.shopping.entity.GoodsCategory;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 
 import java.util.List;
@@ -20,4 +22,6 @@ public interface AdvertisementService {
     public int update(Advertisement advertisement);
 
     public List<Advertisement> findByCondition(Advertisement advertisement);
+
+    public EasyUIData<Advertisement> findByPage(Advertisement advertisement, int page, int row);
 }
