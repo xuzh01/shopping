@@ -36,6 +36,7 @@ public class GoodsinfoController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
+        log.info("分页请求" + easyUIDataPageRequest);
         Goodsinfo goodsinfo = new Goodsinfo();
         goodsinfo.setGoodsName(easyUIDataPageRequest.getText());
 //        if (StringUtils.isNumber(text)) {
