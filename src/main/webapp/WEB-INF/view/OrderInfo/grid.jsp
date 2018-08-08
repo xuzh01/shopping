@@ -1,20 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cgg
-  Date: 2018/8/6
-  Time: 19:57
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<jsp:include page="../common/head.jsp"></jsp:include><body>
+<jsp:include page="../common/head.jsp"></jsp:include>
 <div id="controlBox" style="background-color:orange">
-    <span style="color:white;">商品信息:</span>
+    <span style="color:white;">商品评论:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
@@ -50,13 +41,13 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品信息清单',
+            title: '商品评论清单',
             height: 600,
             method: 'post',
-            url: '<%=basePath%>Advertisement/getData',
-            saveUrl: '<%=basePath%>Advertisement/insert',
-            updateUrl: '<%=basePath%>Advertisement/update',
-            destroyUrl: '<%=basePath%>Advertisement/delete',
+            url: '<%=basePath%>OrderInfo/getData',
+            saveUrl: '<%=basePath%>OrderInfo/insert',
+            updateUrl: '<%=basePath%>OrderInfo/update',
+            destroyUrl: '<%=basePath%>OrderInfo/delete',
             border: false,
             rownumbers: true,
             remoteSort: true,
@@ -69,10 +60,10 @@
             idField: "ID",
             columns: [[
                 {
-                    field: 'advId', title: '广告索引id', width: 20, sortable: true, align: 'center'
+                    field: 'orderId', title: '订单索引id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'advTitle', title: '广告的标题', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'orderSn', title: '订单编号', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -80,7 +71,7 @@
                     }
                 },
                 {
-                    field: 'advPicUrl', title: '广告的图片路径', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'buyerId', title: '买家id', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -88,42 +79,57 @@
                     }
                 },
                 {
-                    field: 'advOffline', title: '广告状态', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'combobox',
+                    field: 'buyerName', title: '买家姓名', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
+                },
+                {
+                    field: 'buyerTel', title: '买家的联系电话', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
                         options: {
                             required: true,
-                            data: [{key: 1, value: '启用'}, {key: 0, value: '禁用'}],
+                        }
+                    }
+                },
+                {
+                    field: 'addTime', title: '订单生成时间', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'paymentCode', title: '支付方式名称代码', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'paymentTime', title: '付款时间', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'finnshedTime', title: '订单完成时间', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    field: 'orderAmount', title: '订单总价格', width: 20, sortable: true, align: 'center'
+                },{
+                    field: 'orderState', title: '订单状态', width: 20, sortable: true, align: 'center',editor: {
+                        type:'combobox',
+                        options: {
+                            required: true,
+                            data: [{key: 0, value: '已取消'}, {key: 10, value: '未付款'},{key: 20, value: '已付款'},{key: 30, value: '已发货'},{key: 40, value: '已收货'}],
                             valueField: 'key',
                             textField: 'value',
                             panelHeight: 'auto'
-                        }
-                    },
+                        }},
                     formatter: function (value, row) {
-                        if (value === 1) return "启用"
-                        else return "禁用";
+                        if (value === 0) return "已取消";
+                        else if(value==10) return "未付款";
+                        else if(value==20) return "已付款";
+                        else if (value==30) return "已发货";
+                        else if (value==40) return "已收货";
+                        else return "未知";
                     }
-                },
-                {
-                    field: 'advOrder', title: '广告的序号', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
-                },
-                {
-                    field: 'advLinkUrl', title: '点击广告后跳转的地址', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
-                },
-                {
-                    field: 'advCratetime', title: '广告的创建时间', width: 20, sortable: true, align: 'center'
-                },
-                {
-                    field: 'advUpdatetime', title: '广告的修改时间', width: 20, sortable: true, align: 'center'
+                },{
+                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
+                },{
+                    field: 'updatedTime', title: '修改时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
             destroyMsg: {
@@ -156,7 +162,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
+                $.post('<%=basePath%>OrderInfo/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg

@@ -46,7 +46,7 @@
                     <li><span><a href="#">会员管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>ArticleInfo/grid">文章管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsComment/grid">评论管理模块</a></span></li>
-                    <li><span><a href="#">订单管理模块</a></span></li>
+                    <li><span><a href="<%=basePath%>OrderInfo/grid">订单管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>Advertisement/grid">广告管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsInfo/grid">商品管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsCategory/grid">类别管理模块</a></span></li>

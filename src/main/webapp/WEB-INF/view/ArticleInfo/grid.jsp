@@ -73,11 +73,18 @@
                     }
                 },
                 {
-                    field: 'articleShow', title: '是否显示，0为否，1为是，默认为1', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
+                    field: 'articleShow', title: '是否显示', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'combobox',
                         options: {
-                            required: true
+                            required: true,
+                            data: [{key: 1, value: '是'}, {key: 0, value: '否'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'
                         }
+                    },formatter: function (value, row) {
+                        if (value === 1) return "是";
+                        else return "否";
                     }
                 },
                 {
@@ -89,15 +96,15 @@
                     }
                 },
                 {
-                    field: 'amountOfReading', title: '阅读量', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true,
-                        }
-                    }
+                    field: 'amountOfReading', title: '阅读量', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'articleContent', title: '内容', width: 20, sortable: true, align: 'center'
+                    field: 'articleContent', title: '内容', width: 20, sortable: true, align: 'center',editor:{
+                        type:'validatebox',
+                        options:{
+                            required:true
+                        }
+                    }
                 },
                 {
                     field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'

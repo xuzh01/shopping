@@ -1,20 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cgg
-  Date: 2018/8/6
-  Time: 19:57
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<jsp:include page="../common/head.jsp"></jsp:include><body>
+<jsp:include page="../common/head.jsp"></jsp:include>
 <div id="controlBox" style="background-color:orange">
-    <span style="color:white;">商品信息:</span>
+    <span style="color:white;">订单列表:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
@@ -50,13 +41,13 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品信息清单',
+            title: '订单清单',
             height: 600,
             method: 'post',
-            url: '<%=basePath%>Advertisement/getData',
-            saveUrl: '<%=basePath%>Advertisement/insert',
-            updateUrl: '<%=basePath%>Advertisement/update',
-            destroyUrl: '<%=basePath%>Advertisement/delete',
+            url: '<%=basePath%>GoodsComment/getData',
+            saveUrl: '<%=basePath%>GoodsComment/insert',
+            updateUrl: '<%=basePath%>GoodsComment/update',
+            destroyUrl: '<%=basePath%>GoodsComment/delete',
             border: false,
             rownumbers: true,
             remoteSort: true,
@@ -69,10 +60,10 @@
             idField: "ID",
             columns: [[
                 {
-                    field: 'advId', title: '广告索引id', width: 20, sortable: true, align: 'center'
+                    field: 'scommId', title: '评论id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'advTitle', title: '广告的标题', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'goodisId', title: '评论的商品ID', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -80,7 +71,7 @@
                     }
                 },
                 {
-                    field: 'advPicUrl', title: '广告的图片路径', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'scommContent', title: '评论内容', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -88,42 +79,29 @@
                     }
                 },
                 {
-                    field: 'advOffline', title: '广告状态', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'combobox',
+                    field: 'scommMemberid', title: '会员id', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
+                },
+                {
+                    field: 'scommMembername', title: '会员名称', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
                         options: {
                             required: true,
-                            data: [{key: 1, value: '启用'}, {key: 0, value: '禁用'}],
-                            valueField: 'key',
-                            textField: 'value',
-                            panelHeight: 'auto'
-                        }
-                    },
-                    formatter: function (value, row) {
-                        if (value === 1) return "启用"
-                        else return "禁用";
-                    }
-                },
-                {
-                    field: 'advOrder', title: '广告的序号', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
                         }
                     }
                 },
                 {
-                    field: 'advLinkUrl', title: '点击广告后跳转的地址', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'advCratetime', title: '广告的创建时间', width: 20, sortable: true, align: 'center'
+                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'advUpdatetime', title: '广告的修改时间', width: 20, sortable: true, align: 'center'
+                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
             destroyMsg: {
@@ -156,7 +134,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
+                $.post('<%=basePath%>GoodsComment/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg
