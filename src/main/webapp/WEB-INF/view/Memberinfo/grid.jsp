@@ -73,22 +73,55 @@
                     field: 'memberId', title: '会员id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'memberMobile', title: '手机号', width: 20, sortable: true, align: 'center'
+                    field: 'memberMobile', title: '手机号', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'memberName', title: '会员昵称', width: 20, sortable: true, align: 'center'
+                    field: 'memberName', title: '会员昵称', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'memberBirthday', title: '生日', width: 20, sortable: true, align: 'center'
+                    field: 'memberBirthday', title: '生日', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'memberPasswd', title: '会员密码', width: 20, sortable: true, align: 'center'
+                    field: 'memberPasswd', title: '会员密码', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    },
+                    formatter: function (value, row) {
+                        return '无法查看';
+                    }
                 },
                 {
-                    field: 'memberEmail', title: '会员邮箱', width: 20, sortable: true, align: 'center'
+                    field: 'memberEmail', title: '会员邮箱', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
-                    field: 'memberWw', title: '微信OPENDID', width: 20, sortable: true, align: 'center'
+                    field: 'memberWw', title: '微信OPENDID', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 },
                 {
                     field: 'memberLoginNum', title: '登录次数', width: 20, sortable: true, align: 'center'
@@ -109,13 +142,44 @@
                     field: 'memberOldLoginIp', title: '上次登录ip', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'isSell', title: '员是否有发布商品权限', width: 20, sortable: true, align: 'center'
+                    field: 'isSell', title: '员是否有发布商品权限', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'combobox',
+                        options: {
+                            required: true,
+                            data: [{key: true, value: '有'}, {key: 0, value: '无'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'
+                        }
+                    },
+                    formatter: function (value, row) {
+                        if (value === true) return "有"
+                        else return "无";
+                    }
                 },
                 {
-                    field: 'memberState', title: '会员的开启状态', width: 20, sortable: true, align: 'center'
+                    field: 'memberState', title: '会员的开启状态', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'combobox',
+                        options: {
+                            required: true,
+                            data: [{key: true, value: '启用'}, {key: false, value: '禁用'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'
+                        }
+                    },
+                    formatter: function (value, row) {
+                        if (value === true) return "启用"
+                        else return "禁用";
+                    }
                 },
                 {
-                    field: 'memberPic', title: '会员头像', width: 20, sortable: true, align: 'center'
+                    field: 'memberPic', title: '会员头像', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    }
                 }
             ]],
             destroyMsg: {

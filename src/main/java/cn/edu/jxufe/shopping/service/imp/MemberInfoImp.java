@@ -60,6 +60,9 @@ public class MemberInfoImp implements MemberInfoService {
         PageInfo pageInfo = new PageInfo(findByCondition(memberinfo));
         easyUIData.setTotal(pageInfo.getTotal());
         easyUIData.setRows(pageInfo.getList());
+        easyUIData.getRows().iterator().forEachRemaining((obj) -> {
+            obj.setMemberPasswd(null);
+        });
         return easyUIData;
     }
 }

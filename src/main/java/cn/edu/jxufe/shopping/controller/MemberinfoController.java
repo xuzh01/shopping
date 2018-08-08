@@ -36,7 +36,6 @@ public class MemberinfoController {
     @RequestMapping(value = "getData")
     @ResponseBody
     public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
-
         try {
             log.info("分页请求" + easyUIDataPageRequest);
             Memberinfo memberinfo = new Memberinfo();
