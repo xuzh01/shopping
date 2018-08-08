@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("cn.edu.jxufe.shopping.mapper")
 public class ShoppingApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ShoppingApplication.class, args);
     }
