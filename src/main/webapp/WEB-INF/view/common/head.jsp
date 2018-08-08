@@ -34,7 +34,8 @@
     fn.snow();
 </script>
 <body>
-<div class="easyui-layout" style="width:100%;height: 650px;">
+
+<div class="easyui-layout" id="wind" style="width:100%;height: 650px;">
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
         <div style="line-height: 25px;float: left">商品销售管理系统</div>
         <div style="float: right; line-height: 25px">
@@ -43,8 +44,8 @@
                 <span
                         style="color: #a4e9c1"><strong><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></strong></span>
             </li>&nbsp;&nbsp;&nbsp;
-            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:35px; ">修改密码</a></li>&nbsp;&nbsp;&nbsp;
-            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:35px; ">退出登录</a></li>
+            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:20px; ">修改密码</a></li>&nbsp;&nbsp;&nbsp;
+            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:20px; ">退出登录</a></li>
         </div>
     </div>
     <div region="west" split="true" title="操作菜单" style="width:200px; height: 100%">

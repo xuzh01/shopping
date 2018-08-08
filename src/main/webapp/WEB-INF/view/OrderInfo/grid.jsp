@@ -56,7 +56,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "orderId",
             columns: [[
                 {
                     field: 'orderId', title: '订单索引id', width: 20, sortable: true, align: 'center'

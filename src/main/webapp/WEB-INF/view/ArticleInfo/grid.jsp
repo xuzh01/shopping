@@ -58,7 +58,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "articleId",
             columns: [[
                 {
                     field: 'articleId', title: '索引id', width: 20, sortable: true, align: 'center'

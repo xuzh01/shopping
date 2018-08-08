@@ -56,7 +56,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "scommId",
             columns: [[
                 {
                     field: 'scommId', title: '评论id', width: 20, sortable: true, align: 'center'

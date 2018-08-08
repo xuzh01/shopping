@@ -24,7 +24,7 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
     @PostMapping("/Login")
-    public void Login(String username, String password, HttpServletResponse response, HttpServletRequest request, HttpSession session) {
+    public void Login(String username, String password, HttpServletResponse response, HttpSession session) {
         System.out.println(username + "\t" + password );
         Admin login = loginService.Login(username, password);
         try {
