@@ -23,6 +23,10 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        .datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 <script type="text/javascript">

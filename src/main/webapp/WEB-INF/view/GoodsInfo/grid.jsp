@@ -13,7 +13,8 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <jsp:include page="../common/head.jsp"></jsp:include>
-
+<style>
+</style>
 <div id="controlBox" style="background-color:orange">
     <span style="color:white;">商品信息:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
@@ -62,7 +63,7 @@
             border: false,
             rownumbers: true,
             remoteSort: false,
-            nowrap: false,
+            nowrap: true,
             singleSelect: true,
             fitColumns: true,
             striped: true,
@@ -79,6 +80,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
@@ -87,6 +91,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
@@ -103,6 +110,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
