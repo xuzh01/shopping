@@ -1,6 +1,9 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
+import cn.edu.jxufe.shopping.entity.Advertisement;
 import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.mapper.GoodsCommentDAO;
@@ -35,10 +38,16 @@ public class GoodsCommentController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public List<GoodsComment> findData(String text) {
-        List<GoodsComment> list = goodsCommentService.findAll();
-        log.info(list);
-        return list;
+    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
+        try {
+            log.info("分页请求" + easyUIDataPageRequest);
+            GoodsComment goodsComment=new GoodsComment();
+            goodsComment.setScommContent(easyUIDataPageRequest.getText());
+            return goodsCommentService.findByPage(goodsComment, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return new EasyUIData();
+        }
     }
 
     @RequestMapping(value = "update")

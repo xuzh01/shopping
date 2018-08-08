@@ -1,6 +1,9 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
+import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.entity.Orderinfo;
 import cn.edu.jxufe.shopping.service.OrderInfoService;
 import org.apache.log4j.Logger;
@@ -31,12 +34,17 @@ public class OrderInfoController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public List<Orderinfo> findData(String text) {
-        List<Orderinfo> list = orderInfoService.findAll();
-        log.info(list);
-        return list;
+    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
+        try {
+            log.info("分页请求" + easyUIDataPageRequest);
+            Orderinfo orderinfo=new Orderinfo();
+            orderinfo.setOrderSn(easyUIDataPageRequest.getText());
+            return orderInfoService.findByPage(orderinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return new EasyUIData();
+        }
     }
-
     @RequestMapping(value = "update")
     @ResponseBody
     public Message update(Orderinfo orderinfo) {

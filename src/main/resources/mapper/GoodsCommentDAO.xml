@@ -281,4 +281,25 @@
       update_time = #{updateTime,jdbcType=BIGINT}
     where scomm_id = #{scommId,jdbcType=INTEGER}
   </update>
+
+  <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.GoodsComment" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from goods_comment
+    <where>
+      <if test="goodisId != null">
+        or goods_id like concat('%',#{goodisId,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="scommContent!=null">
+        or scomm_content like concat('%',#{scommContent,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="scommTime!=null">
+        or scomm_time like concat('%',#{scommTime,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+  </select>
+
+
+
+
 </mapper>

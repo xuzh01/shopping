@@ -1,7 +1,10 @@
 package cn.edu.jxufe.shopping.controller;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
+import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.service.ArticleInfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +34,16 @@ public class ArticleInfoController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public List<Articleinfo> findData() {
-        List<Articleinfo> list = articleInfoService.findAll();
-        log.info(list);
-        return list;
+    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
+        try {
+            log.info("分页请求" + easyUIDataPageRequest);
+            Articleinfo articleinfo=new Articleinfo();
+            articleinfo.setArticleContent(easyUIDataPageRequest.getText());
+            return articleInfoService.findByPage(articleinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return new EasyUIData();
+        }
     }
 
     @RequestMapping(value = "update")
