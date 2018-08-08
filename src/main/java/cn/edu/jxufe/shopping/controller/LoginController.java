@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Author :'徐真华'
@@ -17,11 +21,20 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
     @PostMapping("/Login")
-    public String Login(String username,String password,String url){
-        System.out.println(username+"\t"+password+"\t"+url);
+    public void Login(String username, String password, String url, HttpServletResponse response, HttpServletRequest request) {
+        System.out.println(username + "\t" + password + "\t" + url);
         boolean login = loginService.Login(username, password);
-        if (login) return "ArticleInfo/grid";
-        else return null;
+//        if (login) return "ArticleInfo/grid";
+//        else
+        try {
+            if (login)
+//                request.getRequestDispatcher("/WEB-INF/viewArticleInfo/grid.jsp").forward(request, response);
+                response.sendRedirect("/ArticleInfo/grid");
+            else response.sendRedirect("/index.html");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
