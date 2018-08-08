@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.service.imp;
 
+import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.GoodsCategoryExample;
 import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.entity.GoodsCommentExample;
@@ -41,6 +42,16 @@ public class GoodsCommentImpl implements GoodsCommentService {
         GoodsCommentExample goodsCategoryExample = new GoodsCommentExample();
         goodsCategoryExample.createCriteria().andScommIdEqualTo(comment.getScommId());
         return goodsCommentDAO.updateByExample(comment, goodsCategoryExample);
+    }
+
+    @Override
+    public List<GoodsComment> findByCondition(GoodsComment obj) {
+        return null;
+    }
+
+    @Override
+    public EasyUIData<GoodsComment> findByPage(GoodsComment obj, int page, int row) {
+        return null;
     }
 }
 

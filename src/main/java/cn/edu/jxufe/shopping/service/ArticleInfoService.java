@@ -1,5 +1,6 @@
 package cn.edu.jxufe.shopping.service;
 
+import cn.edu.jxufe.shopping.entity.Advertisement;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
 import cn.edu.jxufe.shopping.entity.GoodsComment;
 
@@ -9,14 +10,7 @@ import java.util.List;
  * Author :'徐真华'
  * Created by '徐真华' on 2018/8/7.
  */
-public interface ArticleInfoService {
-    public List findAll();
-
-    public int save(Articleinfo articleinfo);
-
-    public int delete(Integer id);
-
-    public int update(Articleinfo articleinfo);
+public interface ArticleInfoService  extends PublicService<Articleinfo>{
 }
 
 /*
