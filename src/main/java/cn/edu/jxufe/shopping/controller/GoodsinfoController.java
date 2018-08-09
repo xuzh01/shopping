@@ -109,10 +109,10 @@ public class GoodsinfoController {
             int num = goodsInfoService.delete(goodsInfo.getGoodsId());
             if (num > 0) {
                 message.setCode(0);
-                message.setMsg("更新商品类型信息成功");
+                message.setMsg("删除商品类型信息成功");
             } else {
                 message.setCode(-1);
-                message.setMsg("更新商品类型信息失败");
+                message.setMsg("删除商品类型信息失败");
             }
             return message;
         } catch (Exception e) {

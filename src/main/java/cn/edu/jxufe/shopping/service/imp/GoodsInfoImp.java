@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,7 +37,11 @@ public class GoodsInfoImp implements GoodsInfoService {
 
     @Override
     public int delete(Integer id) {
-        return goodsinfoDAO.deleteByPrimaryKey(id);
+        Goodsinfo goodsinfo = new Goodsinfo();
+        goodsinfo.setGoodsId(id);
+        goodsinfo.setUpdateTime(new Date());
+        goodsinfo.setIsDel(1);
+        return goodsinfoDAO.updateByPrimaryKeySelective(goodsinfo);
     }
 
     @Override
