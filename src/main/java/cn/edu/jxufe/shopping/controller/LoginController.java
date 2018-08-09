@@ -24,7 +24,7 @@ public class LoginController {
 
     @PostMapping("/Login")
     @ResponseBody
-    public String Login(String username, String password, HttpServletResponse response, HttpSession session) {
+    public String Login(String username, String password, HttpSession session) {
         System.out.println(username + "\t" + password );
         Admin login = loginService.Login(username, password);
         if (login!=null) {
