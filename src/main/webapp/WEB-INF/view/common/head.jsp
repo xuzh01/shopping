@@ -7,7 +7,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
-<html>
+<html style="font-size: 62.5px">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/metro-orange/easyui.css?t=34355">
@@ -49,7 +49,8 @@
                         style="color: #a4e9c1"><strong><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></strong></span>
             </li>&nbsp;&nbsp;&nbsp;
             <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:20px; ">修改密码</a></li>&nbsp;&nbsp;&nbsp;
-            <li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:20px; ">退出登录</a></li>
+            <li style="display: inline"><a href="<%=basePath%>login/Logout" class="easyui-linkbutton"
+                                           style="border-radius:20px; ">退出登录</a></li>
         </div>
     </div>
     <div region="west" split="true" title="操作菜单" style="width:200px; height: 100%">

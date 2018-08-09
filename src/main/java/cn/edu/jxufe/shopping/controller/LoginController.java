@@ -25,16 +25,25 @@ public class LoginController {
     @PostMapping("/Login")
     @ResponseBody
     public String Login(String username, String password, HttpSession session) {
-        System.out.println(username + "\t" + password );
+        System.out.println(username + "\t" + password);
         Admin login = loginService.Login(username, password);
-        if (login!=null) {
-            session.setAttribute("username",login);
-            login.setAdminLoginNum(login.getAdminLoginNum()+1);
+        if (login != null) {
+            session.setAttribute("username", login);
+            login.setAdminLoginNum(login.getAdminLoginNum() + 1);
             login.setAdminLoginTime(new Date());
             loginService.update(login);
             return "登录成功！！！";
+        } else return "";
+    }
+
+    @RequestMapping("/Logout")
+    public void Logout(HttpSession session, HttpServletResponse response) {
+        try {
+            session.removeAttribute("username");
+            response.sendRedirect("/index.html");
+        } catch (Exception e) {
+
         }
-        else return "";
     }
 }
 
