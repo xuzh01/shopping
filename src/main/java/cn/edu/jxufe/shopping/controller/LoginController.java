@@ -36,14 +36,9 @@ public class LoginController {
         } else return "";
     }
 
-    @RequestMapping("/Logout")
-    public void Logout(HttpSession session, HttpServletResponse response) {
-        try {
-            session.removeAttribute("username");
-            response.sendRedirect("/index.html");
-        } catch (Exception e) {
-
-        }
+    @RequestMapping("/reset")
+    public String reset() {
+        return "Manage/grid";
     }
 }
 
