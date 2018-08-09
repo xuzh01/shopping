@@ -178,10 +178,18 @@
                 },
                 {
                     field: 'isDel', title: '是否删除', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
+                        type: 'combobox',
                         options: {
-                            required: true
+                            required: true,
+                            data: [{key: 1, value: '删除'}, {key: 0, value: '正常'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'
                         }
+                    },
+                    formatter: function (value, row) {
+                        if (value === 1) return "已删除"
+                        else return "正常";
                     }
                 },
                 {
@@ -237,7 +245,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
+                $.post('<%=basePath%>GoodsInfo/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg

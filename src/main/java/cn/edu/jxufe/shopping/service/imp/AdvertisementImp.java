@@ -42,9 +42,7 @@ public class AdvertisementImp implements AdvertisementService {
 
     @Override
     public int update(Advertisement advertisement) {
-        AdvertisementExample advertisementExample = new AdvertisementExample();
-        advertisementExample.createCriteria().andAdvIdEqualTo(advertisement.getAdvId());
-        return advertisementDAO.updateByExample(advertisement, advertisementExample);
+        return advertisementDAO.updateByPrimaryKeySelective(advertisement);
     }
 
     @Override

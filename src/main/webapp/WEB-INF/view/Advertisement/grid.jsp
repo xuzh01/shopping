@@ -156,7 +156,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsCategory/delete', row, function (data) {
+                $.post('<%=basePath%>Advertisement/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg

@@ -43,9 +43,7 @@ public class MemberInfoImp implements MemberInfoService {
 
     @Override
     public int update(Memberinfo memberinfo) {
-        MemberinfoExample memberinfoExample = new MemberinfoExample();
-        memberinfoExample.createCriteria().andMemberIdEqualTo(memberinfo.getMemberId());
-        return memberinfoDAO.updateByExample(memberinfo, memberinfoExample);
+        return memberinfoDAO.updateByPrimaryKeySelective(memberinfo);
     }
 
     @Override
