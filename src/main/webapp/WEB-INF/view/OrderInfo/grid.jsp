@@ -4,8 +4,10 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <jsp:include page="../common/head.jsp"></jsp:include>
+<style>
+</style>
 <div id="controlBox" style="background-color:orange">
-    <span style="color:white;">商品评论:</span>
+    <span style="color:white;">商品信息:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
@@ -35,6 +37,7 @@
 <table id="grid"></table>
 <div id="msgBox"></div>
 <div id="cropGrow" style="overflow-y:hidden!important;"></div>
+
 <script>
     var grid;
     var cId;
@@ -67,6 +70,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
@@ -75,6 +81,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
@@ -91,6 +100,9 @@
                         options: {
                             required: true,
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {

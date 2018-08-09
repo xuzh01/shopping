@@ -42,22 +42,21 @@
         //配置表格
         grid = $('#grid').edatagrid({
             title: '订单清单',
-            height: 600,
             method: 'post',
             url: '<%=basePath%>GoodsComment/getData',
             saveUrl: '<%=basePath%>GoodsComment/insert',
             updateUrl: '<%=basePath%>GoodsComment/update',
             destroyUrl: '<%=basePath%>GoodsComment/delete',
-            border: false,
+            border: true,
             rownumbers: true,
             remoteSort: true,
             nowrap: false,
             singleSelect: true,
             fitColumns: true,
             striped: true,
-            pagination: false,
+            pagination: true,
             autoSave: true,
-            idField: "ID",
+            idField: "scommId",
             columns: [[
                 {
                     field: 'scommId', title: '评论id', width: 20, sortable: true, align: 'center'

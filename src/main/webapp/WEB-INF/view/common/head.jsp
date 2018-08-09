@@ -69,4 +69,4 @@
             </li>
         </ul>
     </div>
-    <div id="content" region="center" style="padding:5px; height: 100%;"
+    <div id="content" region="center" style="padding:5px; height: 100%;">
