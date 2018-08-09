@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -24,21 +23,18 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
     @PostMapping("/Login")
-    public void Login(String username, String password, HttpServletResponse response, HttpSession session) {
+    @ResponseBody
+    public String Login(String username, String password, HttpServletResponse response, HttpSession session) {
         System.out.println(username + "\t" + password );
         Admin login = loginService.Login(username, password);
-        try {
-            if (login!=null) {
-                session.setAttribute("username",login);
-                login.setAdminLoginNum(login.getAdminLoginNum()+1);
-                login.setAdminLoginTime(new Date());
-                loginService.update(login);
-                response.sendRedirect("/ArticleInfo/grid");
-            }
-            else response.sendRedirect("/index.html");
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (login!=null) {
+            session.setAttribute("username",login);
+            login.setAdminLoginNum(login.getAdminLoginNum()+1);
+            login.setAdminLoginTime(new Date());
+            loginService.update(login);
+            return "登录成功！！！";
         }
+        else return "";
     }
 }
 
