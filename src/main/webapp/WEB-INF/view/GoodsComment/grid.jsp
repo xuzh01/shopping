@@ -103,10 +103,22 @@
                     field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'
+                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row) {
+                        if (value === undefined || value === null) return "记录缺失";
+                        var d = new Date();
+                        d.setTime(value);
+                        return d.getFullYear() + "年" + d.getMonth() + "月" + d.getDay() + "日" + d.getHours() + ":" + d.getMinutes();
+                    }
                 },
                 {
-                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center'
+                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row) {
+                        if (value === undefined || value === null) return "记录缺失";
+                        var d = new Date();
+                        d.setTime(value);
+                        return d.getFullYear() + "年" + d.getMonth() + "月" + d.getDay() + "日" + d.getHours() + ":" + d.getMinutes();
+                    }
                 }
             ]],
             destroyMsg: {
