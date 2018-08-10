@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Author :'徐真华'
@@ -26,7 +27,7 @@ public class ResetPwdController {
         AdminExample adminExample=new AdminExample();
         Admin admin= (Admin)session.getAttribute("username");
         admin.setAdminPassword(password);
-        System.out.println(admin);
+        admin.setUpdatedTime(new Date());
         adminExample.createCriteria().andAdminIdEqualTo(admin.getAdminId());
         adminDAO.updateByExample(admin,adminExample);
         return "Memberinfo/grid";
