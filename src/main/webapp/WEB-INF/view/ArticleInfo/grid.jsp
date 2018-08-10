@@ -69,6 +69,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<img  height="35px" src="/' + value + '" />';
                     }
                 },
                 {
@@ -81,7 +84,7 @@
                             textField: 'value',
                             panelHeight: 'auto'
                         }
-                    },formatter: function (value, row) {
+                    }, formatter: function (value, row) {
                         if (value === 1) return "是";
                         else return "否";
                     }
@@ -101,10 +104,10 @@
                     field: 'amountOfReading', title: '阅读量', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'articleContent', title: '内容', width: 20, sortable: true, align: 'center',editor:{
-                        type:'validatebox',
-                        options:{
-                            required:true
+                    field: 'articleContent', title: '内容', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
                         }
                     },
                     formatter: function (value, row) {

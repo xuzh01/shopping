@@ -135,6 +135,9 @@
                         options: {
                             required: true
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<img  height="35px" src="/' + value + '" />';
                     }
                 },
                 {

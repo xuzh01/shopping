@@ -70,6 +70,17 @@
             idField: "memberId",
             columns: [[
                 {
+                    field: 'memberPic', title: '会员头像', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    },
+                    formatter: function (value, row) {
+                        return '<img  height="35px" src="/' + value + '" />';
+                    }
+                },
+                {
                     field: 'memberId', title: '会员id', width: 20, sortable: true, align: 'center'
                 },
                 {
@@ -171,14 +182,6 @@
                     formatter: function (value, row) {
                         if (value === true) return "启用"
                         else return "禁用";
-                    }
-                },
-                {
-                    field: 'memberPic', title: '会员头像', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
                     }
                 }
             ]],
