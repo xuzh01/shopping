@@ -32,11 +32,12 @@ public class OrderInfoGoodsController {
 
     @RequestMapping(value = "getData")
     @ResponseBody
-    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest) {
+    public EasyUIData findData(EasyUIDataPageRequest easyUIDataPageRequest,String orderid) {
         try {
             log.info("分页请求" + easyUIDataPageRequest);
             OrderinfoGoods orderinfo=new OrderinfoGoods();
-            orderinfo.setOrderId(easyUIDataPageRequest.getText());
+            orderinfo.setOrderId(orderid);
+            orderinfo.setGoodsName(easyUIDataPageRequest.getText());
             return orderInfoGoodsService.findByPage(orderinfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
         } catch (Exception e) {
             log.trace(e.getMessage());

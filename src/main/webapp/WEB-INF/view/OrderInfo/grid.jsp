@@ -35,127 +35,140 @@
 </div>
 <table id="grid"></table>
 <div id="msgBox"></div>
-<div id="window" class="easyui-window" title="订单详情" style="width: 800px; height: 450px;" data-options="resizable:false,closed:true,modal:true">
-    <table id="gridofOrders"></table>
+<div id="window" class="easyui-window" title="订单详情" style="width: 800px; height: 500px;" data-options="resizable:false,closed:true,modal:true">
+    <iframe id="OrderInfoGoods" src="<%=basePath%>OrderInfoGoods/grid"
+            width="100%" height="99%" frameborder="0" scrolling="no"></iframe>
 </div>
 <div id="cropGrow" style="overflow-y:hidden!important;"></div>
 
 <script>
 
     function show(i) {
-        gridofOrders = $('#gridofOrders').edatagrid({
-            title: '订单详情清单',
-            method: 'post',
-            url: '<%=basePath%>OrderInfoGoods/getByOrderid?'+'orderid='+i,
-            border: true,
-            rownumbers: true,
-            remoteSort: false,
-            nowrap: true,
-            singleSelect: true,
-            fitColumns: true,
-            striped: true,
-            pagination: true,
-            autoSave: true,
-            idField: "recId",
-            columns: [[
-                {
-                    field: 'recId', title: '订单商品表索引id', width: 20, sortable: true, align: 'center'
-                },
-                {
-                    field: 'orderId', title: '订单id', width: 20, sortable: true, align: 'center',editor:{
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
-                },
-                {
-                    field: 'goodsId', title: '商品id', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    },
-                    formatter: function (value, row) {
-                        return '<span title=' + value + '>' + value + '</span>';
-                    }
-                },
-                {
-                    field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    },
-                    formatter: function (value, row) {
-                        return '<span title=' + value + '>' + value + '</span>';
-                    }
-                },
-                {
-                    field: 'goodsPrice', title: '商品价格', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
-                },
-                {
-                    field: 'goodsPayPrice', title: '商品实际成交价', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true,
-                        }
-                    },
-                    formatter: function (value, row) {
-                        return '<span title=' + value + '>' + value + '</span>';
-                    }
-                },
-                {
-                    field: 'goodsNum', title: '商品数量', width: 20, sortable: true, align: 'center'
-                },
-                {
-                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
-                },{
-                    field: 'updatedTime', title: '修改时间', width: 20, sortable: true, align: 'center'
-                }
-            ]],
-            destroyMsg: {
-                norecord: {
-                    title: '警告',
-                    msg: '首先需要选中记录，然后在点击删除按钮'
-                },
-                confirm: {
-                    title: '确认',
-                    msg: '是否删除选中记录?'
-                }
-            },
-            onSuccess: function (index, row) {
-                console.log(row)
-                $.messager.show({
-                    title: "消息",
-                    msg: row.msg
-                });
-            }
-        });
-
-        var $win;
-        $win = $('#window').window({
-            title: '订单详情',
-            width: 850,
-            height: 450,
-            top: ($(window).height() - 450) * 0.5,
-            left: ($(window).width() - 850) * 0.5,
-            shadow: true,
-            modal: true,
-            iconCls: 'icon-add',
-            closed: true,
-            minimizable: true,
-            maximizable: true,
-            collapsible: false,
-            draggable:true
-        });
-        $win.window('open');
+        $('#OrderInfoGoods').attr('src',"<%=basePath%>OrderInfoGoods/grid?orderid="+i);
+        $('#window').window('open');
     }
+
+    <%--var $win;--%>
+    <%--$win = $('#window').window({--%>
+        <%--title: '订单详情',--%>
+        <%--width: 850,--%>
+        <%--height: 450,--%>
+        <%--top: ($(window).height() - 450) * 0.5,--%>
+        <%--left: ($(window).width() - 850) * 0.5,--%>
+        <%--shadow: true,--%>
+        <%--modal: true,--%>
+        <%--iconCls: 'icon-add',--%>
+        <%--closed: true,--%>
+        <%--minimizable: true,--%>
+        <%--maximizable: true,--%>
+        <%--collapsible: false,--%>
+        <%--draggable:true,--%>
+        <%--onClose:function (){--%>
+            <%--console.log("窗口关闭");--%>
+        <%--}--%>
+    <%--});--%>
+
+    <%--function show(i) {--%>
+        <%--gridofOrders = $('#gridofOrders').edatagrid({--%>
+            <%--title: '订单详情清单',--%>
+            <%--method: 'post',--%>
+            <%--url: '<%=basePath%>OrderInfoGoods/getByOrderid?'+'orderid='+i,--%>
+            <%--border: true,--%>
+            <%--rownumbers: true,--%>
+            <%--remoteSort: false,--%>
+            <%--nowrap: true,--%>
+            <%--singleSelect: true,--%>
+            <%--fitColumns: true,--%>
+            <%--striped: true,--%>
+            <%--pagination: true,--%>
+            <%--autoSave: true,--%>
+            <%--idField: "recId",--%>
+            <%--columns: [[--%>
+                <%--{--%>
+                    <%--field: 'recId', title: '订单商品表索引id', width: 20, sortable: true, align: 'center'--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'orderId', title: '订单id', width: 20, sortable: true, align: 'center',editor:{--%>
+                        <%--type: 'validatebox',--%>
+                        <%--options: {--%>
+                            <%--required: true--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'goodsId', title: '商品id', width: 20, sortable: true, align: 'center', editor: {--%>
+                        <%--type: 'validatebox',--%>
+                        <%--options: {--%>
+                            <%--required: true--%>
+                        <%--}--%>
+                    <%--},--%>
+                    <%--formatter: function (value, row) {--%>
+                        <%--return '<span title=' + value + '>' + value + '</span>';--%>
+                    <%--}--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center', editor: {--%>
+                        <%--type: 'validatebox',--%>
+                        <%--options: {--%>
+                            <%--required: true--%>
+                        <%--}--%>
+                    <%--},--%>
+                    <%--formatter: function (value, row) {--%>
+                        <%--return '<span title=' + value + '>' + value + '</span>';--%>
+                    <%--}--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'goodsPrice', title: '商品价格', width: 20, sortable: true, align: 'center', editor: {--%>
+                        <%--type: 'validatebox',--%>
+                        <%--options: {--%>
+                            <%--required: true--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'goodsPayPrice', title: '商品实际成交价', width: 20, sortable: true, align: 'center', editor: {--%>
+                        <%--type: 'validatebox',--%>
+                        <%--options: {--%>
+                            <%--required: true,--%>
+                        <%--}--%>
+                    <%--},--%>
+                    <%--formatter: function (value, row) {--%>
+                        <%--return '<span title=' + value + '>' + value + '</span>';--%>
+                    <%--}--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'goodsNum', title: '商品数量', width: 20, sortable: true, align: 'center'--%>
+                <%--},--%>
+                <%--{--%>
+                    <%--field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'--%>
+                <%--},{--%>
+                    <%--field: 'updatedTime', title: '修改时间', width: 20, sortable: true, align: 'center'--%>
+                <%--}--%>
+            <%--]],--%>
+            <%--destroyMsg: {--%>
+                <%--norecord: {--%>
+                    <%--title: '警告',--%>
+                    <%--msg: '首先需要选中记录，然后在点击删除按钮'--%>
+                <%--},--%>
+                <%--confirm: {--%>
+                    <%--title: '确认',--%>
+                    <%--msg: '是否删除选中记录?'--%>
+                <%--}--%>
+            <%--},--%>
+            <%--onSuccess: function (index, row) {--%>
+                <%--console.log(row)--%>
+                <%--$.messager.show({--%>
+                    <%--title: "消息",--%>
+                    <%--msg: row.msg--%>
+                <%--});--%>
+            <%--},--%>
+            <%--onLoadSuccess:function () {--%>
+                <%--console.log("加载成功");--%>
+
+                <%--$win.window('open');--%>
+            <%--}--%>
+        <%--});--%>
+    <%--}--%>
 
 
 

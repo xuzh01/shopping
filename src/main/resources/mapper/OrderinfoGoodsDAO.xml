@@ -223,14 +223,19 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderinfo_goods where rec_id=#{recId}
+  </delete>
   <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.OrderinfoGoods" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from orderinfo_goods
     <where>
+      <if test="goodsName !=null">
+        and goods_name like concat('%', #{goodsName,jdbcType=VARCHAR},'%')
+      </if>
       <if test="orderId !=null">
-        or order_id like concat('%',#{orderId,jdbcType=VARCHAR},'%')
+        and order_id =#{orderId,jdbcType=VARCHAR}
       </if>
     </where>
   </select>

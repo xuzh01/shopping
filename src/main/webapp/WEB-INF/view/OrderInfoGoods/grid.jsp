@@ -1,11 +1,25 @@
+<%@ page import="cn.edu.jxufe.shopping.entity.Admin" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<jsp:include page="../common/head.jsp"></jsp:include>
-<style>
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/metro-orange/easyui.css?t=34355">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>ext/easyui/themes/color.css">
+    <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>ext/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/jquery.edatagrid.js"></script>
+    <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
+</head>
+<body>
 <div id="controlBox" style="background-color:orange">
     <span style="color:white;">订单详情列表:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
@@ -41,13 +55,16 @@
 <script>
     var grid;
     var cId;
+    var a=document.location.href;
+    var orderid=a.split("=")[1];
+    console.log("订单号："+orderid);
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
             title: '订单详情清单',
             method: 'post',
-            url: '<%=basePath%>OrderInfoGoods/getData',
-            saveUrl: '<%=basePath%>OrderInfoGoods/insert',
+            url: '<%=basePath%>OrderInfoGoods/getData?orderid='+orderid,
+            saveUrl: '<%=basePath%>OrderInfoGoods/insert?orderid='+orderid,
             updateUrl: '<%=basePath%>OrderInfoGoods/update',
             destroyUrl: '<%=basePath%>OrderInfoGoods/delete',
             border: true,
@@ -65,12 +82,7 @@
                     field: 'recId', title: '订单商品表索引id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'orderId', title: '订单id', width: 20, sortable: true, align: 'center',editor:{
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
+                    field: 'orderId', title: '订单id', width: 20, sortable: true, align: 'center'
                 },
                 {
                     field: 'goodsId', title: '商品id', width: 20, sortable: true, align: 'center', editor: {
@@ -160,5 +172,6 @@
         });
     };
 </script>
-<jsp:include page="../common/bottom.jsp"></jsp:include>
+</body>
+</html>
 
