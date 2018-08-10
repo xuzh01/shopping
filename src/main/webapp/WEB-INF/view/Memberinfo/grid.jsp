@@ -33,10 +33,24 @@
     <a href="javascript:void(0)" class="easyui-linkbutton c5" iconCls="icon-cancel"
        onclick="javascript:deleteRecord();">删除</a>
 </div>
-<div id="formContainer" class="easyui-dialog" style="width:800px;height:420px;padding:10px 10px" closed="true"
+<div id="formContainer" class="easyui-dialog" style="width:460px;height:150px;padding:10px 10px" closed="true"
      buttons="#formContainerButtons">
-    <form id="formEditor">
+    <form id="formEditor" enctype="multipart/form-data" method="post">
+        <table>
+            <tr>
+                <td> 上传头像:</td>
+                <td>
+                    <input type="file" id="fuImportMultipleShipmentStatus" name="filePathName"/>
+                </td>
+            </tr>
+        </table>
     </form>
+</div>
+<div id="formContainerButtons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok"
+       onclick="javascript:ImportShipmentStatusList()">开始上传</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+       onclick="javascript:$('#formContainer').dialog('close')">取消</a>
 </div>
 <div id="formContainerButtons">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRecord()">确定</a>
@@ -101,18 +115,12 @@
                 },
                 {
                     field: 'memberBirthday', title: '生日', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
+                        type: 'validatebox'
                     }
                 },
                 {
                     field: 'memberPasswd', title: '会员密码', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
+                        type: 'validatebox'
                     },
                     formatter: function (value, row) {
                         return '无法查看';
@@ -120,18 +128,12 @@
                 },
                 {
                     field: 'memberEmail', title: '会员邮箱', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
+                        type: 'validatebox'
                     }
                 },
                 {
                     field: 'memberWw', title: '微信OPENDID', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
+                        type: 'validatebox'
                     }
                 },
                 {
@@ -183,6 +185,12 @@
                         if (value === true) return "启用"
                         else return "禁用";
                     }
+                },
+                {
+                    title: '操作', field: 'option', width: 30, align: 'center',
+                    formatter: function (value, row, index) {
+                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:showFormEdit(' + index + ')">上传头像</a>';
+                    }
                 }
             ]],
             destroyMsg: {
@@ -225,6 +233,45 @@
             }
         });
     };
+
+    function showFormEdit(index, row) {
+        indexGloble = index;
+        $('#formContainer').dialog('open').dialog('center').dialog('setTitle', '上传广告图片');
+    };
+
+    function ImportShipmentStatusList() {
+        var row = grid.edatagrid('getSelected');
+        var rowIndex = grid.edatagrid('getRowIndex', row);
+        if ($("#fuImportMultipleShipmentStatus").val() == "") {
+            $.messager.show({
+                title: "消息",
+                msg: "请至少选择一个需要上传的文件"
+            });
+            return;
+        }
+        // var images = $("#fuImportMultipleShipmentStatus").val().split('\\');
+        // var imageName = images[images.length - 1];
+        $('#formEditor').form('submit', {
+            url: '<%=basePath%>file/saveImg',
+            success: function (result) {
+                if (result.code === -1) {
+                    $.messager.show({
+                        title: "消息",
+                        msg: "更改失败"
+                    });
+                    return;
+                }
+                $('#formContainer').dialog('close');
+                $('#grid').edatagrid('beginEdit', rowIndex);
+                var edt = $('#grid').edatagrid('getEditor', {
+                    index: rowIndex,
+                    field: 'memberPic'
+                });
+                $(edt.target).val(result);
+                $('#grid').edatagrid('endEdit', rowIndex);
+            }
+        })
+    }
 </script>
 <jsp:include page="../common/bottom.jsp"></jsp:include>
 
