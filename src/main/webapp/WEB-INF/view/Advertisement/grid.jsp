@@ -51,11 +51,6 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
        onclick="javascript:$('#formContainer').dialog('close')">取消</a>
 </div>
-<div id="formContainerButtons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRecord()">确定</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
-       onclick="javascript:$('#formContainer').dialog('close')">取消</a>
-</div>
 <table id="grid"></table>
 <div id="msgBox"></div>
 <div id="cropGrow" style="overflow-y:hidden!important;"></div>
