@@ -4,8 +4,10 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <jsp:include page="../common/head.jsp"></jsp:include>
+<style>
+</style>
 <div id="controlBox" style="background-color:orange">
-    <span style="color:white;">订单列表:</span>
+    <span style="color:white;">订单详情列表:</span>
     <input id="genderSearch" type="text" placeholder="名称，类名状态（未写）"/>
 
     <a href="javascript:void(0)" class="easyui-linkbutton c1" iconCls="icon-search" onclick="doSearch()">查询</a>
@@ -35,34 +37,35 @@
 <table id="grid"></table>
 <div id="msgBox"></div>
 <div id="cropGrow" style="overflow-y:hidden!important;"></div>
+
 <script>
     var grid;
     var cId;
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '订单清单',
+            title: '订单详情清单',
             method: 'post',
-            url: '<%=basePath%>GoodsComment/getData',
-            saveUrl: '<%=basePath%>GoodsComment/insert',
-            updateUrl: '<%=basePath%>GoodsComment/update',
-            destroyUrl: '<%=basePath%>GoodsComment/delete',
+            url: '<%=basePath%>OrderInfoGoods/getData',
+            saveUrl: '<%=basePath%>OrderInfoGoods/insert',
+            updateUrl: '<%=basePath%>OrderInfoGoods/update',
+            destroyUrl: '<%=basePath%>OrderInfoGoods/delete',
             border: true,
             rownumbers: true,
-            remoteSort: true,
-            nowrap: false,
+            remoteSort: false,
+            nowrap: true,
             singleSelect: true,
             fitColumns: true,
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "scommId",
+            idField: "recId",
             columns: [[
                 {
-                    field: 'scommId', title: '评论id', width: 20, sortable: true, align: 'center'
+                    field: 'recId', title: '订单商品表索引id', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'goodisId', title: '评论的商品ID', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'orderId', title: '订单id', width: 20, sortable: true, align: 'center',editor:{
                         type: 'validatebox',
                         options: {
                             required: true
@@ -70,7 +73,29 @@
                     }
                 },
                 {
-                    field: 'scommContent', title: '评论内容', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'goodsId', title: '商品id', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
+                    }
+                },
+                {
+                    field: 'goodsName', title: '商品名称', width: 20, sortable: true, align: 'center', editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
+                    }
+                },
+                {
+                    field: 'goodsPrice', title: '商品价格', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true
@@ -78,29 +103,20 @@
                     }
                 },
                 {
-                    field: 'scommMemberid', title: '会员id', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
-                    }
-                },
-                {
-                    field: 'scommMembername', title: '会员名称', width: 20, sortable: true, align: 'center', editor: {
+                    field: 'goodsPayPrice', title: '商品实际成交价', width: 20, sortable: true, align: 'center', editor: {
                         type: 'validatebox',
                         options: {
                             required: true,
                         }
+                    },
+                    formatter: function (value, row) {
+                        return '<span title=' + value + '>' + value + '</span>';
                     }
                 },
                 {
-                    field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center'
-                },
-                {
-                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'
-                },
-                {
-                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center'
+                    field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
+                },{
+                    field: 'updatedTime', title: '修改时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
             destroyMsg: {
@@ -133,7 +149,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>GoodsComment/delete', row, function (data) {
+                $.post('<%=basePath%>OrderInfoGoods/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg

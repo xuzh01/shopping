@@ -16,6 +16,16 @@ spring:
 # 解决时间date,string互转错误
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+# JavaMailSender 邮件发送的配置
+  mail:
+    host: smtp.qq.com
+    username: 1047615304@qq.com
+    properties:
+      mail :
+        smtp.auth : true
+        smtp.starttls.enable: true
+        smtp.starttls.required: true
+    password: ncuqyhdbbntcbdaj
 
 mybatis:
 #  type-aliases-package: cn.edu.jxufe.shopping.entity

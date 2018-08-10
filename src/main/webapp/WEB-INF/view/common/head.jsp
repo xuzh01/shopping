@@ -64,7 +64,7 @@
                     <li><span><a href="<%=basePath%>Advertisement/grid">广告管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsInfo/grid">商品管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsCategory/grid">类别管理模块</a></span></li>
-                    <li><span><a href="#">系统设置模块</a></span></li>
+                    <li><span><a href="<%=basePath%>OrderInfoGoods/grid">系统设置模块</a></span></li>
                 </ul>
             </li>
         </ul>

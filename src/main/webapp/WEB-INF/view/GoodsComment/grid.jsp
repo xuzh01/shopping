@@ -37,7 +37,11 @@
 <div id="cropGrow" style="overflow-y:hidden!important;"></div>
 <script>
     var grid;
-    var cId;
+    var cId
+    function intToDate(i){
+        var d=new Date(i);
+        return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+    }
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
@@ -100,13 +104,24 @@
                     }
                 },
                 {
-                    field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center'
+                    field: 'scommTime', title: '评论时间', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row) {
+                        return intToDate(value);
+                    }
                 },
                 {
-                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center'
+                    field: 'createTime', title: '创建时间', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row)
+                    {
+                        return intToDate(value);
+                    }
                 },
                 {
-                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center'
+                    field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row)
+                    {
+                        return intToDate(value);
+                    }
                 }
             ]],
             destroyMsg: {
