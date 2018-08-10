@@ -26,11 +26,20 @@
 </div>
 <div id="formContainer" class="easyui-dialog" style="width:800px;height:420px;padding:10px 10px" closed="true"
      buttons="#formContainerButtons">
-    <form id="formEditor">
+    <form id="formEditor" enctype="multipart/form-data" method="post">
+        <table>
+            <tr>
+                <td> 上传头像:</td>
+                <td>
+                    <input type="file" id="fuImportMultipleShipmentStatus" name="filePathName"/>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 <div id="formContainerButtons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveRecord()">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok"
+       onclick="javascript:ImportShipmentStatusList()">开始上传</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
        onclick="javascript:$('#formContainer').dialog('close')">取消</a>
 </div>
@@ -119,6 +128,12 @@
                 },
                 {
                     field: 'updateTime', title: '更新时间', width: 20, sortable: true, align: 'center'
+                },
+                {
+                    title: '操作', field: 'option', width: 30, align: 'center',
+                    formatter: function (value, row, index) {
+                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:showFormEdit(' + index + ')">上传文章图片</a>';
+                    }
                 }
             ]],
             destroyMsg: {
@@ -161,6 +176,44 @@
             }
         });
     };
+
+    function showFormEdit(index, row) {
+        indexGloble = index;
+        $('#formContainer').dialog('open').dialog('center').dialog('setTitle', '上传广告图片');
+    };
+
+    function ImportShipmentStatusList() {
+        var row = grid.edatagrid('getSelected');
+        var rowIndex = grid.edatagrid('getRowIndex', row);
+        if ($("#fuImportMultipleShipmentStatus").val() == "") {
+            $.messager.show({
+                title: "消息",
+                msg: "请至少选择一个需要上传的文件"
+            });
+            return;
+        }
+
+        $('#formEditor').form('submit', {
+            url: '<%=basePath%>file/saveImg',
+            success: function (result) {
+                if (result.code === -1) {
+                    $.messager.show({
+                        title: "消息",
+                        msg: "更改失败"
+                    });
+                    return;
+                }
+                $('#formContainer').dialog('close');
+                $('#grid').edatagrid('beginEdit', rowIndex);
+                var edt = $('#grid').edatagrid('getEditor', {
+                    index: rowIndex,
+                    field: 'articlePicUrl'
+                });
+                $(edt.target).val(result);
+                $('#grid').edatagrid('endEdit', rowIndex);
+            }
+        })
+    }
 </script>
 <jsp:include page="../common/bottom.jsp"></jsp:include>
 

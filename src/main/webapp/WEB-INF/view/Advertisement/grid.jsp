@@ -205,8 +205,7 @@
             });
             return;
         }
-        // var images = $("#fuImportMultipleShipmentStatus").val().split('\\');
-        // var imageName = images[images.length - 1];
+
         $('#formEditor').form('submit', {
             url: '<%=basePath%>file/saveImg',
             success: function (result) {
