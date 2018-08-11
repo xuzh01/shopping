@@ -50,7 +50,6 @@ public class ArticleInfoImpl implements ArticleInfoService {
     @Override
     public List<Articleinfo> findByCondition(Articleinfo obj) {
         return articleinfoDAO.findByCondition(obj);
-        //return articleinfoDAO.selectByExampleWithBLOBs(null);
     }
 
     @Override
