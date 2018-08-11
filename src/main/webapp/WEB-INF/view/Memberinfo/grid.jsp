@@ -61,7 +61,7 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品信息清单',
+            title: '会员信息清单',
             method: 'post',
             url: '<%=basePath%>Memberinfo/getData',
             saveUrl: '<%=basePath%>Memberinfo/insert',
@@ -86,7 +86,7 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<img  height="35px" src="/' + value + '" />';
+                        return '<img  height="35px" src="<%=basePath%>' + value + '" />';
                     }
                 },
                 {

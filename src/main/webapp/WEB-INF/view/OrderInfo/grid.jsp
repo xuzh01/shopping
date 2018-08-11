@@ -177,7 +177,7 @@
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
-            title: '商品评论清单',
+            title: '订单清单',
             method: 'post',
             url: '<%=basePath%>OrderInfo/getData',
             saveUrl: '<%=basePath%>OrderInfo/insert',

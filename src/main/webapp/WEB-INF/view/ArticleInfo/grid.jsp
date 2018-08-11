@@ -80,7 +80,7 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<img  height="35px" src="/' + value + '" />';
+                        return '<img  height="35px" src="<%=basePath%>' + value + '" />';
                     }
                 },
                 {
