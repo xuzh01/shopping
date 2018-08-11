@@ -24,12 +24,13 @@ public class ArticleInfoImpl implements ArticleInfoService {
     private ArticleinfoDAO articleinfoDAO;
     @Override
     public List findAll() {
-        return articleinfoDAO.selectByExample(null);
+        return articleinfoDAO.selectByExampleWithBLOBs(null);
     }
 
     @Override
     public int save(Articleinfo articleinfo) {
         articleinfo.setCreateTime(new Date());
+        //articleinfo.setArticleShow(true);
         return articleinfoDAO.insert(articleinfo);
     }
 
