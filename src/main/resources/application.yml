@@ -9,6 +9,12 @@ spring:
     username: eshop
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+    #连接池的配置信息
+    initialSize: 5
+    minIdle: 5
+    maxActive: 40
+    timeBetweenEvictionRunsMillis: 3600000
+    minEvictableIdleTimeMillis: 3600000
   mvc:
     view:
       prefix: /WEB-INF/view/
