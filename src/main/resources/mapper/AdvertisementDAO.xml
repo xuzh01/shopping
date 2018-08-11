@@ -275,7 +275,7 @@
         from advertisement
         <where>
             <if test="advTitle != null">
-                or goods_id like concat('%',#{advTitle,jdbcType=VARCHAR},'%')
+                or  adv_title like concat('%',#{advTitle,jdbcType=VARCHAR},'%')
             </if>
         </where>
     </select>
