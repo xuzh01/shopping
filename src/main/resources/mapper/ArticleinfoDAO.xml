@@ -320,9 +320,11 @@
   </update>
 
 
-  <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo" resultMap="BaseResultMap">
+  <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.Articleinfo" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List" />
     from articleinfo
     <where>
       <if test="articleContent!=null">

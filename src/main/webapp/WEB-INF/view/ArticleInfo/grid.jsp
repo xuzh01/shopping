@@ -88,13 +88,13 @@
                         type: 'combobox',
                         options: {
                             required: true,
-                            data: [{key: 1, value: '是'}, {key: 0, value: '否'}],
+                            data: [{key: true, value: '是'}, {key: false, value: '否'}],
                             valueField: 'key',
                             textField: 'value',
                             panelHeight: 'auto'
                         }
                     }, formatter: function (value, row) {
-                        if (value === 1) return "是";
+                        if (value === true) return "是";
                         else return "否";
                     }
                 },

@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface ArticleinfoDAO extends MyBatisBaseDao<Articleinfo, Integer, ArticleinfoExample> {
     public List<Articleinfo> findByCondition(Articleinfo articleinfo);
-
+    List selectByExampleWithBLOBs(Object o);
 }
