@@ -88,7 +88,6 @@
             type: "POST",//提交的方式
             dataType: "text",
             beforeSend: function () {
-                alert("dsa")
                 var h = document.body.clientHeight;
                 $("<div class=\"datagrid-mask\"></div>").css({
                     display: "block",
@@ -100,7 +99,6 @@
                     left: ($(document.body).outerWidth(true) - 190) / 2,
                     top: (h - 45) / 2
                 });
-
             },
             success: function (data) {
                 if (data != "") {
