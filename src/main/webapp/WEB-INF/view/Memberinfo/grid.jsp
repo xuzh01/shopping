@@ -86,7 +86,7 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<img  height="35px" src="/' + value + '" />';
+                        return '<img  height="35px" src="' + value + '" />';
                     }
                 },
                 {
@@ -256,6 +256,7 @@
                     });
                     return;
                 }
+                console.log(result);
                 $('#formContainer').dialog('close');
                 $('#grid').edatagrid('beginEdit', rowIndex);
                 var edt = $('#grid').edatagrid('getEditor', {
