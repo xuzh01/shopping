@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -37,10 +38,11 @@ public class LoginController {
     }
 
     @RequestMapping("Logout")
-    public void reset(HttpSession session, HttpServletResponse response) {
+    public void reset(HttpSession session, HttpServletResponse response, HttpServletRequest request) {
         try {
             session.invalidate();
-            response.sendRedirect("/");
+            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+            response.sendRedirect(basePath);
         } catch (Exception e) {
 
         }

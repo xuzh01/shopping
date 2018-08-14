@@ -18,6 +18,7 @@
     <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="<%=basePath%>ext/easyui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
+    <script type="text/javascript" src="<%=basePath%>ext/easyui/plugins/datagrid-detailview.js"></script>
     <style>
         html, body {
             width: 100%;

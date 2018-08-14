@@ -401,7 +401,7 @@
         from memberinfo
         <where>
             <if test="memberName != null">
-                or goods_id like concat('%',#{memberName,jdbcType=VARCHAR},'%')
+                or member_name like concat('%',#{memberName,jdbcType=VARCHAR},'%')
             </if>
         </where>
     </select>

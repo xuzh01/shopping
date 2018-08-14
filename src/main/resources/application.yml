@@ -4,6 +4,7 @@ server:
     context-path: /
 spring:
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
   #解决乱码必加characterEncoding=utf-8
     url: jdbc:mysql://111.230.223.115/eshop?useSSL=false&characterEncoding=utf-8
     username: eshop
@@ -13,8 +14,9 @@ spring:
     initialSize: 5
     minIdle: 5
     maxActive: 40
-    timeBetweenEvictionRunsMillis: 3600000
-    minEvictableIdleTimeMillis: 3600000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+
   mvc:
     view:
       prefix: /WEB-INF/view/

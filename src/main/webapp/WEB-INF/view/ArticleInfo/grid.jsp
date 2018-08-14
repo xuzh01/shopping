@@ -80,7 +80,8 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<img  height="35px" src="/' + value + '" />';
+                        if (value.search("www") != -1) return value;
+                        else  return '<img  height="35px" src="<%=basePath%>' + value + '" />';
                     }
                 },
                 {

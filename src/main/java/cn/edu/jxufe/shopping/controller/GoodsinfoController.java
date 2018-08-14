@@ -94,7 +94,8 @@ public class GoodsinfoController {
             }
             return message;
         } catch (Exception e) {
-            log.trace(e.getMessage());
+            e.printStackTrace();
+//            log.trace(e.getMessage());
             message.setCode(-1);
             return message;
         }
