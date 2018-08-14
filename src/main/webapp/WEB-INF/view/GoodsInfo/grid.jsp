@@ -265,7 +265,8 @@
                 {
                     field: 'goodsImage', title: '商品默认封面图片', width: 20, sortable: true, align: 'center',
                     formatter: function (value, row) {
-                        return '<img  height="35px" src="<%=basePath%>' + value + '" />';
+                        if (value.search("www") != -1) return value;
+                        else return '<img  height="35px" src="<%=basePath%>' + value + '" />';
                     }
                 },
                 {
@@ -315,14 +316,20 @@
                     height: 'auto',
                     columns: [[
                         {
-                            field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center'
+                            field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center',
+                            formatter: function (value, row, index) {
+                                return "￥" + parseInt(value) / 100 + "元"
+                            }
                         },
                         {
                             field: 'goodsSellPrice',
                             title: '商品现价',
                             width: 20,
                             sortable: true,
-                            align: 'center'
+                            align: 'center',
+                            formatter: function (value, row, index) {
+                                return "￥" + parseInt(value) / 100 + "元"
+                            }
                         },
                         {
                             field: 'goodsClick', title: '商品浏览数', width: 20, sortable: true, align: 'center'
