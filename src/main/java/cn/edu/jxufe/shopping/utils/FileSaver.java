@@ -4,8 +4,6 @@ import com.aliyun.oss.OSSClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
@@ -47,17 +45,6 @@ public class FileSaver {
                 ossClient.shutdown();
             }
         }
-
-
-//            try {
-//                String fileName = imagesPath + UUID.randomUUID().toString() + file.getOriginalFilename();
-//                String filePath = request.getSession().getServletContext().getRealPath("/") + fileName;
-//                file.transferTo(new File(filePath));
-//                rs = fileName;
-//            } catch (Exception e) {
-//                e.getMessage();
-//            }
-//        }
         return rs;
     }
 }
