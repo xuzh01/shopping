@@ -17,15 +17,17 @@ import java.io.PrintWriter;
  */
 public class LoginFilter implements HandlerInterceptor {
     private static Logger log = Logger.getLogger(LoginFilter.class);
+
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         log.info("---------------------开始进入请求地址拦截----------------------------");
         HttpSession session = httpServletRequest.getSession();
-        if(!StringUtils.isEmpty(session.getAttribute("username"))){
+        if (!StringUtils.isEmpty(session.getAttribute("username"))) {
             return true;
-        }
-        else{
-            httpServletResponse.sendRedirect("/index.html");
+        } else {
+            String path = httpServletRequest.getContextPath();
+            String basePath = httpServletRequest.getScheme() + "://" + httpServletRequest.getServerName() + ":" + httpServletRequest.getServerPort() + path + "/";
+            httpServletResponse.sendRedirect(basePath + "index.html");
             return false;
         }
     }
