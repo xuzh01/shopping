@@ -115,7 +115,12 @@
                 <td><input name='isDel' type="number"
                            required="required"/></td>
                 <td>上传者:</td>
-                <td><input name='memberId' type="number"
+                <td><input name='memberId' class="easyui-combobox"
+                           panelHeight="auto"
+                           data-options=" editable:false,
+						        valueField:'memberId',
+						        textField:'memberName',
+						        url:'<%=basePath%>Memberinfo/getAll'"
                            required="required"/></td>
             </tr>
             <tr>
@@ -195,7 +200,12 @@
                 <td><input name='isDel' type="number"
                            required="required"/></td>
                 <td>上传者:</td>
-                <td><input name='memberId' type="number"
+                <td><input name='memberId' class="easyui-combobox"
+                           panelHeight="auto"
+                           data-options=" editable:false,
+						        valueField:'memberId',
+						        textField:'memberName',
+						        url:'<%=basePath%>Memberinfo/getAll'"
                            required="required"/></td>
             </tr>
             <tr>
@@ -218,6 +228,24 @@
 <script>
     var grid;
     var cId;
+
+    function getMenName(id) {
+        var rs;
+        $.ajax({
+            url: "<%=basePath%>Memberinfo/byId?id=" + id,
+            async: false,
+            contentType: "application/json",
+            cache: true,
+            type: "GET",
+            success: function (data) {
+                if (data && data.memberName)
+                    rs = data.memberName;
+                else rs = "网络出错，请尝试刷新";
+            }
+        })
+        return rs;
+    }
+
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
@@ -276,7 +304,10 @@
                     }
                 },
                 {
-                    field: 'memberId', title: '上传者', width: 20, sortable: true, align: 'center'
+                    field: 'memberId', title: '上传者', width: 20, sortable: true, align: 'center',
+                    formatter: function (value, row) {
+                        return getMenName(value);
+                    }
                 },
                 {
                     title: '操作', field: 'option', width: 30, align: 'center',
@@ -315,14 +346,21 @@
                     height: 'auto',
                     columns: [[
                         {
-                            field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center'
+                            field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center',
+                            formatter: function (value, row) {
+                                return "￥" + parseInt(value) / 100 + "元";
+                            }
+
                         },
                         {
                             field: 'goodsSellPrice',
                             title: '商品现价',
                             width: 20,
                             sortable: true,
-                            align: 'center'
+                            align: 'center',
+                            formatter: function (value, row) {
+                                return "￥" + parseInt(value) / 100 + "元";
+                            }
                         },
                         {
                             field: 'goodsClick', title: '商品浏览数', width: 20, sortable: true, align: 'center'

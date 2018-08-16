@@ -63,4 +63,13 @@ public class MemberInfoImp implements MemberInfoService {
         });
         return easyUIData;
     }
+
+    @Override
+    public Memberinfo findById(Integer id) {
+        MemberinfoExample memberinfoExample = new MemberinfoExample();
+        memberinfoExample.createCriteria().andMemberIdEqualTo(id);
+        List<Memberinfo> list = memberinfoDAO.selectByExample(memberinfoExample);
+        if (list.size() > 0) return list.get(0);
+        else return null;
+    }
 }

@@ -9,4 +9,5 @@ import cn.edu.jxufe.shopping.entity.Memberinfo;
  * github:https://github.com/love390/
  */
 public interface MemberInfoService extends PublicService<Memberinfo> {
+    Memberinfo findById(Integer id);
 }

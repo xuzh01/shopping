@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @Author cgg 891842749@qq.com
  * @Date 2018-08-08 14:51:50
@@ -47,6 +49,29 @@ public class MemberinfoController {
         } catch (Exception e) {
             log.trace(e.getMessage());
             return new EasyUIData();
+        }
+    }
+
+    @RequestMapping(value = "getAll")
+    @ResponseBody
+    public List findAll() {
+        try {
+            return memberInfoService.findAll();
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "byId")
+    @ResponseBody
+    public Memberinfo findDataById(Integer id) {
+        try {
+            log.info(id);
+            return memberInfoService.findById(id);
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return null;
         }
     }
 
