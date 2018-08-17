@@ -27,8 +27,10 @@ public class WxImp implements WxService {
         url = url.replace("ACCESS_TOKEN", this.getAccessToken());
         List<String> list = this.getAllUser();
         for (int i = 0; i < list.size(); i++) {
-            jsonStr = jsonStr.replace("OPENID", list.get(i));
-            String rs = RequestUtils.post(url, jsonStr);
+            String tmp = jsonStr;
+            tmp = tmp.replace("OPENID", list.get(i));
+            System.out.println(tmp);
+            String rs = RequestUtils.post(url, tmp);
             System.out.println(rs);
         }
     }

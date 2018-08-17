@@ -69,7 +69,6 @@ public class ArticleInfoImpl implements ArticleInfoService {
         articleinfoExample.createCriteria().andArticleIdEqualTo(articleinfo.getArticleId());
 
         this.pushMSG(articleinfo);
-
         return articleinfoDAO.updateByExample(articleinfo, articleinfoExample);
     }
 
