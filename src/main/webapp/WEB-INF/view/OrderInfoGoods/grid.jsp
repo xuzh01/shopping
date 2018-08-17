@@ -59,6 +59,7 @@
     var orderid=a.split("=")[1];
     console.log("订单号："+orderid);
     $(document).ready(function () {
+
         //配置表格
         grid = $('#grid').edatagrid({
             title: '订单详情清单',
@@ -149,7 +150,12 @@
                 });
             }
         });
+        grid.datagrid("resize",{
+            height:($(window).height()-36)
+        });
     });
+
+
 
     function doSearch() {
         grid.datagrid("load", {
