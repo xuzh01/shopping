@@ -6,9 +6,11 @@ import cn.edu.jxufe.shopping.entity.ArticleinfoExample;
 import cn.edu.jxufe.shopping.entity.GoodsComment;
 import cn.edu.jxufe.shopping.mapper.ArticleinfoDAO;
 import cn.edu.jxufe.shopping.service.ArticleInfoService;
+import cn.edu.jxufe.shopping.service.WxService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -22,29 +24,53 @@ import java.util.List;
 public class ArticleInfoImpl implements ArticleInfoService {
     @Autowired
     private ArticleinfoDAO articleinfoDAO;
+
+    @Autowired
+    private WxService wxService;
+
     @Override
     public List findAll() {
         return articleinfoDAO.selectByExampleWithBLOBs(null);
     }
 
+    private String jsonStr = "{\n" +
+            "    \"touser\":\"OPENID\",\n" +
+            "    \"msgtype\":\"news\",\n" +
+            "    \"news\":{\n" +
+            "        \"articles\": [\n" +
+            "         {\n" +
+            "             \"title\":\"TITLE\",\n" +
+            "             \"description\":\"DESCRIPTION\",\n" +
+            "             \"url\":\"URL\",\n" +
+            "             \"picurl\":\"PIC_URL\"\n" +
+            "         }\n" +
+            "         ]\n" +
+            "    }\n" +
+            "}";
+
+
     @Override
     public int save(Articleinfo articleinfo) {
         articleinfo.setCreateTime(new Date());
         //articleinfo.setArticleShow(true);
+        this.pushMSG(articleinfo);
         return articleinfoDAO.insert(articleinfo);
     }
 
     @Override
     public int delete(Integer id) {
-        return  articleinfoDAO.deleteByPrimaryKey(id);
+        return articleinfoDAO.deleteByPrimaryKey(id);
     }
 
     @Override
     public int update(Articleinfo articleinfo) {
         articleinfo.setUpdateTime(new Date());
-        ArticleinfoExample articleinfoExample=new ArticleinfoExample();
+        ArticleinfoExample articleinfoExample = new ArticleinfoExample();
         articleinfoExample.createCriteria().andArticleIdEqualTo(articleinfo.getArticleId());
-        return articleinfoDAO.updateByExample(articleinfo,articleinfoExample);
+
+        this.pushMSG(articleinfo);
+
+        return articleinfoDAO.updateByExample(articleinfo, articleinfoExample);
     }
 
     @Override
@@ -60,6 +86,14 @@ public class ArticleInfoImpl implements ArticleInfoService {
         easyUIData.setTotal(pageInfo.getTotal());
         easyUIData.setRows(pageInfo.getList());
         return easyUIData;
+    }
+
+    private void pushMSG(Articleinfo articleinfo) {
+        jsonStr = jsonStr.replace("PIC_URL", articleinfo.getArticlePicUrl());
+        jsonStr = jsonStr.replace("URL", articleinfo.getArticlePicUrl());
+        jsonStr = jsonStr.replace("TITLE", articleinfo.getArticleTitle());
+        jsonStr = jsonStr.replace("DESCRIPTION", articleinfo.getArticleContent());
+        wxService.sendImgTextMSGToALL(jsonStr);
     }
 }
 
