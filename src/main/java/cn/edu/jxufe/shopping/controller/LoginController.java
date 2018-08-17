@@ -54,6 +54,7 @@ public class LoginController {
         try {
             session.invalidate();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+            System.out.println(basePath);
             response.sendRedirect(basePath);
         } catch (Exception e) {
 

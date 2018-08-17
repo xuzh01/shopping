@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -22,14 +25,20 @@ public class ResetPwdController {
     private AdminDAO adminDAO;
 
     @PostMapping("/resetPwd")
-    public String resetPwd(String password, HttpSession session){
+    public void resetPwd(String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         AdminExample adminExample=new AdminExample();
         Admin admin= (Admin)session.getAttribute("username");
         admin.setAdminPassword(password);
         admin.setUpdatedTime(new Date());
         adminExample.createCriteria().andAdminIdEqualTo(admin.getAdminId());
         adminDAO.updateByExample(admin,adminExample);
-        return "Memberinfo/grid";
+        try {
+            session.invalidate();
+            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+            response.sendRedirect(basePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

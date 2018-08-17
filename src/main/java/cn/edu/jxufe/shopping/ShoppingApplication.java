@@ -9,7 +9,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 @MapperScan("cn.edu.jxufe.shopping.mapper")
-@ServletComponentScan
 public class ShoppingApplication extends SpringBootServletInitializer {
 
     @Override
