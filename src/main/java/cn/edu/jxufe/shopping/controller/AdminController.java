@@ -126,6 +126,8 @@ public class AdminController {
         log.info(admin);
         admin.setCreatedTime(new Date());
         admin.setAdminLoginNum(0);
+        if (StringUtils.isEmpty(admin.getIsDisable())) admin.setIsDisable(0);
+        if (StringUtils.isEmpty(admin.getAdminIsSuper())) admin.setAdminIsSuper(0);
         Message message = new Message();
         Admin cur = (Admin) sess.getAttribute("username");
         int num = 0;
@@ -139,22 +141,20 @@ public class AdminController {
                 if (cur.getAdminIsSuper().equals(1)) {//超级管理员
                     num = adminService.save(admin);
                 } else {
-                    if (!admin.getAdminId().equals(cur.getAdminId())) {
-                        message.setCode(-1);
-                        message.setMsg("当前管理员权限限制，只能更改自己的信息");
-                        return message;
-                    } else num = adminService.save(admin);
-                }
-                if (num > 0) {
-                    message.setCode(0);
-                    message.setMsg("增加管理员信息成功");
-                } else {
                     message.setCode(-1);
-                    message.setMsg("增加管理员信息失败");
+                    message.setMsg("只有超级管理员才有该权限");
+                    return message;
                 }
             }
+            if (num > 0) {
+                message.setCode(0);
+                message.setMsg("增加管理员信息成功");
+            } else {
+                message.setCode(-1);
+                message.setMsg("增加管理员信息失败");
+            }
         } catch (Exception e) {
-            log.trace(e.getMessage());
+            e.printStackTrace();
             message.setCode(-1);
             message.setMsg("增加失败");
         }
