@@ -39,7 +39,7 @@ public class MailController {
             helper.setSubject("主题：密码重置");
             StringBuffer sb = new StringBuffer();
             sb.append("<h1>密码重置</h1>")
-                    .append("密码已重置为<span style='color:#F00'>"+password+"</span>，请尽快<a href='www.baidu.com'>修改您的密码<a>");
+                    .append("密码已重置为<span style='color:#F00'>"+password+"</span>，请尽快<a href='www.com.baidu.com'>修改您的密码<a>");
             helper.setText(sb.toString(), true);
         } catch (Exception e) {
             e.printStackTrace();

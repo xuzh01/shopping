@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Author :'徐真华'
  * Created by '徐真华' on 2018/8/7.
@@ -76,6 +78,14 @@ public class ArticleInfoController {
             message.setMsg("更新文章失败");
         }
         return message;
+    }
+
+    @RequestMapping("/updateCont")
+    public String updateCont(int articleId,String Content){
+        Articleinfo article = articleInfoService.getById(articleId);
+        article.setArticleContent(Content);
+        int num = articleInfoService.update(article);
+        return "ArticleInfo/grid";
     }
 
     @RequestMapping(value = "insert")

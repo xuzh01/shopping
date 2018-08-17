@@ -94,6 +94,12 @@ public class ArticleInfoImpl implements ArticleInfoService {
         jsonStr = jsonStr.replace("DESCRIPTION", articleinfo.getArticleContent());
         wxService.sendImgTextMSGToALL(jsonStr);
     }
+
+
+    @Override
+    public Articleinfo getById(int id) {
+        return articleinfoDAO.selectByPrimaryKey(id);
+    }
 }
 
 /*

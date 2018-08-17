@@ -35,6 +35,7 @@ public class ResetPwdController {
         try {
             session.invalidate();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+            System.out.println(basePath);
             response.sendRedirect(basePath);
         } catch (IOException e) {
             e.printStackTrace();
