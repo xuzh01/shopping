@@ -244,6 +244,7 @@
 <script>
     var grid;
     var cId;
+    var indexGloble;
 
     function getMenName(id) {
         var rs;
@@ -309,6 +310,12 @@
                 },
                 {
                     field: 'goodsImage', title: '商品默认封面图片', width: 20, sortable: true, align: 'center',
+                    editor: {
+                        type: 'validatebox',
+                        options: {
+                            required: false
+                        }
+                    },
                     formatter: function (value, row) {
                         return '<img  height="35px" src="' + value + '" />';
                     }
@@ -344,12 +351,15 @@
                     msg: '是否删除选中记录?'
                 }
             },
+            onDblClickRow: function (rowIndex, rowData) {
+                grid.edatagrid('endEdit', rowIndex);
+            },
             onSuccess: function (index, row) {
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
-                grid.edatagrid("load",{ });
+                grid.edatagrid("load", {});
             },
             view: detailview,
             detailFormatter: function (index, row) {
@@ -361,6 +371,7 @@
                     rownumbers: false,
                     data: new Array(row),
                     height: 'auto',
+                    autoSave: true,
                     columns: [[
                         {
                             field: 'goodsPrice', title: '商品原价', width: 20, sortable: true, align: 'center',
@@ -427,7 +438,7 @@
     });
 
     function doSearch() {
-        grid.datagrid("load", {
+        grid.edatagrid("load", {
             text: $("#genderSearch").val()
         })
     };
@@ -462,21 +473,20 @@
             });
             return;
         }
-        // var images = $("#fuImportMultipleShipmentStatus").val().split('\\');
-        // var imageName = images[images.length - 1];
+
         $('#formEditor').form('submit', {
             url: '<%=basePath%>file/saveImg',
             success: function (result) {
                 if (result.code === -1) {
                     $.messager.show({
                         title: "消息",
-                        msg: "更改失败"
+                        msg: result.msg
                     });
                     return;
                 }
                 $('#formContainer').dialog('close');
-                $('#grid').edatagrid('beginEdit', rowIndex);
-                var edt = $('#grid').edatagrid('getEditor', {
+                grid.edatagrid('beginEdit', rowIndex);
+                var edt = grid.edatagrid('getEditor', {
                     index: rowIndex,
                     field: 'goodsImage'
                 });
@@ -484,7 +494,8 @@
                 $('#grid').edatagrid('endEdit', rowIndex);
             }
         })
-    };
+    }
+
     //
     // function editRecord(index) {
     //     // $('#editContainer').form("reset");
