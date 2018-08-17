@@ -110,7 +110,7 @@
                         }
                     },
                     formatter: function (value, row) {
-                        if (value === 1) return "禁用"
+                        if (value === 0) return "禁用"
                         else return "正常";
                     }
                 },
