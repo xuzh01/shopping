@@ -73,10 +73,7 @@
                 },
                 {
                     field: 'adminPassword', title: '管理员密码', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox',
-                        options: {
-                            required: true
-                        }
+                        type: 'validatebox'
                     },
                     formatter: function (value, row) {
                         return '密码不予显示';
