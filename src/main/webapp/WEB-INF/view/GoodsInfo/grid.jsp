@@ -270,7 +270,7 @@
             method: 'post',
             url: '<%=basePath%>GoodsInfo/getData',
             <%--saveUrl: '<%=basePath%>GoodsInfo/insert',--%>
-            <%--updateUrl: '<%=basePath%>GoodsInfo/update',--%>
+            updateUrl: '<%=basePath%>GoodsInfo/update',
             destroyUrl: '<%=basePath%>GoodsInfo/delete',
             border: true,
             rownumbers: true,
