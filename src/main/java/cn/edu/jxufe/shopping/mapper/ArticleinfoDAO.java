@@ -14,5 +14,7 @@ import java.util.List;
 public interface ArticleinfoDAO extends MyBatisBaseDao<Articleinfo, Integer, ArticleinfoExample> {
     public List<Articleinfo> findByCondition(Articleinfo articleinfo);
     List selectByExampleWithBLOBs(Object o);
-    public Articleinfo selectByPrimaryKey(int id);
+    public Articleinfo selectByPrimaryKey(Articleinfo articleinfo);
+    int updateByPrimaryKeyWithBLOBs(Articleinfo articleinfo);
+    Articleinfo selectByPrimaryKey(int i);
 }

@@ -34,10 +34,14 @@
 <script type="text/javascript">
     var ue = UE.getEditor('container');
     var a=document.location.href;
-    var con=a.split("?")[1];
+    var b=decodeURI(a)
+    var con=b.split("?")[1];
     var articleId= con.split("&&")[0].split("=")[1];
     var Cont=con.split("&&")[1].split("=")[1];
-    UE.getEditor("container").setContent(Cont);
+    console.log(Cont)
+    ue.ready(function() {//编辑器初始化完成再赋值
+        ue.setContent(Cont);  //赋值给UEditor
+    });
     $('#test').click(function () {
         var htm=UE.getEditor('container').getContent()
         console.log(htm);
@@ -45,11 +49,11 @@
             url:"ArticleInfo/updateCont",
             type:"post",
             data:{"Content":htm,"articleId":articleId},
-            success:function () {
-                console.log("保存成功");
+            success:function (data) {
+                if (data!=null) window.location.href="ArticleInfo/grid"
             },
             error:function () {
-                console.log("传送失败")
+                alert("发送失败")
             }
         })
     })
