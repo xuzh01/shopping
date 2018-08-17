@@ -35,17 +35,24 @@ public class LogController {
         try {
             log.info("分页请求" + easyUIDataPageRequest);
             Loginfo loginfo=new Loginfo();
-            try{
-                int i = Integer.parseInt(easyUIDataPageRequest.getText());
-                loginfo.setAdminId(i);
-            }catch (Exception e){
-                e.printStackTrace();
+            if (easyUIDataPageRequest.getText()!=null&&isNumericZidai(easyUIDataPageRequest.getText())){
+                  loginfo.setAdminId(Integer.parseInt(easyUIDataPageRequest.getText()));
             }
+            else loginfo.setAdminId(0);
             return logServiceImpl.findByPage(loginfo, easyUIDataPageRequest.getPage(), easyUIDataPageRequest.getRows());
         } catch (Exception e) {
             log.trace(e.getMessage());
             return new EasyUIData();
         }
+    }
+    private  boolean isNumericZidai(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            System.out.println(str.charAt(i));
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

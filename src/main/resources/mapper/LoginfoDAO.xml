@@ -222,8 +222,8 @@
     <include refid="Base_Column_List"/>
     from loginfo
     <where>
-      <if test="adminId!=null">
-        or adminid =#{adminId,jdbcType=VARCHAR}
+      <if test="adminId!=0">
+        or admin_id =#{adminId}
       </if>
     </where>
   </select>
