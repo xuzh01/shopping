@@ -1,9 +1,11 @@
 package cn.edu.jxufe.shopping.service.imp;
 
 import cn.edu.jxufe.shopping.bean.EasyUIData;
+import cn.edu.jxufe.shopping.entity.GoodsCategory;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
 import cn.edu.jxufe.shopping.entity.GoodsinfoExample;
 import cn.edu.jxufe.shopping.mapper.GoodsinfoDAO;
+import cn.edu.jxufe.shopping.service.GoodsCategoryService;
 import cn.edu.jxufe.shopping.service.GoodsInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -25,6 +27,9 @@ public class GoodsInfoImp implements GoodsInfoService {
     @Autowired
     private GoodsinfoDAO goodsinfoDAO;
 
+    @Autowired
+    private GoodsCategoryService goodsCategoryService;
+
     @Override
     public List findAll() {
         return goodsinfoDAO.selectByExample(new GoodsinfoExample());
@@ -32,6 +37,8 @@ public class GoodsInfoImp implements GoodsInfoService {
 
     @Override
     public int save(Goodsinfo goodsinfo) {
+        GoodsCategory goodsCategory = goodsCategoryService.findById(goodsinfo.getGcId());
+        if (goodsCategory != null) goodsinfo.setGcName(goodsCategory.getCatName());
         return goodsinfoDAO.insert(goodsinfo);
     }
 
@@ -46,6 +53,9 @@ public class GoodsInfoImp implements GoodsInfoService {
 
     @Override
     public int update(Goodsinfo goodsinfo) {
+        GoodsCategory goodsCategory = goodsCategoryService.findById(goodsinfo.getGcId());
+        if (goodsCategory != null) goodsinfo.setGcName(goodsCategory.getCatName());
+
         GoodsinfoExample goodsCategoryExample = new GoodsinfoExample();
         goodsCategoryExample.createCriteria().andGoodsIdEqualTo(goodsinfo.getGoodsId());
         return goodsinfoDAO.updateByExample(goodsinfo, goodsCategoryExample);

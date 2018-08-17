@@ -35,6 +35,7 @@
             fitColumns: true,
             striped: true,
             pagination: true,
+            cache: false,
             autoSave: true,
             idField: "id",
             columns: [[
@@ -55,11 +56,11 @@
                 }
             ]],
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load",{ });
             }
         });
     });

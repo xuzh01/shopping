@@ -69,6 +69,7 @@
             singleSelect: true,
             fitColumns: true,
             striped: true,
+            cache: false,
             pagination: true,
             autoSave: true,
             idField: "articleId",

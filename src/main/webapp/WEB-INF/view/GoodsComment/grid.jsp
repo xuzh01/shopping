@@ -56,6 +56,7 @@
             remoteSort: false,
             nowrap: true,
             singleSelect: true,
+            cache: false,
             fitColumns: true,
             striped: true,
             pagination: true,
@@ -135,11 +136,11 @@
                 }
             },
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load",{ });
             }
         });
     });

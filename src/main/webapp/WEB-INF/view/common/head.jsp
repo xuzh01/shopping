@@ -83,7 +83,7 @@
                         <span>系统设置模块</span>
                         <ul>
                             <li><a href="<%=basePath%>Log/grid">登陆日志</a></li>
-                            <li><a href="<%=basePath%>reset.html">修改密码</a></li>
+                            <li><a href="<%=basePath%>reset/grid">修改密码</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -61,6 +61,7 @@
             destroyUrl: '<%=basePath%>OrderInfo/delete',
             border: true,
             rownumbers: true,
+            cache: false,
             remoteSort: false,
             nowrap: true,
             singleSelect: true,
@@ -168,11 +169,11 @@
                 }
             },
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load",{ });
             }
         });
     });

@@ -14,7 +14,7 @@
 %>
 <jsp:include page="../common/head.jsp"></jsp:include>
 <ul style="list-style: none">
-    <li><a href="<%=basePath%>reset.html">修改密码</a></li>
+    <li><a href="<%=basePath%>reset/grid">修改密码</a></li>
 </ul>
 <jsp:include page="../common/bottom.jsp"></jsp:include>
 

@@ -57,7 +57,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "adminId",
+            idField: "adminId", cache: false,
             columns: [[
                 {
                     field: 'adminId', title: '管理员ID', width: 20, sortable: true, align: 'center'
@@ -135,11 +135,11 @@
                 }
             },
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load",{ });
             }
         });
     });

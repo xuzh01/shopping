@@ -76,6 +76,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
+            cache: false,
             idField: "memberId",
             columns: [[
                 {
@@ -199,11 +200,11 @@
                 }
             },
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load",{ });
             }
         });
     });
