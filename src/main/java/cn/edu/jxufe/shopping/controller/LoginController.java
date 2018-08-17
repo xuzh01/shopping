@@ -1,6 +1,8 @@
 package cn.edu.jxufe.shopping.controller;
 
 import cn.edu.jxufe.shopping.entity.Admin;
+import cn.edu.jxufe.shopping.entity.Loginfo;
+import cn.edu.jxufe.shopping.service.imp.LogInfoServiceImpl;
 import cn.edu.jxufe.shopping.service.imp.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,17 +24,27 @@ import java.util.Date;
 public class LoginController {
     @Autowired
     private LoginServiceImpl loginService;
+    @Autowired
+    private LogInfoServiceImpl logService;
+
 
     @PostMapping("/Login")
     @ResponseBody
-    public String Login(String username, String password, HttpSession session) {
-        System.out.println(username + "\t" + password);
+    public String Login(String username, String password, HttpSession session,HttpServletRequest request) {
         Admin login = loginService.Login(username, password);
         if (login != null) {
             session.setAttribute("username", login);
             login.setAdminLoginNum(login.getAdminLoginNum() + 1);
             login.setAdminLoginTime(new Date());
             loginService.update(login);
+            String ipAddr = request.getRemoteAddr();
+            System.out.println("ip=======>"+ipAddr);
+            Loginfo log=new Loginfo();
+            log.setAdminId(login.getAdminId());
+            log.setAdminName(login.getAdminName());
+            log.setLoginIp(ipAddr);
+            log.setLoginTime(new Date());
+            logService.save(log);
             return "登录成功！！！";
         } else return "";
     }
