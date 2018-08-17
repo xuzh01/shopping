@@ -51,7 +51,8 @@
     var cId;
     function show(i,z) {
         console.log(i+"   "+z)
-        window.location.href="<%=basePath%>Edit?articleId="+i+"&&articleContent="+z;
+        var z= encodeURI("<%=basePath%>Edit?articleId="+i+"&&articleContent="+z);
+        window.location.href=z;
     }
     $(document).ready(function () {
         //配置表格
@@ -125,7 +126,8 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<span title=' + value + '>' + value + '</span>';
+                        console.log(value)
+                        return '<span><xmp>' + value + '</xmp></span>';
                     }
                 },
                 {
@@ -142,7 +144,7 @@
                 },{
                     title: '编辑', field: 'sss', width: 30, align: 'center',
                     formatter: function (value,row) {
-                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:show('+row.articleId+'+','+'+row.articleContent+')">编辑</a>';
+                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:show('+row.articleId+',\''+row.articleContent+'\')">编辑</a>';
                     }
                 }
             ]],

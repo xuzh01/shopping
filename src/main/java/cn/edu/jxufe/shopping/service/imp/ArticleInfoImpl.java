@@ -65,11 +65,8 @@ public class ArticleInfoImpl implements ArticleInfoService {
     @Override
     public int update(Articleinfo articleinfo) {
         articleinfo.setUpdateTime(new Date());
-        ArticleinfoExample articleinfoExample = new ArticleinfoExample();
-        articleinfoExample.createCriteria().andArticleIdEqualTo(articleinfo.getArticleId());
-
         this.pushMSG(articleinfo);
-        return articleinfoDAO.updateByExample(articleinfo, articleinfoExample);
+        return articleinfoDAO.updateByPrimaryKeyWithBLOBs(articleinfo);
     }
 
     @Override
