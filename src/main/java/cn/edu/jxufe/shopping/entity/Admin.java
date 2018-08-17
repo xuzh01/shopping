@@ -34,7 +34,7 @@ public class Admin implements Serializable {
     private Integer adminIsSuper;
 
     /**
-     * 是否禁用
+     * 0禁用,1启用是否禁用
      */
     private Integer isDisable;
 

@@ -64,12 +64,19 @@
                 },
                 {
                     field: 'adminName', title: '管理员名称', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox'
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
+
                     }
                 },
                 {
                     field: 'adminPassword', title: '管理员密码', width: 20, sortable: true, align: 'center', editor: {
-                        type: 'validatebox'
+                        type: 'validatebox',
+                        options: {
+                            required: true
+                        }
                     },
                     formatter: function (value, row) {
                         return '密码不予显示';
@@ -150,7 +157,7 @@
         var row = grid.edatagrid('getSelected');
         $.messager.confirm('删除', '确认删除该记录?', function (r) {
             if (r) {
-                $.post('<%=basePath%>Memberinfo/delete', row, function (data) {
+                $.post('<%=basePath%>Admin/delete', row, function (data) {
                     $.messager.show({
                         title: "消息",
                         msg: data.msg

@@ -11,6 +11,6 @@ import java.util.List;
  * AdminDAO继承基类
  */
 @Repository
-public interface AdminDAO extends MyBatisBaseDao<Admin, Admin, AdminExample> {
+public interface AdminDAO extends MyBatisBaseDao<Admin, Integer, AdminExample> {
     public List<Admin> findByCondition(Admin admin);
 }

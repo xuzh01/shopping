@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.jxufe.shopping.mapper.AdminDAO">
     <resultMap id="BaseResultMap" type="cn.edu.jxufe.shopping.entity.Admin">
-        <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
         <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
         <result column="admin_password" jdbcType="VARCHAR" property="adminPassword"/>
         <result column="admin_login_num" jdbcType="INTEGER" property="adminLoginNum"/>
@@ -98,6 +98,16 @@
             </if>
         </if>
     </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from admin
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
     <delete id="deleteByExample" parameterType="cn.edu.jxufe.shopping.entity.AdminExample">
         delete from admin
         <if test="_parameter != null">
@@ -231,8 +241,50 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.edu.jxufe.shopping.entity.Admin">
+        update admin
+        <set>
+            <if test="adminName != null">
+                admin_name = #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPassword != null">
+                admin_password = #{adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="adminLoginNum != null">
+                admin_login_num = #{adminLoginNum,jdbcType=INTEGER},
+            </if>
+            <if test="adminIsSuper != null">
+                admin_is_super = #{adminIsSuper,jdbcType=INTEGER},
+            </if>
+            <if test="isDisable != null">
+                is_disable = #{isDisable,jdbcType=INTEGER},
+            </if>
+            <if test="adminLoginTime != null">
+                admin_login_time = #{adminLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.edu.jxufe.shopping.entity.Admin">
+    update admin
+    set admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_password = #{adminPassword,jdbcType=VARCHAR},
+      admin_login_num = #{adminLoginNum,jdbcType=INTEGER},
+      admin_is_super = #{adminIsSuper,jdbcType=INTEGER},
+      is_disable = #{isDisable,jdbcType=INTEGER},
+      admin_login_time = #{adminLoginTime,jdbcType=TIMESTAMP},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
 
-    <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.Admin" resultMap="BaseResultMap">
+    <select id="findByCondition" parameterType="cn.edu.jxufe.shopping.entity.Memberinfo" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from admin

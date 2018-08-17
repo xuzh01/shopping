@@ -195,7 +195,7 @@ public class AdminController {
                 }
             }
         } catch (Exception e) {
-            log.trace(e.getMessage());
+            e.printStackTrace();
             message.setCode(-1);
             message.setMsg("删除失败");
         }
