@@ -263,6 +263,7 @@
             fitColumns: true,
             striped: true,
             pagination: true,
+            cache: false,
             autoSave: true,
             idField: "goodsId",
             columns: [[

@@ -57,7 +57,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
-            idField: "adminId",
+            idField: "adminId", cache: false,
             columns: [[
                 {
                     field: 'adminId', title: '管理员ID', width: 20, sortable: true, align: 'center'

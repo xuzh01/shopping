@@ -76,6 +76,7 @@
             striped: true,
             pagination: true,
             autoSave: true,
+            cache: false,
             idField: "memberId",
             columns: [[
                 {

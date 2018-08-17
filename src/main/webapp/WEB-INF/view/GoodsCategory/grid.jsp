@@ -59,6 +59,7 @@
             border: true,
             rownumbers: true,
             remoteSort: false,
+            cache: false,
             nowrap: true,
             singleSelect: true,
             fitColumns: true,

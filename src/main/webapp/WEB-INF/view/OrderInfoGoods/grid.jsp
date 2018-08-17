@@ -55,17 +55,17 @@
 <script>
     var grid;
     var cId;
-    var a=document.location.href;
-    var orderid=a.split("=")[1];
-    console.log("订单号："+orderid);
+    var a = document.location.href;
+    var orderid = a.split("=")[1];
+    console.log("订单号：" + orderid);
     $(document).ready(function () {
 
         //配置表格
         grid = $('#grid').edatagrid({
             title: '订单详情清单',
             method: 'post',
-            url: '<%=basePath%>OrderInfoGoods/getData?orderid='+orderid,
-            saveUrl: '<%=basePath%>OrderInfoGoods/insert?orderid='+orderid,
+            url: '<%=basePath%>OrderInfoGoods/getData?orderid=' + orderid,
+            saveUrl: '<%=basePath%>OrderInfoGoods/insert?orderid=' + orderid,
             updateUrl: '<%=basePath%>OrderInfoGoods/update',
             destroyUrl: '<%=basePath%>OrderInfoGoods/delete',
             border: true,
@@ -73,6 +73,7 @@
             remoteSort: false,
             nowrap: true,
             singleSelect: true,
+            cache: false,
             fitColumns: true,
             striped: true,
             pagination: true,
@@ -128,7 +129,7 @@
                 },
                 {
                     field: 'createdTime', title: '创建时间', width: 20, sortable: true, align: 'center'
-                },{
+                }, {
                     field: 'updatedTime', title: '修改时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
@@ -150,11 +151,10 @@
                 });
             }
         });
-        grid.datagrid("resize",{
-            height:($(window).height()-36)
+        grid.datagrid("resize", {
+            height: ($(window).height() - 36)
         });
     });
-
 
 
     function doSearch() {

@@ -56,6 +56,7 @@
             remoteSort: false,
             nowrap: true,
             singleSelect: true,
+            cache: false,
             fitColumns: true,
             striped: true,
             pagination: true,

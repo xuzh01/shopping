@@ -26,15 +26,16 @@ public class ResetPwdController {
 
     @PostMapping("/resetPwd")
     public void resetPwd(String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        AdminExample adminExample=new AdminExample();
-        Admin admin= (Admin)session.getAttribute("username");
+        AdminExample adminExample = new AdminExample();
+        Admin admin = (Admin) session.getAttribute("username");
         admin.setAdminPassword(password);
         admin.setUpdatedTime(new Date());
         adminExample.createCriteria().andAdminIdEqualTo(admin.getAdminId());
-        adminDAO.updateByExample(admin,adminExample);
+        adminDAO.updateByExample(admin, adminExample);
         try {
             session.invalidate();
-            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+            String path = request.getContextPath();
+            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
             response.sendRedirect(basePath);
         } catch (IOException e) {
             e.printStackTrace();

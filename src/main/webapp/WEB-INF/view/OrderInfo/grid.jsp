@@ -61,6 +61,7 @@
             destroyUrl: '<%=basePath%>OrderInfo/delete',
             border: true,
             rownumbers: true,
+            cache: false,
             remoteSort: false,
             nowrap: true,
             singleSelect: true,
