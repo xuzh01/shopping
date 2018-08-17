@@ -24,12 +24,12 @@
     <a href="javascript:void(0)" class="easyui-linkbutton c5" iconCls="icon-cancel"
        onclick="javascript:deleteRecord();">删除</a>
 </div>
-<div id="formContainer" class="easyui-dialog" style="width:800px;height:420px;padding:10px 10px" closed="true"
+<div id="formContainer" class="easyui-dialog" style="width:460px;height:150px;padding:10px 10px" closed="true"
      buttons="#formContainerButtons">
     <form id="formEditor" enctype="multipart/form-data" method="post">
         <table>
             <tr>
-                <td> 上传头像:</td>
+                <td> 上传文章2图片:</td>
                 <td>
                     <input type="file" id="fuImportMultipleShipmentStatus" name="filePathName"/>
                 </td>
@@ -179,7 +179,7 @@
 
     function showFormEdit(index, row) {
         indexGloble = index;
-        $('#formContainer').dialog('open').dialog('center').dialog('setTitle', '上传广告图片');
+        $('#formContainer').dialog('open').dialog('center').dialog('setTitle', '上传文章图片');
     };
 
     function ImportShipmentStatusList() {

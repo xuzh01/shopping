@@ -60,6 +60,7 @@
             <li>
                 <span>商品销售管理系统</span>
                 <ul>
+                    <li><span><a href="<%=basePath%>Admin/grid">管理员管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>Memberinfo/grid">会员管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>ArticleInfo/grid">文章管理模块</a></span></li>
                     <li><span><a href="<%=basePath%>GoodsComment/grid">评论管理模块</a></span></li>
