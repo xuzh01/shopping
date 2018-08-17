@@ -103,7 +103,7 @@
                         type: 'combobox',
                         options: {
                             required: true,
-                            data: [{key: 1, value: '禁用'}, {key: 0, value: '正常'}],
+                            data: [{key: 0, value: '禁用'}, {key: 1, value: '正常'}],
                             valueField: 'key',
                             textField: 'value',
                             panelHeight: 'auto'
