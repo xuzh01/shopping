@@ -41,6 +41,17 @@
     fn.snow();
 </script>
 <body>
+    <%
+    Integer flg;
+    String  result="";
+    if (session.getAttribute("username")!=null)
+    {
+        Admin admin = (Admin)session.getAttribute("username");
+        flg = admin.getAdminIsSuper();
+        if (flg.equals(1)) result="超级管理员"+admin.getAdminName();
+        else result="管理员"+admin.getAdminName();
+    }
+%>
 <div id="outer" class="easyui-layout" style="width:100%;height: 100%;">
     <div id="north" region="north" title="" style="height: 30px;background-color: #00b7ee">
         <div style="line-height: 25px;float: left">商品销售管理系统</div>
@@ -48,7 +59,7 @@
             <li style="display: inline">
                 <small>欢迎您&nbsp;&nbsp;</small>
                 <span
-                        style="color: #a4e9c1"><strong><%=((Admin) (request.getSession().getAttribute("username"))).getAdminName()%></strong></span>
+                        style="color: #a4e9c1"><strong><%=result%></strong></span>
             </li>&nbsp;&nbsp;&nbsp;
             <%--<li style="display: inline"><a href="#" class="easyui-linkbutton" style="border-radius:20px; ">修改密码</a></li>&nbsp;&nbsp;&nbsp;--%>
             <li style="display: inline;margin-right: 1rem"><a href="<%=basePath%>login/Logout" class="easyui-linkbutton"
@@ -72,6 +83,7 @@
                         <span>系统设置模块</span>
                         <ul>
                             <li><a href="<%=basePath%>Log/grid">登陆日志</a></li>
+                            <li><a href="<%=basePath%>reset.html">修改密码</a></li>
                         </ul>
                     </li>
                 </ul>
