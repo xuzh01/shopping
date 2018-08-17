@@ -126,7 +126,8 @@
                         }
                     },
                     formatter: function (value, row) {
-                        return '<span title=' + value + '>' + value + '</span>';
+                        console.log(value)
+                        return '<span><xmp>' + value + '</xmp></span>';
                     }
                 },
                 {
