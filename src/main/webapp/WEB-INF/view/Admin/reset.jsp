@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,13 +12,13 @@
     <meta name="author" content="Kodinger">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>重置</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/my-login.css">
-    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/my-login.css">
+    <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
     <style>
         body {
             overflow: hidden;
-            background-image: url("img/xue.jpg");
+            background-image: url("<%=basePath%>img/xue.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -26,12 +33,12 @@
         <div class="row justify-content-md-center align-items-center h-100">
             <div class="card-wrapper">
                 <div class="brand">
-                    <img src="img/logo.jpg">
+                    <img src="<%=basePath%>img/logo.jpg">
                 </div>
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Reset Password</h4>
-                        <form action="/reset/resetPwd" method="post">
+                        <form action="<%=basePath%>reset/resetPwd" method="post">
                             <div class="form-group">
                                 <label for="new-password">New Password</label>
                                 <input id="new-password" type="password" class="form-control" name="password" required
@@ -56,9 +63,9 @@
     </div>
 </section>
 
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/my-login.js"></script>
+<script src="<%=basePath%>js/jquery.min.js"></script>
+<script src="<%=basePath%>bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>js/my-login.js"></script>
 <script>
 </script>
 </body>

@@ -24,6 +24,11 @@ public class ResetPwdController {
     @Autowired
     private AdminDAO adminDAO;
 
+    @RequestMapping(value = "grid")
+    public String grid() {
+        return "Admin/reset";
+    }
+
     @PostMapping("/resetPwd")
     public void resetPwd(String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         AdminExample adminExample = new AdminExample();
@@ -36,7 +41,7 @@ public class ResetPwdController {
             session.invalidate();
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-            response.sendRedirect(basePath);
+            response.sendRedirect(basePath + "index.html");
         } catch (IOException e) {
             e.printStackTrace();
         }
