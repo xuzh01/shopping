@@ -29,7 +29,6 @@ public class WxImp implements WxService {
         for (int i = 0; i < list.size(); i++) {
             String tmp = jsonStr;
             tmp = tmp.replace("OPENID", list.get(i));
-            System.out.println(tmp);
             String rs = RequestUtils.post(url, tmp);
             System.out.println(rs);
         }
