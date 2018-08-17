@@ -51,7 +51,7 @@
                     field: 'loginIp', title: '登录IP', width: 20, sortable: true, align: 'center'
                 },
                 {
-                    field: 'createTime', title: '会员注册时间', width: 20, sortable: true, align: 'center'
+                    field: 'loginTime', title: '登陆时间', width: 20, sortable: true, align: 'center'
                 }
             ]],
             onSuccess: function (index, row) {
