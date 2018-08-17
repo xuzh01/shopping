@@ -62,9 +62,10 @@ public class OrderInfoGoodsController {
 
     @RequestMapping(value = "insert")
     @ResponseBody
-    public Message insert(OrderinfoGoods orderinfo) {
+    public Message insert(OrderinfoGoods orderinfo,String orderid) {
         log.info(orderinfo);
         Message message = new Message();
+        orderinfo.setOrderId(orderid);
         int num = orderInfoGoodsService.save(orderinfo);
         if (num > 0) {
             message.setCode(0);
