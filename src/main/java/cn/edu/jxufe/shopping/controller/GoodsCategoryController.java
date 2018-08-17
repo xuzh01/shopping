@@ -4,6 +4,7 @@ import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.GoodsCategory;
+import cn.edu.jxufe.shopping.entity.Memberinfo;
 import cn.edu.jxufe.shopping.service.GoodsCategoryService;
 import cn.edu.jxufe.shopping.utils.StringUtils;
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author cgg 891842749@qq.com
@@ -115,6 +117,29 @@ public class GoodsCategoryController {
             log.trace(e.getMessage());
             message.setCode(-1);
             return message;
+        }
+    }
+
+    @RequestMapping(value = "byId")
+    @ResponseBody
+    public GoodsCategory findDataById(Integer id) {
+        try {
+            log.info(id);
+            return goodsCategoryService.findById(id);
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "getAll")
+    @ResponseBody
+    public List findAll() {
+        try {
+            return goodsCategoryService.findAll();
+        } catch (Exception e) {
+            log.trace(e.getMessage());
+            return null;
         }
     }
 }

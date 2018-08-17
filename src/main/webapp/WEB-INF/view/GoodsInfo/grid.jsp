@@ -65,11 +65,13 @@
                            required="required"/></td>
             </tr>
             <tr>
-                <td>商品分类id:</td>
-                <td><input name='gcId' value='0' class="easyui-numberbox"
-                           required="required"/></td>
-                <td>商品分类名称:</td>
-                <td><input name='gcName' class="easyui-textbox"
+                <td>商品分类</td>
+                <td><input name='gcId' class="easyui-combobox"
+                           panelHeight="auto"
+                           data-options=" editable:false,
+						      valueField:'catId',
+						        textField:'catName',
+						        url:'<%=basePath%>GoodsCategory/getAll'"
                            required="required"/></td>
                 <td>商品原价:</td>
                 <td><input name='goodsPrice' type="number"
@@ -112,7 +114,13 @@
                 <td><input name='goodsCollectNum' value='0' class="easyui-numberbox"
                 /></td>
                 <td>是否删除:</td>
-                <td><input name='isDel' type="number"
+                <td><input name='isDel' class="easyui-combobox"
+                           data-options="
+                           required: true,
+                            data: [{key: 1, value: '已删除'}, {key: 0, value: '正常'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'"
                            required="required"/></td>
                 <td>上传者:</td>
                 <td><input name='memberId' class="easyui-combobox"
@@ -150,11 +158,13 @@
                            required="required"/></td>
             </tr>
             <tr>
-                <td>商品分类id:</td>
-                <td><input name='gcId' value='0' class="easyui-numberbox"
-                           required="required"/></td>
-                <td>商品分类名称:</td>
-                <td><input name='gcName' class="easyui-textbox"
+                <td>商品分类</td>
+                <td><input name='gcId' class="easyui-combobox"
+                           panelHeight="auto"
+                           data-options=" editable:false,
+						        valueField:'catId',
+						        textField:'catName',
+						        url:'<%=basePath%>GoodsCategory/getAll'"
                            required="required"/></td>
                 <td>商品原价:</td>
                 <td><input name='goodsPrice' type="number"
@@ -197,7 +207,13 @@
                 <td><input name='goodsCollectNum' value='0' class="easyui-numberbox"
                 /></td>
                 <td>是否删除:</td>
-                <td><input name='isDel' type="number"
+                <td><input name='isDel' class="easyui-combobox"
+                           data-options="
+                           required: true,
+                            data: [{key: 1, value: '已删除'}, {key: 0, value: '正常'}],
+                            valueField: 'key',
+                            textField: 'value',
+                            panelHeight: 'auto'"
                            required="required"/></td>
                 <td>上传者:</td>
                 <td><input name='memberId' class="easyui-combobox"
@@ -505,6 +521,7 @@
                 var result = eval('(' + result + ')');
                 if (result.code == 0) {
                     $('#editContainer').dialog('close');
+                    $('#insertContainer').dialog('close');
                     grid.edatagrid('reload');
                 }
                 $.messager.show({

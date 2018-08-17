@@ -1,10 +1,7 @@
 package cn.edu.jxufe.shopping.service.imp;
 
 import cn.edu.jxufe.shopping.bean.EasyUIData;
-import cn.edu.jxufe.shopping.entity.GoodsCategory;
-import cn.edu.jxufe.shopping.entity.GoodsCategoryExample;
-import cn.edu.jxufe.shopping.entity.Goodsinfo;
-import cn.edu.jxufe.shopping.entity.GoodsinfoExample;
+import cn.edu.jxufe.shopping.entity.*;
 import cn.edu.jxufe.shopping.mapper.GoodsCategoryDAO;
 import cn.edu.jxufe.shopping.service.GoodsCategoryService;
 import com.github.pagehelper.PageHelper;
@@ -59,5 +56,14 @@ public class GoodsCategoryImp implements GoodsCategoryService {
         easyUIData.setTotal(pageInfo.getTotal());
         easyUIData.setRows(pageInfo.getList());
         return easyUIData;
+    }
+
+    @Override
+    public GoodsCategory findById(Integer id) {
+        GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+        goodsCategoryExample.createCriteria().andCatIdEqualTo(id);
+        List<GoodsCategory> list = goodsCategoryDAO.selectByExample(goodsCategoryExample);
+        if (list.size() > 0) return list.get(0);
+        else return null;
     }
 }

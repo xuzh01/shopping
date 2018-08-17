@@ -4,6 +4,7 @@ import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
 import cn.edu.jxufe.shopping.entity.GoodsCategory;
 import cn.edu.jxufe.shopping.entity.Goodsinfo;
+import cn.edu.jxufe.shopping.entity.Memberinfo;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ import java.util.List;
  * @Description gitee:www.gitee.com/cgggitee/
  */
 public interface GoodsCategoryService extends PublicService<GoodsCategory> {
+    GoodsCategory findById(Integer id);
 }
