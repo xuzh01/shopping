@@ -100,6 +100,7 @@ public class AdminController {
                         return message;
                     } else {
                         num = adminService.update(admin);
+                        sess.setAttribute("username", admin);
                     }
                 }
                 if (num > 0) {
@@ -110,7 +111,7 @@ public class AdminController {
                     message.setMsg("更新管理员信息失败");
                 }
             }
-            sess.setAttribute("username", admin);
+
             return message;
         } catch (Exception e) {
             e.printStackTrace();
