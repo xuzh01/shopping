@@ -20,9 +20,9 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Admin Login(String username, String password) {
         AdminExample adminExample=new AdminExample();
-        adminExample.createCriteria().andAdminNameEqualTo(username).andAdminPasswordEqualTo(password);
+        adminExample.createCriteria().andAdminNameEqualTo(username).andAdminPasswordEqualTo(password)
+                                      .andIsDisableEqualTo(1);
         List<Admin> a= adminDAO.selectByExample(adminExample);
-        System.out.println(a);
         if (a.size()!=0) return a.get(0);
         else return null;
     }
