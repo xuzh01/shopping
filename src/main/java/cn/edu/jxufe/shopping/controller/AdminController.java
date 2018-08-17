@@ -8,6 +8,7 @@ import cn.edu.jxufe.shopping.service.AdminService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -81,6 +82,7 @@ public class AdminController {
         admin.setUpdatedTime(new Date());
         Message message = new Message();
         Admin cur = (Admin) sess.getAttribute("username");
+        if (StringUtils.isEmpty(admin.getAdminPassword())) admin.setAdminPassword(cur.getAdminPassword());
         int num = 0;
         try {
             log.info(admin);
@@ -92,11 +94,13 @@ public class AdminController {
                 if (cur.getAdminIsSuper().equals(1)) {//超级管理员
                     num = adminService.update(admin);
                 } else {
-                    if (!admin.getAdminId().equals(cur.getAdminId())) {
+                    if (!admin.getAdminId().equals(cur.getAdminId()) || !admin.getAdminIsSuper().equals(cur.getAdminIsSuper())) {
                         message.setCode(-1);
-                        message.setMsg("当前管理员权限限制，只能更改自己的信息");
+                        message.setMsg("当前管理员权限限制，只能更改自己的信息且不能自主提升权限");
                         return message;
-                    } else num = adminService.update(admin);
+                    } else {
+                        num = adminService.update(admin);
+                    }
                 }
                 if (num > 0) {
                     message.setCode(0);
@@ -106,6 +110,7 @@ public class AdminController {
                     message.setMsg("更新管理员信息失败");
                 }
             }
+            sess.setAttribute("username", admin);
             return message;
         } catch (Exception e) {
             e.printStackTrace();
