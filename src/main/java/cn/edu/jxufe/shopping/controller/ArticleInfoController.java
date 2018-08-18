@@ -4,6 +4,7 @@ import cn.edu.jxufe.shopping.bean.EasyUIData;
 import cn.edu.jxufe.shopping.bean.EasyUIDataPageRequest;
 import cn.edu.jxufe.shopping.bean.Message;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
+import cn.edu.jxufe.shopping.mapper.ArticleinfoDAO;
 import cn.edu.jxufe.shopping.service.ArticleInfoService;
 import cn.edu.jxufe.shopping.service.WxService;
 import org.apache.log4j.Logger;
@@ -24,6 +25,8 @@ import java.util.Date;
 public class ArticleInfoController {
     @Autowired
     private ArticleInfoService articleInfoService;
+    @Autowired
+    private ArticleinfoDAO articleinfoDAO;
 
     @Autowired
     private WxService wxService;
@@ -84,11 +87,8 @@ public class ArticleInfoController {
     @RequestMapping("/updateCont")
     @ResponseBody
     public String updateCont(int articleId,String Content){
-        System.out.println(Content);
-        Articleinfo article = articleInfoService.getById(articleId);
-        article.setArticleContent(Content);
 
-        int num = articleInfoService.update(article);
+        int num = articleinfoDAO.updateContentById(articleId,Content);
         if (num>0) return "成功";
         else return null;
     }

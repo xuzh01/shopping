@@ -333,4 +333,10 @@
     </where>
   </select>
 
+  <update id="updateContentById">
+    update articleinfo
+    set article_content=#{content}
+    where article_id=#{id}
+  </update>
+
 </mapper>

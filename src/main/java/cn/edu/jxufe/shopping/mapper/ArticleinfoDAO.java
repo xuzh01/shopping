@@ -3,6 +3,7 @@ package cn.edu.jxufe.shopping.mapper;
 import cn.edu.jxufe.shopping.entity.Articleinfo;
 import cn.edu.jxufe.shopping.entity.ArticleinfoExample;
 import cn.edu.jxufe.shopping.entity.GoodsComment;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public interface ArticleinfoDAO extends MyBatisBaseDao<Articleinfo, Integer, Art
     public Articleinfo selectByPrimaryKey(Articleinfo articleinfo);
     int updateByPrimaryKeyWithBLOBs(Articleinfo articleinfo);
     Articleinfo selectByPrimaryKey(int i);
+    int updateContentById(@Param("id") int id,@Param("content") String content);
 }
