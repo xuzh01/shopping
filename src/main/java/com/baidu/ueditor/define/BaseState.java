@@ -1,6 +1,6 @@
-package cn.edu.jxufe.shopping.ueditor.define;
+package com.baidu.ueditor.define;
 
-import cn.edu.jxufe.shopping.ueditor.Encoder;
+import com.baidu.ueditor.Encoder;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -1,6 +1,6 @@
-package cn.edu.jxufe.shopping.ueditor;
+package com.baidu.ueditor;
 
-import cn.edu.jxufe.shopping.ueditor.define.ActionMap;
+import com.baidu.ueditor.define.ActionMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

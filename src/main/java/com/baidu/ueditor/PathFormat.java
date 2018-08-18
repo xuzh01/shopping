@@ -1,4 +1,4 @@
-package cn.edu.jxufe.shopping.ueditor;
+package com.baidu.ueditor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

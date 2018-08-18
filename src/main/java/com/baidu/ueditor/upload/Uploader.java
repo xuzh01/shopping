@@ -1,6 +1,6 @@
-package cn.edu.jxufe.shopping.ueditor.upload;
+package com.baidu.ueditor.upload;
 
-import cn.edu.jxufe.shopping.ueditor.define.State;
+import com.baidu.ueditor.define.State;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

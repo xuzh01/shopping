@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="cn.edu.jxufe.shopping.ueditor.ActionEnter"
+	import="com.baidu.ueditor.ActionEnter"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%

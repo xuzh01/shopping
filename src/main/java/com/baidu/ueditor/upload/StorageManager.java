@@ -1,8 +1,8 @@
-package cn.edu.jxufe.shopping.ueditor.upload;
+package com.baidu.ueditor.upload;
 
-import cn.edu.jxufe.shopping.ueditor.define.AppInfo;
-import cn.edu.jxufe.shopping.ueditor.define.BaseState;
-import cn.edu.jxufe.shopping.ueditor.define.State;
+import com.baidu.ueditor.define.AppInfo;
+import com.baidu.ueditor.define.BaseState;
+import com.baidu.ueditor.define.State;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
