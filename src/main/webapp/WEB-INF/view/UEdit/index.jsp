@@ -6,11 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <html>
 <head>
     <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script src="../../../js/jquery.min.js"></script>
+    <script src="<%=basePath%>js/jquery.min.js"></script>
     <style type="text/css">
         body,html,div{
             width:100%;
@@ -25,9 +29,9 @@
 </script>
     </div>
 <!-- 配置文件 -->
-<script type="text/javascript" src="../../../utf8-jsp/ueditor.config.js"></script>
+<script type="text/javascript" src="<%=basePath%>utf8-jsp/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
-<script type="text/javascript" src="../../../utf8-jsp/ueditor.all.js"></script>
+<script type="text/javascript" src="<%=basePath%>utf8-jsp/ueditor.all.js"></script>
 <!-- 实例化编辑器 -->
 
 <input type="button" style="position: absolute; left: 50%" id="test" value="提交">
