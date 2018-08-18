@@ -49,11 +49,13 @@
 <script>
     var grid;
     var cId;
-    function show(i,z) {
-        console.log(i+"   "+z)
-        var z= encodeURI("<%=basePath%>Edit?articleId="+i+"&&articleContent="+z);
-        window.location.href=z;
+
+    function show(i, z) {
+        console.log(i + "   " + z)
+        var z = encodeURI("<%=basePath%>Edit?articleId=" + i + "&&articleContent=" + z);
+        window.location.href = z;
     }
+
     $(document).ready(function () {
         //配置表格
         grid = $('#grid').edatagrid({
@@ -141,10 +143,10 @@
                     formatter: function (value, row, index) {
                         return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:showFormEdit(' + index + ')">上传文章图片</a>';
                     }
-                },{
+                }, {
                     title: '编辑', field: 'sss', width: 30, align: 'center',
-                    formatter: function (value,row) {
-                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:show('+row.articleId+',\''+row.articleContent+'\')">编辑</a>';
+                    formatter: function (value, row) {
+                        return '<a href="javascript:void(0)" style="background-color:white;border-radius:5px;"  class="easyui-linkbutton" onclick="javascript:show(' + row.articleId + ',\'' + row.articleContent + '\')">编辑</a>';
                     }
                 }
             ]],
@@ -159,11 +161,11 @@
                 }
             },
             onSuccess: function (index, row) {
-                console.log(row)
                 $.messager.show({
                     title: "消息",
                     msg: row.msg
                 });
+                grid.edatagrid("load", {});
             }
         });
     });
