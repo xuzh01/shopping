@@ -1,6 +1,6 @@
 package cn.edu.jxufe.shopping.controller;
 
-import com.baidu.ueditor.ActionEnter;
+import cn.edu.jxufe.shopping.ueditor.ActionEnter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,12 +17,12 @@ import java.io.PrintWriter;
 public class UEditorController {
 
     @RequestMapping("/config")
-    public void GetConf(HttpServletRequest request, HttpServletResponse response){
+    public void GetConf(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json");
-        String rootPath = request.getSession().getServletContext().getRealPath( "/" );
+        String rootPath = request.getSession().getServletContext().getRealPath("/");
         try {
             PrintWriter out = response.getWriter();
-            out.write( new ActionEnter( request, rootPath ).exec() );
+            out.write(new ActionEnter(request, rootPath).exec());
             out.flush();
             out.close();
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class UEditorController {
     }
 
     @RequestMapping("/Edit")
-    public String getEdit(){
+    public String getEdit() {
         return "UEdit/index";
     }
 }

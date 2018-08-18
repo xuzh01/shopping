@@ -1,4 +1,4 @@
-package com.baidu.ueditor.define;
+package cn.edu.jxufe.shopping.ueditor.define;
 
 /**
  * 处理状态接口

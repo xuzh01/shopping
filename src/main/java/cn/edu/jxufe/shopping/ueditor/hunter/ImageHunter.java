@@ -1,8 +1,8 @@
-package com.baidu.ueditor.hunter;
+package cn.edu.jxufe.shopping.ueditor.hunter;
 
-import com.baidu.ueditor.PathFormat;
-import com.baidu.ueditor.define.*;
-import com.baidu.ueditor.upload.StorageManager;
+import cn.edu.jxufe.shopping.ueditor.PathFormat;
+import cn.edu.jxufe.shopping.ueditor.define.*;
+import cn.edu.jxufe.shopping.ueditor.upload.StorageManager;
 
 import java.net.HttpURLConnection;
 import java.net.InetAddress;

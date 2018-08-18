@@ -1,10 +1,10 @@
-package com.baidu.ueditor.hunter;
+package cn.edu.jxufe.shopping.ueditor.hunter;
 
-import com.baidu.ueditor.PathFormat;
-import com.baidu.ueditor.define.AppInfo;
-import com.baidu.ueditor.define.BaseState;
-import com.baidu.ueditor.define.MultiState;
-import com.baidu.ueditor.define.State;
+import cn.edu.jxufe.shopping.ueditor.PathFormat;
+import cn.edu.jxufe.shopping.ueditor.define.AppInfo;
+import cn.edu.jxufe.shopping.ueditor.define.BaseState;
+import cn.edu.jxufe.shopping.ueditor.define.MultiState;
+import cn.edu.jxufe.shopping.ueditor.define.State;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

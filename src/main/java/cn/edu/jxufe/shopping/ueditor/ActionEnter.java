@@ -1,12 +1,12 @@
-package com.baidu.ueditor;
+package cn.edu.jxufe.shopping.ueditor;
 
-import com.baidu.ueditor.define.ActionMap;
-import com.baidu.ueditor.define.AppInfo;
-import com.baidu.ueditor.define.BaseState;
-import com.baidu.ueditor.define.State;
-import com.baidu.ueditor.hunter.FileManager;
-import com.baidu.ueditor.hunter.ImageHunter;
-import com.baidu.ueditor.upload.Uploader;
+import cn.edu.jxufe.shopping.ueditor.define.ActionMap;
+import cn.edu.jxufe.shopping.ueditor.define.AppInfo;
+import cn.edu.jxufe.shopping.ueditor.define.BaseState;
+import cn.edu.jxufe.shopping.ueditor.define.State;
+import cn.edu.jxufe.shopping.ueditor.hunter.FileManager;
+import cn.edu.jxufe.shopping.ueditor.hunter.ImageHunter;
+import cn.edu.jxufe.shopping.ueditor.upload.Uploader;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

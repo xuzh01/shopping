@@ -1,6 +1,6 @@
-package com.baidu.ueditor.define;
+package cn.edu.jxufe.shopping.ueditor.define;
 
-import com.baidu.ueditor.Encoder;
+import cn.edu.jxufe.shopping.ueditor.Encoder;
 
 import java.util.*;
 

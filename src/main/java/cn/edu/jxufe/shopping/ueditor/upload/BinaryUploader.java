@@ -1,10 +1,10 @@
-package com.baidu.ueditor.upload;
+package cn.edu.jxufe.shopping.ueditor.upload;
 
-import com.baidu.ueditor.PathFormat;
-import com.baidu.ueditor.define.AppInfo;
-import com.baidu.ueditor.define.BaseState;
-import com.baidu.ueditor.define.FileType;
-import com.baidu.ueditor.define.State;
+import cn.edu.jxufe.shopping.ueditor.PathFormat;
+import cn.edu.jxufe.shopping.ueditor.define.AppInfo;
+import cn.edu.jxufe.shopping.ueditor.define.BaseState;
+import cn.edu.jxufe.shopping.ueditor.define.FileType;
+import cn.edu.jxufe.shopping.ueditor.define.State;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
