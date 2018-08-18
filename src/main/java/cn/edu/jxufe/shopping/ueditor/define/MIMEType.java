@@ -1,4 +1,4 @@
-package com.baidu.ueditor.define;
+package cn.edu.jxufe.shopping.ueditor.define;
 
 import java.util.HashMap;
 import java.util.Map;

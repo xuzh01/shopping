@@ -1,4 +1,4 @@
-package com.baidu.ueditor;
+package cn.edu.jxufe.shopping.ueditor;
 
 public class Encoder {
 

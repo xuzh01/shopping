@@ -1,4 +1,4 @@
-package com.baidu.ueditor;
+package cn.edu.jxufe.shopping.ueditor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -149,9 +149,9 @@ public class PathFormat {
 		
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }
